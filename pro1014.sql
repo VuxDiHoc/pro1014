@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 10, 2024 at 03:39 PM
+-- Generation Time: Nov 11, 2024 at 12:55 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -154,7 +154,8 @@ CREATE TABLE `users` (
 
 CREATE TABLE `variant` (
   `id_variant` int NOT NULL COMMENT 'Mã biến thể',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên biến thể',
+  `name_color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên biến thể màu',
+  `quantity` int UNSIGNED NOT NULL COMMENT 'Số lượng',
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày cập nhật'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
