@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Admin</div>
     </a>
 
     <!-- Divider -->
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="?act=dashboard">
+        <a class="nav-link" href="./">
             <span>Dashboard</span></a>
     </li>
 
@@ -73,12 +73,10 @@
             <span>Thống kê</span></a>
     </li>
 
-
-
-
-
-
-
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 </ul>
 <!-- End of Sidebar -->
 
@@ -101,7 +99,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="../">Logout</a>
             </div>
         </div>
     </div>
