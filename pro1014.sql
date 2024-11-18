@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 18, 2024 at 10:35 AM
+-- Generation Time: Nov 18, 2024 at 10:38 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -104,7 +104,6 @@ CREATE TABLE `detail_bills` (
 CREATE TABLE `products` (
   `id_product` int NOT NULL COMMENT 'Mã sản phẩm',
   `id_category` int NOT NULL COMMENT 'Mã loại hàng',
-  `id_variant` int NOT NULL COMMENT 'Mã biến thể',
   `firms` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Hãng của sản phẩm',
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên của sản phẩm',
   `price` int UNSIGNED NOT NULL COMMENT 'Giá của sản phẩm ',
@@ -206,8 +205,7 @@ ALTER TABLE `detail_bills`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id_product`),
-  ADD KEY `id_category` (`id_category`),
-  ADD KEY `id_variant` (`id_variant`);
+  ADD KEY `id_category` (`id_category`);
 
 --
 -- Indexes for table `rates`
