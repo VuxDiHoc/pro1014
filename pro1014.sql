@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 11, 2024 at 12:55 PM
+-- Generation Time: Nov 18, 2024 at 10:51 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -46,8 +46,8 @@ CREATE TABLE `bills` (
 CREATE TABLE `categories` (
   `id_category` int NOT NULL COMMENT 'Mã loại hàng',
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên của loại hàng',
-  `created_at` datetime DEFAULT NULL COMMENT 'Ngày tạo ',
-  `updated_at` datetime DEFAULT NULL COMMENT 'Ngày cập nhật'
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày cập nhật'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -62,7 +62,7 @@ CREATE TABLE `comments` (
   `id_user` int NOT NULL COMMENT 'Mã user',
   `content` text COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nội dung bình luận ',
   `censorship` tinyint NOT NULL DEFAULT '0' COMMENT '0 là hiện, 1 là đã ẩn',
-  `day_post` datetime DEFAULT NULL COMMENT 'Ngày tạo '
+  `day_post` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -104,7 +104,6 @@ CREATE TABLE `detail_bills` (
 CREATE TABLE `products` (
   `id_product` int NOT NULL COMMENT 'Mã sản phẩm',
   `id_category` int NOT NULL COMMENT 'Mã loại hàng',
-  `id_variant` int NOT NULL COMMENT 'Mã biến thể',
   `firms` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Hãng của sản phẩm',
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên của sản phẩm',
   `price` int UNSIGNED NOT NULL COMMENT 'Giá của sản phẩm ',
@@ -114,8 +113,8 @@ CREATE TABLE `products` (
   `img_product` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Hình ảnh của sản phẩm',
   `censorship` tinyint NOT NULL DEFAULT '0' COMMENT '0 là hiện, 1 là đã ẩn',
   `view` int NOT NULL DEFAULT '0' COMMENT 'Số lượt xem của sản phẩm',
-  `created_at` datetime DEFAULT NULL COMMENT 'Ngày tạo ',
-  `updated_at` datetime DEFAULT NULL COMMENT 'Ngày cập nhật'
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày cập nhật'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -154,6 +153,7 @@ CREATE TABLE `users` (
 
 CREATE TABLE `variant` (
   `id_variant` int NOT NULL COMMENT 'Mã biến thể',
+  `id_product` int NOT NULL COMMENT 'Mã sản phẩm',
   `name_color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên biến thể màu',
   `quantity` int UNSIGNED NOT NULL COMMENT 'Số lượng',
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
@@ -205,8 +205,7 @@ ALTER TABLE `detail_bills`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id_product`),
-  ADD KEY `id_category` (`id_category`),
-  ADD KEY `id_variant` (`id_variant`);
+  ADD KEY `id_category` (`id_category`);
 
 --
 -- Indexes for table `rates`
@@ -226,7 +225,8 @@ ALTER TABLE `users`
 -- Indexes for table `variant`
 --
 ALTER TABLE `variant`
-  ADD PRIMARY KEY (`id_variant`);
+  ADD PRIMARY KEY (`id_variant`),
+  ADD KEY `id_product` (`id_product`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -314,8 +314,7 @@ ALTER TABLE `detail_bills`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`id_variant`) REFERENCES `variant` (`id_variant`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `rates`
@@ -323,6 +322,12 @@ ALTER TABLE `products`
 ALTER TABLE `rates`
   ADD CONSTRAINT `rates_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rates_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `variant`
+--
+ALTER TABLE `variant`
+  ADD CONSTRAINT `variant_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
