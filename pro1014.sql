@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 18, 2024 at 10:51 AM
+-- Generation Time: Nov 18, 2024 at 01:20 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -153,7 +153,6 @@ CREATE TABLE `users` (
 
 CREATE TABLE `variant` (
   `id_variant` int NOT NULL COMMENT 'Mã biến thể',
-  `id_product` int NOT NULL COMMENT 'Mã sản phẩm',
   `name_color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên biến thể màu',
   `quantity` int UNSIGNED NOT NULL COMMENT 'Số lượng',
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
@@ -225,8 +224,7 @@ ALTER TABLE `users`
 -- Indexes for table `variant`
 --
 ALTER TABLE `variant`
-  ADD PRIMARY KEY (`id_variant`),
-  ADD KEY `id_product` (`id_product`);
+  ADD PRIMARY KEY (`id_variant`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -322,12 +320,6 @@ ALTER TABLE `products`
 ALTER TABLE `rates`
   ADD CONSTRAINT `rates_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rates_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `variant`
---
-ALTER TABLE `variant`
-  ADD CONSTRAINT `variant_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
