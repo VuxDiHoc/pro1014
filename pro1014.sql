@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 18, 2024 at 01:20 PM
+-- Generation Time: Nov 18, 2024 at 02:32 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -120,6 +120,17 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_variant`
+--
+
+CREATE TABLE `product_variant` (
+  `id_product` int NOT NULL,
+  `id_variant` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rates`
 --
 
@@ -205,6 +216,13 @@ ALTER TABLE `detail_bills`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id_product`),
   ADD KEY `id_category` (`id_category`);
+
+--
+-- Indexes for table `product_variant`
+--
+ALTER TABLE `product_variant`
+  ADD PRIMARY KEY (`id_product`,`id_variant`),
+  ADD KEY `id_variant` (`id_variant`);
 
 --
 -- Indexes for table `rates`
@@ -313,6 +331,13 @@ ALTER TABLE `detail_bills`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `product_variant`
+--
+ALTER TABLE `product_variant`
+  ADD CONSTRAINT `product_variant_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product_variant_ibfk_2` FOREIGN KEY (`id_variant`) REFERENCES `variant` (`id_variant`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `rates`
