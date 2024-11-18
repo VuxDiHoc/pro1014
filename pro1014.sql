@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 18, 2024 at 10:38 AM
+-- Generation Time: Nov 18, 2024 at 10:51 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -46,8 +46,8 @@ CREATE TABLE `bills` (
 CREATE TABLE `categories` (
   `id_category` int NOT NULL COMMENT 'Mã loại hàng',
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên của loại hàng',
-  `created_at` datetime DEFAULT NULL COMMENT 'Ngày tạo ',
-  `updated_at` datetime DEFAULT NULL COMMENT 'Ngày cập nhật'
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày cập nhật'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -62,7 +62,7 @@ CREATE TABLE `comments` (
   `id_user` int NOT NULL COMMENT 'Mã user',
   `content` text COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nội dung bình luận ',
   `censorship` tinyint NOT NULL DEFAULT '0' COMMENT '0 là hiện, 1 là đã ẩn',
-  `day_post` datetime DEFAULT NULL COMMENT 'Ngày tạo '
+  `day_post` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -113,8 +113,8 @@ CREATE TABLE `products` (
   `img_product` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Hình ảnh của sản phẩm',
   `censorship` tinyint NOT NULL DEFAULT '0' COMMENT '0 là hiện, 1 là đã ẩn',
   `view` int NOT NULL DEFAULT '0' COMMENT 'Số lượt xem của sản phẩm',
-  `created_at` datetime DEFAULT NULL COMMENT 'Ngày tạo ',
-  `updated_at` datetime DEFAULT NULL COMMENT 'Ngày cập nhật'
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày cập nhật'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
