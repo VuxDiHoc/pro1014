@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 21, 2024 at 11:18 AM
+-- Generation Time: Nov 21, 2024 at 06:39 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -37,13 +37,6 @@ CREATE TABLE `bills` (
   `purchase_date` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày mua '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `bills`
---
-
-INSERT INTO `bills` (`id_bill`, `id_customer`, `receiver_name`, `receiver_phone`, `receiver_address`, `status`, `purchase_date`) VALUES
-(2, 1, 'hoang', '0988443211', 'Ha noi', 4, '2024-11-21 17:56:01');
-
 -- --------------------------------------------------------
 
 --
@@ -56,13 +49,6 @@ CREATE TABLE `categories` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày cập nhật'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`id_category`, `name_cat`, `created_at`, `updated_at`) VALUES
-(1, 'laptop', '2024-11-19 14:30:19', '2024-11-19 14:30:19');
 
 -- --------------------------------------------------------
 
@@ -93,13 +79,6 @@ CREATE TABLE `customers` (
   `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Địa chỉ',
   `note` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ghi chú(nếu có)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id_customer`, `id_user`, `full_name`, `phone`, `address`, `note`) VALUES
-(1, 1, 'V hoang', '0999886654', 'Ha noi', NULL);
 
 -- --------------------------------------------------------
 
@@ -137,13 +116,6 @@ CREATE TABLE `products` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày cập nhật'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id_product`, `id_category`, `firms`, `name`, `price`, `amount`, `discount`, `description`, `img_product`, `censorship`, `view`, `created_at`, `updated_at`) VALUES
-(31, 1, 'GIGABYTE', 'Lenovo Tab M10(Gen3)', 120, 0, 0, 'wwwwwwww', '', 0, 0, '2024-11-21 17:39:57', '2024-11-21 17:43:33');
 
 -- --------------------------------------------------------
 
@@ -185,13 +157,6 @@ CREATE TABLE `users` (
   `day_registered` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày đăng kí tài khoản của user '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id_user`, `email`, `password`, `role`, `day_registered`) VALUES
-(1, 'hoang@gmail.com', '11111111', 0, '2024-11-21 10:54:02');
-
 -- --------------------------------------------------------
 
 --
@@ -204,15 +169,6 @@ CREATE TABLE `variant` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo ',
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày cập nhật'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `variant`
---
-
-INSERT INTO `variant` (`id_variant`, `name_color`, `created_at`, `updated_at`) VALUES
-(16, 'Vàng', '2024-11-19 16:33:47', '2024-11-19 16:33:47'),
-(17, 'Trắng', '2024-11-19 16:33:54', '2024-11-19 16:33:54'),
-(18, 'Đen', '2024-11-19 16:34:19', '2024-11-19 16:34:19');
 
 --
 -- Indexes for dumped tables
@@ -320,13 +276,13 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `detail_bills`
 --
 ALTER TABLE `detail_bills`
-  MODIFY `id_detailbill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết đơn hàng';
+  MODIFY `id_detailbill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết đơn hàng', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_product` int NOT NULL AUTO_INCREMENT COMMENT 'Mã sản phẩm', AUTO_INCREMENT=32;
+  MODIFY `id_product` int NOT NULL AUTO_INCREMENT COMMENT 'Mã sản phẩm', AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `users`
