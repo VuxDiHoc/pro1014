@@ -60,7 +60,7 @@ require_once 'layout/navbar.php';
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">DANH SÁCH BIẾN THỂ</h1>
+<h1 class="h3 mb-2 text-gray-800">DANH SÁCH DANH MỤC</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -78,16 +78,16 @@ require_once 'layout/navbar.php';
                 <tbody>
                     <tr>
                     <?php
-                        foreach ($variants as $variant) {
-                            extract($variant); // Lấy các biến từ mảng như id, name
-                            $suabt = "index.php?act=updatevariant&id_variant=".$id_variant; // Sử dụng biến $id từ $variant
-                            $xoabt = "index.php?act=deletevariant&id_variant=".$id_variant;
+                        foreach ($categoriess as $categories) {
+                            extract($categories); // Lấy các biến từ mảng như id, name/-strong/-heart:>:o:-((:-h $suabt = "index.php?act=updatevariant&id_variant=".$id_variant; // Sử dụng biến $id từ $variant
+                            $suabt = "index.php?act=updatecategories&id_category=".$id_category;
+                            $xoabt = "index.php?act=deletecategories&id_category=".$id_category;
 
                             echo '
                                 <tr>
                                     <td><input type="checkbox" name= "chk" id=""></td>
-                                    <td>'.$id_variant.'</td>  <!-- Hiển thị id -->
-                                    <td>'.$name_color.'</td> <!-- Hiển thị tên -->
+                                    <td>'.$id_category.'</td>  <!-- Hiển thị id -->
+                                    <td>'.$name_cat.'</td> <!-- Hiển thị tên -->
                                     <td><a href="'.$suabt.'"><input class="btn btn-primary" type="button" value="Sửa"></a> <a href="'.$xoabt.'"><input class="btn btn-danger" type="button" value="Xóa"></a></td>
                                 </tr>
                             ';
@@ -100,7 +100,7 @@ require_once 'layout/navbar.php';
                 <input onclick="selects()" class="btn btn-info" type="button" value="Chọn tất cả">
                 <input onclick="deSelect()" class="btn btn-info " type="button" value="Bỏ chọn tất cả">
                 <input class="btn btn-danger" type="button" value="Xóa các mục đã chọn">
-                <a href="index.php?act=addvariant"><input class="btn btn-success" type="button" value="Nhập thêm"></a>
+                <a href="index.php?act=addcategories"><input class="btn btn-success" type="button" value="Nhập thêm"></a>
             </div>
         </div>
     </div>

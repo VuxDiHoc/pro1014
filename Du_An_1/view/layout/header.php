@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Zay Shop eCommerce HTML CSS Template</title>
     <meta charset="utf-8">
@@ -22,11 +22,12 @@
 TemplateMo 559 Zay Shop
 
 https://templatemo.com/tm-559-zay-shop
-
 -->
+
 </head>
 
 <body>
+
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -57,7 +58,12 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="?act=contact">Contact</a>
                         </li>
-                    </ul>
+                        <li>
+                                <a href="index.php?act=categories">
+                                    Danh mục
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                            </li>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">

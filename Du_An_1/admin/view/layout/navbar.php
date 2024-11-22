@@ -20,14 +20,14 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
             <span>Danh mục</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Thêm mới danh mục</a>
-                <a class="collapse-item" href="#">Danh sách danh mục</a>
+                <a class="collapse-item" href="index.php?act=addcategories">Thêm mới danh mục</a>
+                <a class="collapse-item" href="index.php?act=liscategories">Danh sách danh mục</a>
             </div>
         </div>
     </li>
