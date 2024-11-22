@@ -12,7 +12,7 @@ require_once 'view/layout/navbar.php';
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-            <form action="index.php?act=adddm" method="POST">
+            <form action="" method="POST">
             <div class="input">
                 Mã loại <br>
                 <input type="text" name="maloai" disabled id="maloai">
@@ -25,8 +25,8 @@ require_once 'view/layout/navbar.php';
                     <br>
             </div>
             <div style="margin-top: 20px;" class="input">
-                <input class="btn-primary" type="submit" name="themmoi" value="THÊM MỚI" onclick="return validate()">
-                <a href="index.php?act=lisdm"><input class="btn-success" type="button" value="DANH SÁCH"></a>
+                <input class="btn btn-primary" type="submit" name="themmoi" value="THÊM MỚI" onclick="return validate()">
+                <a href="index.php?act=listcategories"><input class="btn btn-success" type="button" value="DANH SÁCH"></a>
             </div>
             <?php
                 if(isset($thongbao)&&($thongbao != "")) echo $thongbao;

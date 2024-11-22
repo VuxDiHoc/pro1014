@@ -1,27 +1,17 @@
-
 <?php
+
+ob_start();
+require_once 'controller/categoriescontroller.php';
+require_once 'model/categoriesmodel.php';
 require_once 'controller/trangchu.php';
-require_once 'model/pdo.php';
-require_once 'model/danhmuc.php';
-require_once 'controller/dmcontroller.php';
-
-
-
-
+require_once '../commons/function.php';
 $act=$_GET['act']??'/';
+$id_category = $_GET['id_category'] ?? null;
 match ($act) {
     '/' => (new trang_chu())->trang_chu(),
-    'adddm' => (new adddm())->adddm(),
-    'lisdm' => (new lisdm())->lisdm(),
-    'xoadm' => (new xoadm())->xoadm(),
-    'suadm' => (new suadm())->suadm(),
-    'updatedm' => (new updatedm())->updatedm(),
-
-
-
-
-
-
-}; 
-?>
-
+    'addcategories' =>(new catagoriesController())->insert(),
+    'listcategories' =>(new catagoriesController())->listcategories(),
+    'updatecategories' =>(new catagoriesController())->update($id_category),
+    'deletecategories' =>(new catagoriesController())->delete($id_category),
+};
+ob_end_flush();
