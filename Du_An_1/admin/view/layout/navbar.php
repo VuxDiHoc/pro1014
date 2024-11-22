@@ -39,8 +39,8 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Thêm mới biến thể</a>
-                <a class="collapse-item" href="#">Danh sách biến thể</a>
+                <a class="collapse-item" href="?act=addvariant">Thêm mới biến thể</a>
+                <a class="collapse-item" href="?act=listvariant">Danh sách biến thể</a>
             </div>
         </div>
     </li>
@@ -51,13 +51,14 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Thêm mới sản phẩm</a>
-                <a class="collapse-item" href="#">Danh sách sản phẩm</a>
+                <a class="collapse-item" href="?act=insertProduct">Thêm mới sản phẩm</a>
+                <a class="collapse-item" href="?act=listProduct">Danh sách sản phẩm</a>
+                <a class="collapse-item" href="?act=listProduct_variant">Biến thể sản phẩm</a>
             </div>
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="?act=listBill">
             <span>Đơn hàng</span></a>
     </li>
     <li class="nav-item">
