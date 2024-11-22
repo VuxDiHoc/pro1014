@@ -1,13 +1,16 @@
 <?php
+
 ob_start();
+require_once 'controller/variantcontroller.php';
+require_once 'model/variantmodel.php';
 require_once 'controller/trangchu.php';
 require_once 'controller/productcontroller.php';
 require_once 'controller/billcontroller.php';
 require_once 'model/productmodel.php';
 require_once 'model/billmodel.php';
 require_once '../commons/function.php';
-
 $act=$_GET['act']??'/';
+$id_variant = $_GET['id_variant'] ?? null;
 match ($act) {
     '/' => (new trang_chu())->trang_chu(),
     'listProduct' => (new productController())->listProduct(),
@@ -19,6 +22,9 @@ match ($act) {
     'deleteProduct_variant'=>(new productController())->deleteProduct_variant($_GET['id_pro'],$_GET['id_var']),
     'listBill'=>(new billController())->listBill(),
     'updateBill'=>(new billController())->updateBill($_GET['id']),
+    'addvariant' =>(new variantController())->insert(),
+    'listvariant' =>(new variantController())->listvariant(),
+    'updatevariant' =>(new variantController())->update($id_variant),
+    'deletevariant' =>(new variantController())->delete($id_variant),
 };
-
 ob_end_flush();
