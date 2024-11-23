@@ -11,4 +11,5 @@ match ($act) {
     'shop' => (new shopController())->shop(),
     'shop_single' => (new shopController())->shop_single(),
     'contact' => (new contactController())->contact(),
+    
 };
