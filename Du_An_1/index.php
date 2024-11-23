@@ -3,6 +3,7 @@ require_once 'controller/maincontroller.php';
 require_once 'controller/aboutcontroller.php';
 require_once 'controller/shopcontroller.php';
 require_once 'controller/contactcontroller.php';
+require_once 'controller/giohangcontroller.php';
 require_once 'commons/function.php';
 $act=$_GET['act']??'/';
 match ($act) {
@@ -11,5 +12,5 @@ match ($act) {
     'shop' => (new shopController())->shop(),
     'shop_single' => (new shopController())->shop_single(),
     'contact' => (new contactController())->contact(),
-    
+    'giohang' => (new giohangController())->giohang(),
 };

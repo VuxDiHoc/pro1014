@@ -7,7 +7,9 @@ function connDBAss() {
         $conn = new PDO($host, $user, $pass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
-    } catch (PDOException $th) {
+
+    } 
+    catch (PDOException $th) {
         echo $th->getMessage();
     }
 }
