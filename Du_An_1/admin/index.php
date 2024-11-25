@@ -12,7 +12,7 @@ require_once 'model/productmodel.php';
 require_once 'model/billmodel.php';
 require_once '../commons/function.php';
 $act=$_GET['act']??'/';
-$id_category = $_GET['id_category'] ?? null; 
+$id_category = $_GET['id_category'] ?? null;
 $id_variant = $_GET['id_variant'] ?? null;
 match ($act) {
     '/' => (new trang_chu())->trang_chu(),
