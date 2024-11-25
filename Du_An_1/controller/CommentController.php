@@ -1,4 +1,3 @@
-// CommentController.php
 <?php
 require_once 'model/CommentModel.php';
 
