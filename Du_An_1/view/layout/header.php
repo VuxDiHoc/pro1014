@@ -52,18 +52,13 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="?act=about">About</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="?act=shop">Shop</a>
-                        </li>
+                        </li> -->
+                     
                         <li class="nav-item">
                             <a class="nav-link" href="?act=contact">Contact</a>
                         </li>
-                        <li>
-                                <a href="index.php?act=categories">
-                                    Danh mục
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                            </li>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">

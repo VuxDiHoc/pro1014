@@ -5,6 +5,7 @@ require_once 'controller/shopcontroller.php';
 require_once 'controller/contactcontroller.php';
 require_once 'controller/giohangcontroller.php';
 require_once 'commons/function.php';
+
 $act=$_GET['act']??'/';
 match ($act) {
     '/' => (new trang_chu())->trang_chu(),
@@ -13,4 +14,5 @@ match ($act) {
     'shop_single' => (new shopController())->shop_single(),
     'contact' => (new contactController())->contact(),
     'giohang' => (new giohangController())->giohang(),
+
 };

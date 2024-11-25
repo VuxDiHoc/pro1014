@@ -1,9 +1,6 @@
 <?php
 require_once 'layout/header.php'
 ?>
-
-
-
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">
@@ -526,7 +523,7 @@ require_once 'layout/header.php'
             </div>
         </div>
     </section>
-    <!--End Brands-->
+    <!--End Brands -->
 
 
 <?php
