@@ -62,8 +62,11 @@
             <span>Đơn hàng</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span>Khách hàng</span></a>
+        <a class="nav-link" href="usercontroller.php?action=listUsers">
+            <span>Khách hàng</span>
+        </a>
+    </li>
+
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">
