@@ -26,8 +26,10 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+
                 <a class="collapse-item" href="index.php?act=addcategories">Thêm mới danh mục</a>
                 <a class="collapse-item" href="index.php?act=listcategories">Danh sách danh mục</a>
+
             </div>
         </div>
     </li>
