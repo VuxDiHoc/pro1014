@@ -29,6 +29,7 @@
 
                 <a class="collapse-item" href="index.php?act=addcategories">Thêm mới danh mục</a>
                 <a class="collapse-item" href="index.php?act=listcategories">Danh sách danh mục</a>
+                <a class="collapse-item" href="index.php?act=listcategories">Danh sách danh mục</a>
 
             </div>
         </div>
