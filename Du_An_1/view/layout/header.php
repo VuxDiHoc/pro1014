@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Zay Shop eCommerce HTML CSS Template</title>
     <meta charset="utf-8">
@@ -76,7 +76,23 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                                    <?php echo $_SESSION['user']['fullname']; ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
+                                    <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        <?php else: ?>
+                            <a href="?act=login" class="text-decoration-none text-dark">
+                                <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                                Đăng nhập
+                            </a>
+                        <?php endif; ?>
                     </a>
                 </div>
             </div>
