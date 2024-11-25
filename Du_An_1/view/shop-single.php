@@ -112,10 +112,10 @@
                         foreach ($comments as $com) {
                             ?>
                             <div class="d-flex justify-content-between">
-                                <div><?= $com['detail_com'] ?></div>
+                                <div><?= $com['content'] ?></div>
                                 <div>
-                                    <?= $com['user'] ?>,
-                                    <?= $com['date_com'] ?>
+                                    <?= $com['full_name'] ?>,
+                                    <?= $com['day_post'] ?>
                                 </div>
                             </div>
                             <?php

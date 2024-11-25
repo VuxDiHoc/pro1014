@@ -52,10 +52,9 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="?act=about">About</a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="?act=shop">Shop</a>
-                        </li> -->
-                     
+                        </li>                
                         <li class="nav-item">
                             <a class="nav-link" href="?act=contact">Contact</a>
                         </li>
@@ -81,7 +80,7 @@ https://templatemo.com/tm-559-zay-shop
                             <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                     <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                    <?php echo $_SESSION['user']['fullname']; ?>
+                                    <!-- <?php echo $_SESSION['user']['fullname']; ?> -->
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
