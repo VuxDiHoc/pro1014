@@ -52,9 +52,10 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="?act=about">About</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="?act=shop">Shop</a>
-                        </li>
+                        </li> -->
+                     
                         <li class="nav-item">
                             <a class="nav-link" href="?act=contact">Contact</a>
                         </li>
