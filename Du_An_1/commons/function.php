@@ -12,4 +12,17 @@ function connDBAss() {
     catch (PDOException $th) {
         echo $th->getMessage();
     }
+    // function.php
+function getAllComments($productId) {
+    // Kết nối tới cơ sở dữ liệu và lấy tất cả bình luận của một sản phẩm cụ thể
+}
+
+function addComment($productId, $userId, $comment) {
+    // Kết nối tới cơ sở dữ liệu và thêm bình luận mới
+}
+
+function deleteComment($commentId) {
+    // Kết nối tới cơ sở dữ liệu và xóa bình luận
+}
+
 }

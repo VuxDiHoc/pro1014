@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Zay Shop eCommerce HTML CSS Template</title>
     <meta charset="utf-8">
@@ -59,11 +59,11 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="?act=contact">Contact</a>
                         </li>
                         <li>
-                                <a href="index.php?act=categories">
-                                    Danh mục
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                            </li>
+                            <a href="index.php?act=categories">
+                                Danh mục
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                        </li>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
@@ -84,9 +84,23 @@ https://templatemo.com/tm-559-zay-shop
                             class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                                    <?php echo $_SESSION['user']['fullname']; ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
+                                    <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        <?php else: ?>
+                            <a href="?act=login" class="text-decoration-none text-dark">
+                                <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                                Đăng nhập
+                            </a>
+                        <?php endif; ?>
                     </a>
                 </div>
             </div>
