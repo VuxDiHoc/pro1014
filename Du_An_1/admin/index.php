@@ -1,6 +1,8 @@
 <?php
 
 ob_start();
+require_once 'controller/thongkecontroller.php';
+require_once 'model/thongkemodel.php';
 require_once 'controller/categoriescontroller.php';
 require_once 'model/categoriesmodel.php';
 require_once 'controller/variantcontroller.php';
@@ -33,5 +35,7 @@ match ($act) {
     'listcategories' =>(new catagoriesController())->listcategories(),
     'updatecategories' =>(new catagoriesController())->update($id_category),
     'deletecategories' =>(new catagoriesController())->delete($id_category),
+    'listthongkesl' => (new thongkeslController())->listThongkesl(),
+    'bieudosl' => (new thongkeslController())->bieudosl(),
 };
 ob_end_flush();
