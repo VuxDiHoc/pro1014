@@ -22,7 +22,7 @@ class detailModel{
         return $this->conn->query($sql);
     }
     function allComment($id){
-        $sql="SELECT * FROM comments WHERE id_product=$id";
+        $sql="SELECT * FROM comments JOIN customers ON comments.id_user=customers.id_user WHERE id_product=$id";
         return $this->conn->query($sql)->fetchAll();
     }
     function addComment($id_pro,$id_user,$content) {

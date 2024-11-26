@@ -52,10 +52,9 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="?act=about">About</a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="?act=shop">Shop</a>
-                        </li> -->
-                     
+                        </li>                
                         <li class="nav-item">
                             <a class="nav-link" href="?act=contact">Contact</a>
                         </li>
@@ -76,12 +75,12 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon position-relative text-decoration-none" href="?act=giohang">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    
                         <?php if (isset($_SESSION['user'])): ?>
                             <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                    <?php echo $_SESSION['user']['fullname']; ?>
+                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>                           
+                                    <?php echo $_SESSION['user']['full_name'];?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
@@ -94,7 +93,7 @@ https://templatemo.com/tm-559-zay-shop
                                 Đăng nhập
                             </a>
                         <?php endif; ?>
-                    </a>
+                   
                 </div>
             </div>
 
