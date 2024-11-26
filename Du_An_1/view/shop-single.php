@@ -103,7 +103,6 @@
 
         <!--Start Carousel Wrapper-->
         <div id="carousel-related-product">
-
             <div class="p-2 pb-3">
                 <div class="product-wap card rounded-0">
                     <div class="card-header">Bình luận</div>
@@ -111,31 +110,51 @@
                         <?php
                         foreach ($comments as $com) {
                             ?>
-                            <div class="d-flex justify-content-between">
-                                <div><?= $com['content'] ?></div>
-                                <div>
-                                    <?= $com['full_name'] ?>,
-                                    <?= $com['day_post'] ?>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex flex-start">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <h6 class="text-primary fw-bold mb-0">
+                                                    <?= $com['full_name'] ?>
+                                                </h6>
+                                                <p class="mb-0"><?= $com['day_post'] ?></p>
+
+                                            </div>
+                                            <p> <?= $com['content'] ?></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <?php
                         }
                         ?>
-                    </div>
-                    <div class="card-footer">
-                        <form id="commentForm">
+                        <?php
+                        if (isset($_SESSION['user'])) {
+                            ?>
+                            <form id="commentForm">
                             <input type="hidden" name="id_pro" value="<?= $productOne['id_product'] ?>">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <input type="text" name="detail" class="form-control" placeholder="Nhập bình luận"
-                                        required>
+                                <div class="card mb-1">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-start">
+                                            <div class="w-100">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <div class="col-sm-8">
+                                                        <input type="text" name="detail" class="form-control"
+                                                            placeholder="Nhập bình luận" required>
+                                                    </div>
+                                                    <input class="btn btn-primary btn_product text_content"
+                                                        name="post_comment" type="submit" value="Gửi">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <button type="submit" class="btn btn-primary">Gửi bình luận</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+
+                            </form>
+                            <?php
+                        } ?>
+                    </div>                   
                 </div>
             </div>
 
@@ -151,7 +170,7 @@
 <?php
 require_once 'layout/scripts.php';
 require_once 'layout/footer.php'
-?>
+    ?>
 <script>
     $(document).ready(function () {
         $('#commentForm').on('submit', function (event) {
