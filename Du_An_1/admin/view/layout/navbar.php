@@ -58,6 +58,18 @@
         </div>
     </li>
     <li class="nav-item">
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseStatistics" aria-expanded="true"
+            aria-controls="collapseStatistics">
+            <span>Thống kê</span>
+        </a>
+        <div id="collapseStatistics" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="index.php?act=listthongkesl">Doanh thu</a>
+                <a class="collapse-item" href="index.php?act=liscategories">Số lượng sản phẩm</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="?act=listBill">
             <span>Đơn hàng</span></a>
     </li>
@@ -71,10 +83,6 @@
     <li class="nav-item">
         <a class="nav-link" href="#">
             <span>Bình luận</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span>Thống kê</span></a>
     </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
