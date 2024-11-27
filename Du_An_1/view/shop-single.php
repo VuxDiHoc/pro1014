@@ -1,5 +1,27 @@
 <?php require_once 'layout/header.php' ?>
+<style>
+    .color-label input[type="radio"] {
+        display: none;
+    }
 
+    /* Style cho span */
+    .color-label span {
+        cursor: pointer;
+        padding: 10px 15px;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    /* Hiệu ứng khi radio được chọn */
+    .color-label input[type="radio"]:checked+span {
+        border-color: #28a745;
+        /* Thêm viền để hiển thị được chọn */
+        background-color: #218838;
+        /* Màu nền đậm hơn */
+        color: #fff;
+        /* Đổi màu chữ */
+    }
+</style>
 <!-- Open Content -->
 <section class="bg-light">
     <div class="container pb-5">
@@ -36,12 +58,12 @@
                         <h6>Description:</h6>
                         <p><?= $productOne['description'] ?></p>
                         <ul class="list-inline">
-                            <!-- <li class="list-inline-item">
+                            <li class="list-inline-item">
                                 <h6>Số lượng còn lại :</h6>
                             </li>
                             <li class="list-inline-item">
                                 <p class="text-muted"><strong><?= $productOne['amount'] ?></strong></p>
-                            </li> -->
+                            </li>
                             <ul class="list-inline pb-3">
                                 <li class="list-inline-item text-right">
                                     Số lượng
@@ -58,32 +80,17 @@
                             <div class="row">
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
-                                        <li class="list-inline-item">Màu :
-                                        </li>
+                                        <li class="list-inline-item">Màu :</li>
                                         <?php foreach ($product_variant as $key => $value): ?>
                                             <li class="list-inline-item">
                                                 <label class="color-label">
                                                     <input type="radio" name="color" value="<?= $value['name_color'] ?>"
                                                         <?= $key === 0 ? 'checked' : '' ?>>
-                                                    <span
-                                                        class="btn btn-success btn-size"><?= $value['name_color'] ?></span>
+                                                    <span><?= $value['name_color'] ?></span>
                                                 </label>
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
-                                </div>
-                                <!-- <div class="quantity_selector">
-                                    <span class="minus">
-                                        <div class="buttongiam"><i class="fa fa-minus" aria-hidden="true"></i></div>
-                                    </span>
-                                    <input style="margin: 15px 0px;width: 30px" type="text" id="quantity" name="product-quanity" value=1><br>
-                                    <span class="plus">
-                                        <div class="buttontang"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                        </i>
-                                    </span>
-                                </div> -->
-                                <div class="col-auto">
-
                                 </div>
                             </div>
                     </div>
@@ -95,7 +102,7 @@
                         <input type="hidden" name="productId" value="<?= $productOne['id_product'] ?>">
                         <input type="hidden" name="name" value="<?= $productOne['name'] ?>">
                         <input type="hidden" name="price" value="<?= $productOne['price'] ?>">
-                        
+
                         <input type="hidden" name="product-quanity" id="product-quanity" value="1">
                         <input type="hidden" name="img" value="<?= $productOne['img_product'] ?>">
                         <div class="col d-grid">
