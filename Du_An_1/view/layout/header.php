@@ -60,7 +60,7 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <form action="?act=shop" method="POST">
+                    <form action="?act=shop" method="POST" class="d-flex">
                         <input type="text" name="search" placeholder="Tìm kiếm sản phẩm" class="form-control">
                         <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
                     </form>
@@ -71,12 +71,11 @@ https://templatemo.com/tm-559-zay-shop
                         <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
-                    <!-- <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
+                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
                         data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a> -->
-                    <a class="nav-icon position-relative text-decoration-none" href="?act=cart">
-                    </a> -->
+                    
                     <a class="nav-icon position-relative text-decoration-none" href="?act=cart">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
