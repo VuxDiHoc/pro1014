@@ -23,10 +23,11 @@ class detailController
                 exit();
             }
             $content = $_POST['detail'];
-            $id_user = $_SESSION['user'];
+            $id_user = $_SESSION['user']['id_user'];
             $id_pro = $_POST['id_pro'];
-            $this->detailModel->addComment($id_pro,$id_user,$content);            
+            $this->detailModel->addComment($id_pro, $id_user, $content);
             exit();
         }
     }
+
 }
