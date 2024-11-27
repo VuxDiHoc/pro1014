@@ -1,11 +1,12 @@
 <?php
-session_start();
 
+
+// Include các tệp cần thiết
+require_once 'controller/cartcontroller.php';
 require_once 'controller/maincontroller.php';
 require_once 'controller/aboutcontroller.php';
 require_once 'controller/shopcontroller.php';
 require_once 'controller/contactcontroller.php';
-require_once 'controller/giohangcontroller.php';
 require_once 'controller/shop-singleController.php';
 require_once 'model/shop-singleModel.php';
 require_once 'model/shopModel.php';
@@ -13,6 +14,8 @@ require_once 'commons/function.php';
 require_once 'controller/logincontroller.php';
 require_once 'controller/logoutcontroller.php';
 require_once 'controller/registercontroller.php';
+
+if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
 
 $act = $_GET['act'] ?? '/';
 $action = $_GET['action'] ?? '';
@@ -25,9 +28,12 @@ match ($act) {
     'shop_cat' => (new shopController())->cat_pro($_GET['id']),
     'shop_single' => (new detailController())->detail($_GET['id']),
     'contact' => (new contactController())->contact(),
-    'giohang' => (new giohangController())->giohang(),
+    'cart' => (new cartController())->cart(),
     'login' => (new LoginController())->login(),
     'logout' => (new LogoutController())->logout(),
     'register' => (new RegisterController())->register(),
     'addComment' => (new detailController())->addComment(),
+    'addToCart' => (new cartController())->addToCart(),
+    'deleteToCart' => (new cartController())->deleteToCart(),
+
 };
