@@ -54,7 +54,9 @@ require_once 'layout/header.php'
                 </div>
             </div>
             <div class="row">
-                <?php foreach ($product as $key => $value) {
+                <?php 
+                if (!empty($product)) {
+                foreach ($product as $key => $value) {
                     ?>
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
@@ -67,7 +69,7 @@ require_once 'layout/header.php'
                                                 href="?act=shop_single&id=<?= $value['id_product'] ?>"><i
                                                     class="far fa-eye"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2"
-                                                href="?act=giohang"><i
+                                                href="index.php?act=cart"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
@@ -87,9 +89,10 @@ require_once 'layout/header.php'
                             </div>
                         </div>
                     </div>
-                    <?php
-                } ?>
-
+                    <?php }
+                } else { ?>
+                    <p class="text-center">Không tìm thấy sản phẩm nào.</p>
+                <?php } ?>
             </div>
             <!-- <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
