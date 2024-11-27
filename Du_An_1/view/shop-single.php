@@ -44,7 +44,7 @@
                             </li>
                         </ul>
 
-                        <form action="" method="post">
+                        <form action="index.php?act=addToCart" method="POST">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
                                 <div class="col-auto">
@@ -62,30 +62,55 @@
                                         ?>
                                     </ul>
                                 </div>
+                                <!-- <div class="quantity_selector">
+									<span class="minus">
+										<div class="buttongiam"><i class="fa fa-minus" aria-hidden="true"></i></div>
+									</span>
+									<input style="margin: 15px 0px;width: 30px" type="text" id="quantity" name="product-quanity" value=1><br>
+									<span class="plus">
+										<div class="buttontang"><i class="fa fa-plus" aria-hidden="true"></i></div>
+										</i>
+									</span>
+								</div> -->
                                 <div class="col-auto">
-                                    <ul class="list-inline pb-3">
-                                        <li class="list-inline-item text-right">
-                                            Số lượng
-                                            <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success"
-                                                id="btn-minus">-</span></li>
-                                        <li class="list-inline-item"><span class="badge bg-secondary"
-                                                id="var-value">1</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success"
-                                                id="btn-plus">+</span></li>
-                                    </ul>
-                                </div>
+            <ul class="list-inline pb-3">
+                <li class="list-inline-item text-right">
+                    Số lượng
+                            </li>
+                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                            <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
+                            <li class="list-inline-item"><span  class="btn btn-success" id="btn-plus">+</span></li>
+                        </ul>
+                    </div>
+                </div>
                             </div>
                             <div class="row pb-3">
                                 <div class="col d-grid">
                                     <button type="submit" class="btn btn-success btn-lg" name="submit"
                                         value="buy">Buy</button>
                                 </div>
-                                <div class="col d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit"
-                                        value="addtocard">Add To Cart</button>
-                                </div>
+                                <!-- <form action="index.php?act=addToCart" method="POST"> -->
+                                    <input type="hidden" name="productId" value="<?= $productOne['id_product'] ?>">
+                                    <input type="hidden" name="name" value="<?= $productOne['name'] ?>">
+                                    <input type="hidden" name="price" value="<?= $productOne['price'] ?>">
+                                    <input type="hidden" name="color" value="<?= $product_variant[0]['name_color'] ?? 'Default Color' ?>">
+                                    <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                                    <input type="hidden" name="img" value="<?= $productOne['img_product'] ?>">
+                                    <div class="quantity_selector">
+									<span class="minus">
+										<div class="buttongiam"><i class="fa fa-minus" aria-hidden="true"></i></div>
+									</span>
+									<input style="margin: 15px 0px;width: 30px" type="text" id="quantity" name="product-quanity" value=1>
+									<span class="plus">
+										<div class="buttontang"><i class="fa fa-plus" aria-hidden="true"></i></div>
+										</i>
+									</span>
+								</div>
+                                    <div class="col d-grid">
+                                        <button href="index.php?act=cart" type="submit" class="btn btn-success btn-lg" name="addtocart">Add To Cart</button>
+                                    </div>
+                                </form>
+                                
                             </div>
                         </form>
 
@@ -96,7 +121,6 @@
     </div>
 </section>
 <!-- Close Content -->
-
 <!-- Start Article -->
 <section class="py-5">
     <div class="container">
@@ -188,5 +212,39 @@ require_once 'layout/footer.php'
                 }
             });
         });
+        document.getElementById('btn-minus').addEventListener('click', () => {
+    const quantityElem = document.getElementById('var-value');
+    let quantity = parseInt(quantityElem.innerText);
+    if (quantity > 1) {
+        quantityElem.innerText = --quantity;
+        document.getElementById('product-quanity').value = quantity;
+    }
+});
+document.getElementById('btn-plus').addEventListener('click', () => {
+    const quantityElem = document.getElementById('var-value');
+    let quantity = parseInt(quantityElem.innerText);
+    quantityElem.innerText = +quantity;
+    document.getElementById('product-quanity').value = quantity;
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('added') === 'true') {
+        alert('Sản phẩm đã được thêm vào giỏ hàng thành công!');
+    }
+});
+let tang = document.querySelector(".buttontang");
+		let giam = document.querySelector(".buttongiam");
+		let quantity = document.querySelector("#quantity");
+		tang.onclick = () => {
+			quantity.value++;
+		}
+		giam.onclick = () => {
+			quantity.value--;
+			if (quantity.value <= 0) {
+				quantity.value = 1;
+			}
+		}
     });
+
+
 </script>
