@@ -26,7 +26,6 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-
                 <a class="collapse-item" href="index.php?act=addcategories">Thêm mới danh mục</a>
                 <a class="collapse-item" href="index.php?act=listcategories">Danh sách danh mục</a>
             </div>
@@ -75,14 +74,17 @@
             <span>Đơn hàng</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span>Khách hàng</span></a>
+        <a class="nav-link" href="?act=listUser">
+            <span>Khách hàng</span>
+        </a>
+    </li>
+
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">
             <span>Bình luận</span></a>
     </li>
-    
+
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
