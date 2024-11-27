@@ -23,7 +23,7 @@ require_once 'layout/banner.php'
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="?act=shop_single">
-                            <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                            <img src="./assets/img/iphone-16-pro-max.webp" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -34,11 +34,11 @@ require_once 'layout/banner.php'
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right">$240.00</li>
+                                <li class="text-muted text-right">34,090,000đ</li>
                             </ul>
-                            <a href="?act=shop_single" class="h2 text-decoration-none text-dark">Gym Weight</a>
+                            <a href="?act=shop_single" class="h2 text-decoration-none text-dark">iPhone 16 Pro Max 256GB</a>
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
+                            Màn hình Super Retina XDR 6,9 inch lớn hơn có viền mỏng hơn, đem đến cảm giác tuyệt vời khi cầm trên tay.
                             </p>
                             <p class="text-muted">Reviews (24)</p>
                         </div>
@@ -47,7 +47,7 @@ require_once 'layout/banner.php'
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="?act=shop_single">
-                            <img src="./assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
+                            <img src="./assets/img/laptop-asus-vivobook-15x-oled-m3504ya-l1268w-thumbnails.webp" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -58,11 +58,12 @@ require_once 'layout/banner.php'
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right">$480.00</li>
+                                <li class="text-muted text-right">13,990,000đ</li>
                             </ul>
-                            <a href="./?act=shop_single" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
+                            <a href="./?act=shop_single" class="h2 text-decoration-none text-dark">
+                            Laptop ASUS Vivobook 15 X1504ZA-NJ517W</a>
                             <p class="card-text">
-                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
+                            Màn hình FHD 15.6 inch với độ sáng 250 nits và độ phủ màu 45% NTSC, mang lại hình ảnh sắc nét và sống động
                             </p>
                             <p class="text-muted">Reviews (48)</p>
                         </div>
@@ -71,7 +72,7 @@ require_once 'layout/banner.php'
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="?act=shop_single">
-                            <img src="./assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
+                            <img src="./assets/img/group_172_2.webp" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -82,11 +83,11 @@ require_once 'layout/banner.php'
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right">$360.00</li>
+                                <li class="text-muted text-right">6,490,000đ</li>
                             </ul>
-                            <a href="?act=shop_single" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
+                            <a href="?act=shop_single" class="h2 text-decoration-none text-dark">Tai nghe Bluetooth chụp tai Sony WH-1000XM5</a>
                             <p class="card-text">
-                                Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
+                            Công nghệ Auto NC Optimizer tự động khử tiếng ồn dựa theo môi trường
                             </p>
                             <p class="text-muted">Reviews (74)</p>
                         </div>
