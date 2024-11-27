@@ -23,7 +23,26 @@ TemplateMo 559 Zay Shop
 
 https://templatemo.com/tm-559-zay-shop
 -->
+<style>
+    .color-label input[type="radio"] {
+    display: none;
+}
 
+/* Style cho span */
+.color-label span {
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi radio được chọn */
+.color-label input[type="radio"]:checked + span {
+    border-color: #28a745; /* Thêm viền để hiển thị được chọn */
+    background-color: #218838; /* Màu nền đậm hơn */
+    color: #fff; /* Đổi màu chữ */
+}
+</style>
 </head>
 
 <body>
