@@ -88,6 +88,9 @@ https://templatemo.com/tm-559-zay-shop
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
                                     <li><a class="dropdown-item" href="?act=order">Đơn hàng</a></li>
+                                    <?php if ($_SESSION['user']['role'] == 2): ?>
+                                        <li><a class="dropdown-item" href="admin">Quản trị</a></li>
+                                    <?php endif; ?>
                                     <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
                                 </ul>
                             </div>
