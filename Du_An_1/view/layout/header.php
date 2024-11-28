@@ -79,25 +79,26 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
                     
-                        <?php if (isset($_SESSION['user'])): ?>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>                           
-                                    <?php echo $_SESSION['user']['full_name'];?>
-                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                    <!-- <?php echo $_SESSION['user']['fullname']; ?> -->
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
-                                    <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
-                                </ul>
-                            </div>
-                        <?php else: ?>
-                            <a href="?act=login" class="text-decoration-none text-dark">
-                                <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                Đăng nhập
-                            </a>
-                        <?php endif; ?>
+                    <?php if (isset($_SESSION['user'])): ?>
+    <div class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="fa fa-fw fa-user text-dark mr-3"></i>
+            <?php echo $_SESSION['user']['full_name']; ?>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
+            <?php if ($_SESSION['user']['role'] == 2): ?>
+                <li><a class="dropdown-item" href="admin">Quản trị</a></li>
+            <?php endif; ?>
+            <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
+        </ul>
+    </div>
+<?php else: ?>
+    <a href="?act=login" class="text-decoration-none text-dark">
+        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+        Đăng nhập
+    </a>
+<?php endif; ?>
                    
                 </div>
             </div>
