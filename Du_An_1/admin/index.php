@@ -3,8 +3,10 @@
 ob_start();
 require_once __DIR__ . '/../commons/function.php';
 require_once __DIR__ . '/controller/usercontroller.php';
+require_once __DIR__ . '/controller/thongkecontroller.php';
 require_once __DIR__ . '/controller/categoriesController.php';
 require_once __DIR__ . '/model/categoriesmodel.php';
+require_once __DIR__ . '/model/thongkemodel.php';
 require_once __DIR__ . '/controller/variantcontroller.php';
 require_once __DIR__ . '/model/variantmodel.php';
 require_once __DIR__ . '/controller/trangchu.php';
