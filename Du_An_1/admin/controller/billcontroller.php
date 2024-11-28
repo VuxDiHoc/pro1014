@@ -9,15 +9,7 @@ class billController
     function listBill()
     {
         $bills = $this->billModel->bill();
-        $statusDescriptions = [
-            0 => 'Đang xử lý',
-            1 => 'Đã xử lý',
-            2 => 'Đang đóng gói và vận chuyển',
-            3 => 'Đang vận chuyển đến người nhận',
-            4 => 'Nhận hàng thành công',
-            5 => 'User từ chối nhận hàng',
-            6 => 'User hủy đơn'
-        ];
+        require_once "../commons/function.php";
         require_once "view/listBill.php";
     }
     function updateBill($id){
@@ -25,14 +17,22 @@ class billController
         $oneBill = $this->billModel->findBillById($id);
         $status = $this->billModel->billStatus($id);
         $statusDescriptions = [
-            0 => 'Đang xử lý',
-            1 => 'Đã xử lý',
-            2 => 'Đang đóng gói và vận chuyển',
-            3 => 'Đang vận chuyển đến người nhận',
-            4 => 'Nhận hàng thành công',
-            5 => 'User từ chối nhận hàng',
-            6 => 'User hủy đơn'
+            0 => "Chờ xác nhận",
+            1 => "Đã xác nhận",
+            2 => "Chờ lấy hàng",
+            3 => "Đang vận chuyển",
+            4 => "Đang hoàn trả hàng",
+            5 => "Giao hàng thành công",
+            6 => "Đã hủy",
+            // 0 => "Đang xử lý",
+            // 1 => "Đã xử lý",
+            // 2 => "Đang đóng gói",
+            // 3 => "Đang vận chuyển",
+            // 4 => "Nhận hàng thành công",
+            // 5 => "Từ chối nhận hàng",
+            // 6 => "Đã hủy",
         ];
+        require_once "../commons/function.php";
         require_once "view/updateBill.php";
         if (isset($_POST['btn_update'])) {
             $status = $_POST['status'];

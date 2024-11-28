@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 // Include các tệp cần thiết
 require_once 'controller/cartcontroller.php';
@@ -8,8 +8,11 @@ require_once 'controller/aboutcontroller.php';
 require_once 'controller/shopcontroller.php';
 require_once 'controller/contactcontroller.php';
 require_once 'controller/shop-singleController.php';
+require_once 'controller/orderController.php';
+require_once 'controller/payController.php';
 require_once 'model/shop-singleModel.php';
 require_once 'model/shopModel.php';
+require_once 'model/orderModel.php';
 require_once 'commons/function.php';
 require_once 'controller/logincontroller.php';
 require_once 'controller/logoutcontroller.php';
@@ -35,5 +38,6 @@ match ($act) {
     'addComment' => (new detailController())->addComment(),
     'addToCart' => (new cartController())->addToCart(),
     'deleteToCart' => (new cartController())->deleteToCart(),
-
+    'order' => (new orderController())->order($_SESSION['user']['customer_info']['id_customer']),
+    'pay' => (new payController())->pay(),
 };

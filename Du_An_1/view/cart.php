@@ -1,5 +1,4 @@
 <?php 
-session_start();
 require_once 'layout/header.php';
 ?>
 <div class="container py-5">
@@ -51,7 +50,7 @@ require_once 'layout/header.php';
         }
     ?>
     <br>
-    <a href="#" class="btn btn-primary">Thanh Toán</a>
+    <a href="?act=pay" class="btn btn-primary">Thanh Toán</a>
     <a href="?act=shop" class="btn btn-primary">Mua Thêm</a>
 
 </div>
