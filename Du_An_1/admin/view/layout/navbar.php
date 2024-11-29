@@ -82,7 +82,6 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="?act=listComments">
-            <i class="fas fa-comments fa-fw"></i>
             <span>Quản lý bình luận</span>
         </a>
     </li>
