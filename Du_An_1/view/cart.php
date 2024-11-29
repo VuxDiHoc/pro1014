@@ -1,5 +1,5 @@
 <?php 
-session_start();
+// session_start();
 require_once 'layout/header.php';
 ?>
 <div class="container py-5">

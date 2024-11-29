@@ -1,8 +1,12 @@
 <?php
+session_start();
 
 
 // Include các tệp cần thiết
+// require_once 'commons/helpers.php';
+// require_once 'controller/admincontroller.php';
 require_once 'controller/cartcontroller.php';
+require_once 'controller/profilecontroller.php';
 require_once 'controller/maincontroller.php';
 require_once 'controller/aboutcontroller.php';
 require_once 'controller/shopcontroller.php';
@@ -35,5 +39,6 @@ match ($act) {
     'addComment' => (new detailController())->addComment(),
     'addToCart' => (new cartController())->addToCart(),
     'deleteToCart' => (new cartController())->deleteToCart(),
-
+    'profile' => (new profileController())->profile(),
+    'updateProfile' => (new profileController())->updateProfile(),
 };
