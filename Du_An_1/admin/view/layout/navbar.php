@@ -58,8 +58,8 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseStatistics" aria-expanded="true"
-            aria-controls="collapseStatistics">
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseStatistics"
+            aria-expanded="true" aria-controls="collapseStatistics">
             <span>Thống kê</span>
         </a>
         <div id="collapseStatistics" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -81,8 +81,10 @@
 
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span>Bình luận</span></a>
+        <a class="nav-link" href="?act=listComments">
+            <i class="fas fa-comments fa-fw"></i>
+            <span>Quản lý bình luận</span>
+        </a>
     </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
