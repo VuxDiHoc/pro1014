@@ -17,7 +17,6 @@ function checkLogin($email, $password)
             $customer = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($customer) {
                 $user['customer_info'] = $customer;
-                $user['full_name'] = $customer['full_name'];
             }
         }
 
@@ -66,30 +65,44 @@ function registerUser($fullname, $email, $password)
     }
 }
 
-function updateUserProfile($userId, $fullname, $phone, $address)
+function updateUserProfile($userId, $fullname, $phone, $address, $password = null)
 {
     try {
         $conn = connDBAss();
+
+        // Start the update query for user details
         $stmt = $conn->prepare("UPDATE customers SET full_name = ?, phone = ?, address = ? WHERE id_user = ?");
-        return $stmt->execute([$fullname, $phone, $address, $userId]);
+        $stmt->execute([$fullname, $phone, $address, $userId]);
+
+        // If a new password is provided, update the password in the users table
+        if (!empty($password)) {
+            $hashedPassword = md5($password); // Hash the password before updating
+            $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id_user = ?");
+            $stmt->execute([$hashedPassword, $userId]);
+        }
+
+        return true;
     } catch (PDOException $e) {
         return false;
     }
 }
 
-function getUserById($userId)
-{
+
+function getUserProfile($email) {
     try {
-        $conn = connDBAss();
-        $stmt = $conn->prepare("
-            SELECT u.*, c.* 
-            FROM users u 
-            LEFT JOIN customers c ON u.id_user = c.id_user 
-            WHERE u.id_user = ?
-        ");
-        $stmt->execute([$userId]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $conn = connDBAss(); // Lấy kết nối từ hàm connDBAss
+        $sql = "SELECT u.email, u.password, c.full_name, c.phone, c.address 
+                FROM users u 
+                JOIN customers c ON u.id_user = c.id_user 
+                WHERE u.email = :email";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);  // Trả về mảng thông tin người dùng
     } catch (PDOException $e) {
-        return false;
+        return false; // Nếu có lỗi trong quá trình truy vấn
     }
 }
+

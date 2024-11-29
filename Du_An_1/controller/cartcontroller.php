@@ -3,7 +3,7 @@
 // if(isset($_SESSION['cart'])) $_SESSION['cart']=[];
 class cartController {
     public function addToCart() {
-        session_start();
+        
 
         // Lấy dữ liệu sản phẩm từ POST
         $productId = $_POST['productId'] ?? 0;
@@ -12,6 +12,7 @@ class cartController {
         $color = $_POST['color'] ?? 'Default Color';
         $quantity = $_POST['product-quanity'] ?? 1;
         $img = $_POST['img'] ?? '';
+        $brand = $_POST['brand'] ?? '';
 
         // Kiểm tra nếu thiếu dữ liệu
         if (empty($productId) || empty($name) || $price <= 0) {
@@ -43,6 +44,7 @@ class cartController {
                 'color' => $color,
                 'quantity' => $quantity,
                 'img' => $img,
+                'brand' => $brand,
             ];
         }
 
@@ -65,7 +67,7 @@ class cartController {
     //     exit();
     // }
     public function deleteToCart() {
-    session_start();
+    
 
     // Kiểm tra nếu có id sản phẩm trong GET
     if (isset($_GET['id'])) {
@@ -85,7 +87,11 @@ class cartController {
     }
 
     // Chuyển hướng lại trang giỏ hàng
-    header('Location: index.php?act=cart');
+    // header('Location: index.php?act=cart');
+    
+    //Tải lại trang
+    header('Location: '. $_SERVER['HTTP_REFERER']);
+     
     exit();
 }
 }
