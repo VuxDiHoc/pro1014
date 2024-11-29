@@ -54,8 +54,8 @@ require_once 'layout/navbar.php';
                                         </td>
                                         <td><?= $value['name'] ?></td>
                                         <td><?= $value['firms'] ?></td>
-                                        <td><?= $value['price'] ?></td>
-                                        <td><?= $value['discount'] ?></td>
+                                        <td><?= number_format($value['price']) ?>đ</td>
+                                        <td><?= $value['discount'] ?>%</td>
                                         <td><?= $value['amount'] ?></td>
                                         <td style="max-width: 220px"><?= $value['description'] ?></td>
                                         <td><?= $value['name_cat'] ?></td>

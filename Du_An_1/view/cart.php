@@ -15,6 +15,7 @@ require_once 'layout/header.php';
                         <th>STT</th>
                         <th>Tên sản phẩm</th>
                         <th>Hình ảnh</th>
+                        <th>Thương hiệu</th>
                         <th>Màu sắc</th>
                         <th>Giá</th>
                         <th>Số lượng</th>
@@ -32,6 +33,7 @@ require_once 'layout/header.php';
                 echo '<td>' . ($index + 1) . '</td>';
                 echo '<td>' . htmlspecialchars($item['name']) . '</td>';
                 echo '<td><img src="assets/img/' . htmlspecialchars($item['img']) . '" width="50"></td>';
+                echo '<td>' . htmlspecialchars($item['brand']) . '</td>';
                 echo '<td>' . htmlspecialchars($item['color']) . '</td>';
                 echo '<td>' . number_format($item['price']) . 'đ</td>';
                 echo '<td>' . htmlspecialchars($item['quantity']) . '</td>';

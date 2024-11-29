@@ -37,7 +37,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="h2"><?= $productOne['name'] ?></h1>
-                        <p class="h3 py-2"><?= number_format($productOne['price']) ?> đ</p>
+                        <p class="h3 py-2"><?= number_format($productOne['price']) ?>đ</p>
                         <p class="py-2">
                             <i class="fa fa-star text-warning"></i>
                             <i class="fa fa-star text-warning"></i>
@@ -102,7 +102,7 @@
                         <input type="hidden" name="productId" value="<?= $productOne['id_product'] ?>">
                         <input type="hidden" name="name" value="<?= $productOne['name'] ?>">
                         <input type="hidden" name="price" value="<?= $productOne['price'] ?>">
-
+                        <input type="hidden" name="brand" value="<?= $productOne['firms'] ?>">
                         <input type="hidden" name="product-quanity" id="product-quanity" value="1">
                         <input type="hidden" name="img" value="<?= $productOne['img_product'] ?>">
                         <div class="col d-grid">

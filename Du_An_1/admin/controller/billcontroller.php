@@ -24,13 +24,6 @@ class billController
             4 => "Đang hoàn trả hàng",
             5 => "Giao hàng thành công",
             6 => "Đã hủy",
-            // 0 => "Đang xử lý",
-            // 1 => "Đã xử lý",
-            // 2 => "Đang đóng gói",
-            // 3 => "Đang vận chuyển",
-            // 4 => "Nhận hàng thành công",
-            // 5 => "Từ chối nhận hàng",
-            // 6 => "Đã hủy",
         ];
         require_once "../commons/function.php";
         require_once "view/updateBill.php";

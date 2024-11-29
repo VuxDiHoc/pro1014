@@ -14,7 +14,7 @@ class billModel
     function findBillById($id)
     {
         $sql = "SELECT * FROM detail_bills WHERE id_bill=$id";
-        return $this->conn->query($sql)->fetch();
+        return $this->conn->query($sql)->fetchAll();
     }
     function billStatus($id){
         $sql = "SELECT status FROM bills WHERE id_bill=$id";

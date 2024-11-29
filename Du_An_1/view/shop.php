@@ -85,7 +85,7 @@ require_once 'layout/header.php'
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0"><?= number_format($value['price']) ?> đ</p>
+                                <p class="text-center mb-0"><?= number_format($value['price']) ?>đ</p>
                             </div>
                         </div>
                     </div>

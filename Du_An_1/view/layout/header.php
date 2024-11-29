@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -83,7 +83,7 @@ https://templatemo.com/tm-559-zay-shop
                             <div class="dropdown">
                                 <a class="dropdown-toggle text-decoration-none" href="#" role="button" data-bs-toggle="dropdown">
                                     <i class="fa fa-fw fa-user text-dark mr-3"></i>                           
-                                    <?php echo $_SESSION['user']['full_name'];?>
+                                    <?php echo $_SESSION['user']['customer_info']['full_name'];?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
