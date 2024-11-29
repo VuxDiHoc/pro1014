@@ -17,7 +17,6 @@ function checkLogin($email, $password)
             $customer = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($customer) {
                 $user['customer_info'] = $customer;
-                $user['full_name'] = $customer['full_name'];
             }
         }
 

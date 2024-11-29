@@ -57,7 +57,6 @@ class productModel
         if ($stmt->execute()) {
             // Lấy ID sản phẩm vừa thêm
             $id_product = $this->conn->lastInsertId();
-
             foreach ($variants as $variant) {
                 $id_variant = $variant['name_color'];
                 $quantity = $variant['quantity'];
@@ -66,7 +65,6 @@ class productModel
                 $sql_product_variant = "INSERT INTO product_variant VALUES ($id_product, $id_variant, $quantity)";
                 $stmt_product_variant = $this->conn->prepare($sql_product_variant);
                 $stmt_product_variant->execute();
-
             }
             return true;
         }

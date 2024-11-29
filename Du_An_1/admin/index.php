@@ -1,6 +1,6 @@
 <?php
-
 ob_start();
+session_start();
 require_once __DIR__ . '/../commons/function.php';
 require_once __DIR__ . '/controller/usercontroller.php';
 require_once __DIR__ . '/controller/thongkecontroller.php';
