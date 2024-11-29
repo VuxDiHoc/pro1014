@@ -102,7 +102,7 @@
                         <input type="hidden" name="productId" value="<?= $productOne['id_product'] ?>">
                         <input type="hidden" name="name" value="<?= $productOne['name'] ?>">
                         <input type="hidden" name="price" value="<?= $productOne['price'] ?>">
-
+                        <input type="hidden" name="brand" value="<?= $productOne['firms'] ?>">
                         <input type="hidden" name="product-quanity" id="product-quanity" value="1">
                         <input type="hidden" name="img" value="<?= $productOne['img_product'] ?>">
                         <div class="col d-grid">

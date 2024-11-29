@@ -9,20 +9,21 @@ class thongkeslModel
     function thongkesl()
     {
         $sql = "SELECT 
-                    categories.id_category AS id_category, 
-                    categories.name_cat AS name_cat, 
-                    COUNT(products.id_product) AS countsp 
-                FROM 
-                    products 
-                LEFT JOIN 
-                    categories 
-                ON 
-                    products.id_category = categories.id_category 
-                GROUP BY 
-                    categories.id_category, 
-                    categories.name_cat 
-                ORDER BY 
-                    categories.id_category DESC";
+            categories.id_category AS id_category, 
+            categories.name_cat AS name_cat, 
+            SUM(products.amount) AS total_quantity  -- Tổng số lượng của các sản phẩm trong danh mục
+        FROM 
+            products
+        LEFT JOIN 
+            categories
+        ON 
+            products.id_category = categories.id_category
+        GROUP BY 
+            categories.id_category, 
+            categories.name_cat
+        ORDER BY 
+            categories.id_category DESC";
+
         return $this->conn->query($sql)->fetchAll();
     }
 }
