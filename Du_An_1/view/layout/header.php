@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -79,26 +79,27 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
                     
-                    <?php if (isset($_SESSION['user'])): ?>
-    <div class="dropdown">
-        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-            <?php echo $_SESSION['user']['full_name']; ?>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
-            <?php if ($_SESSION['user']['role'] == 2): ?>
-                <li><a class="dropdown-item" href="admin">Quản trị</a></li>
-            <?php endif; ?>
-            <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
-        </ul>
-    </div>
-<?php else: ?>
-    <a href="?act=login" class="text-decoration-none text-dark">
-        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-        Đăng nhập
-    </a>
-<?php endif; ?>
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle text-decoration-none" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>                           
+                                    <?php echo $_SESSION['user']['customer_info']['full_name'];?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
+                                    <li><a class="dropdown-item" href="?act=order">Đơn hàng</a></li>
+                                    <?php if ($_SESSION['user']['role'] == 2): ?>
+                                        <li><a class="dropdown-item" href="admin">Quản trị</a></li>
+                                    <?php endif; ?>
+                                    <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        <?php else: ?>
+                            <a href="?act=login" class="text-decoration-none text-dark">
+                                <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                                Đăng nhập
+                            </a>
+                        <?php endif; ?>
                    
                 </div>
             </div>
