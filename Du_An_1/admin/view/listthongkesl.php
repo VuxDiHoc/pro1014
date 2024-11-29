@@ -82,7 +82,7 @@ require_once 'layout/navbar.php';
                     <tr>
                         <td><?= $value['id_category'] ?></td>
                         <td><?= $value['name_cat'] ?></td>
-                        <td><?= $value['countsp'] ?></td>                    
+                        <td><?= $value['total_quantity'] ?></td>                    
                     </tr>
                     <?php
                 }
