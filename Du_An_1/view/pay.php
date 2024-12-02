@@ -73,8 +73,7 @@
                                             class="form-control form-control-lg"
                                             value="<?= $_SESSION['user']['customer_info']['address'] ?>" required />
                                     </div>
-                                    <p class="mb-5">Quý khách xin vui lòng nhập chính xác thông tin để nhận
-                                        hàng nhanh nhất.</p>
+                                    <p class="mb-5">Hình thức thanh toán: Thanh toán khi nhận hàng</p>
                                     <input type="submit" class="btn btn-primary btn-block btn-lg" name="order_cart"
                                         value="Đặt hàng">
                                     <h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
