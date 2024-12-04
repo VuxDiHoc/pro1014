@@ -13,6 +13,7 @@ class detailController
         $comments = $this->detailModel->allComment($id);
         $product_variant = $this->detailModel->product_variant($id);
         // $relatedProduct= $this->detailModel->relatedProduct($productOne['id_cat'],$id);
+        $relatedProducts = $this->detailModel->relatedProduct($productOne['id_category'], $id);
         require_once 'view/shop-single.php';
     }
     function addComment()

@@ -189,6 +189,26 @@
     </div>
 </section>
 <!-- End Article -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4">Sản phẩm cùng loại</h2>
+        <div class="row">
+            <?php foreach ($relatedProducts as $product): ?>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="assets/img/<?= $product['img_product'] ?>" class="card-img-top" alt="<?= $product['name'] ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $product['name'] ?></h5>
+                            <p class="card-text text-success"><?= number_format($product['price']) ?>đ</p>
+                            <a href="index.php?act=shop_single&id=<?= $product['id_product'] ?>" class="btn btn-primary">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
 
 <?php
 require_once 'layout/scripts.php';

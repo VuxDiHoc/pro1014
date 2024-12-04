@@ -4,9 +4,11 @@ session_start();
 require_once __DIR__ . '/../commons/function.php';
 require_once __DIR__ . '/controller/usercontroller.php';
 require_once __DIR__ . '/controller/thongkecontroller.php';
+require_once __DIR__ . '/controller/thongkedtcontroller.php';
 require_once __DIR__ . '/controller/categoriesController.php';
 require_once __DIR__ . '/model/categoriesmodel.php';
 require_once __DIR__ . '/model/thongkemodel.php';
+require_once __DIR__ . '/model/thongkedtmodel.php';
 require_once __DIR__ . '/controller/variantcontroller.php';
 require_once __DIR__ . '/model/variantmodel.php';
 require_once __DIR__ . '/controller/trangchu.php';
@@ -55,6 +57,7 @@ match ($act) {
     'deleteUser' => (new UserController())->deleteUser($id_user),
     'listthongkesl' => (new thongkeslController())->listThongkesl(),
     'bieudosl' => (new thongkeslController())->bieudosl(),
+    'listthongkedt' => (new thongkedtController())->listThongkedt(),
     'listComments' => (new CommentController())->listComments(),
     'toggleCensorship' => (new CommentController())->toggleCensorship($_GET['id'], $_GET['status']),
     'deleteComment' => (new CommentController())->deleteComment($_GET['id']),
