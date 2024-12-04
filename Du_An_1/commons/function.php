@@ -28,26 +28,46 @@ function getOrderStatus($status)
 }
 function renderOrders($orders) {
     if (!empty($orders)) {
+        // Gom nhóm theo mã đơn hàng
+        $groupedOrders = [];
+        foreach ($orders as $order) {
+            $idBill = $order['id_bill'];
+            if (!isset($groupedOrders[$idBill])) {
+                $groupedOrders[$idBill] = [
+                    'id_bill' => $idBill,
+                    'quantity' => 0,
+                    'total_price' => 0,
+                    'status' => $order['status'],
+                    'purchase_date' => $order['purchase_date']
+                ];
+            }
+            $groupedOrders[$idBill]['quantity'] += $order['quantity'];
+            $groupedOrders[$idBill]['total_price'] += $order['price'] * $order['quantity'];
+        }
+
         echo '<table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Mã đơn hàng</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Giá</th>
+                        <th>Số lượng sản phẩm</th>
+                        <th>Tổng giá trị</th>
                         <th>Trạng thái</th>
                         <th>Ngày mua</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>';
-        foreach ($orders as $order) {
+        foreach ($groupedOrders as $order) {
+            $totalPrice = number_format($order['total_price']);
             echo "<tr>
                     <td>{$order['id_bill']}</td>
-                    <td>{$order['name_product']}</td>
                     <td>{$order['quantity']}</td>
-                    <td>" . number_format($order['price'] * $order['quantity']) . " đ</td>
+                    <td>{$totalPrice} đ</td>
                     <td>" . getOrderStatus($order['status']) . "</td>
                     <td>{$order['purchase_date']}</td>
+                    <td>
+                        <a href='?act=orderDetail&id={$order['id_bill']}' class='btn btn-primary btn-sm'>Xem chi tiết</a>
+                    </td>
                 </tr>";
         }
         echo '</tbody></table>';

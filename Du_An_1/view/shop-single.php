@@ -48,14 +48,14 @@
                         </p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <h6>Brand:</h6>
+                                <h6>Thương hiệu:</h6>
                             </li>
                             <li class="list-inline-item">
                                 <p class="text-muted"><strong><?= $productOne['firms'] ?></strong></p>
                             </li>
                         </ul>
 
-                        <h6>Description:</h6>
+                        <h6>Mô tả:</h6>
                         <p><?= $productOne['description'] ?></p>
                         <ul class="list-inline">
                             <li class="list-inline-item">

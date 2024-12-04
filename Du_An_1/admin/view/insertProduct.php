@@ -9,7 +9,7 @@ require_once 'layout/navbar.php';
     <div id="content">
 
         <!-- Topbar -->
-        <?php require_once 'layout/topbar.php'?>
+        <?php require_once 'layout/topbar.php' ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -59,10 +59,13 @@ require_once 'layout/navbar.php';
                         </select>
                     </div>
 
-                    <div class="variant">
+                    <div class="variant-section mb-4 p-4 border rounded">
+                        <h5 class="mb-3 text-primary">Biến thể sản phẩm</h5>
+
+                        <!-- Màu sắc -->
                         <div class="mb-3">
-                            <label for="" class="form-label">Màu sắc</label>
-                            <select class="form-select form-select-lg" name="variant_color[]">
+                            <label for="variant_color" class="form-label">Màu sắc</label>
+                            <select class="form-select" id="variant_color" name="variant_color[]">
                                 <?php
                                 foreach ($variant as $key => $value) {
                                     ?>
@@ -72,13 +75,21 @@ require_once 'layout/navbar.php';
                                 ?>
                             </select>
                         </div>
+
+                        <!-- Số lượng -->
                         <div class="mb-3">
-                            <label for="" class="form-label">Số lượng</label>
-                            <input class="form-control" type="number" name="variant_quantity[]" placeholder="Số lượng"
-                                required />
+                            <label for="variant_quantity" class="form-label">Số lượng</label>
+                            <input class="form-control" type="number" id="variant_quantity" name="variant_quantity[]"
+                                placeholder="Số lượng" required />
                         </div>
+                        
                     </div>
-                    <button class="btn btn-info" type="button" id="addVariant">Thêm biến thể</button>
+                    <!-- Khu vực chứa các biến thể -->
+                    <div id="variantContainer"></div>
+                    <!-- Nút Thêm biến thể -->
+                    <div class="mb-3">
+                            <button class="btn btn-info" type="button" id="addVariant">Thêm biến thể</button>
+                        </div>
                     <button class="btn btn-primary" type="submit" name="btn_insert">Thêm sản phẩm</button>
                 </form>
 
@@ -91,17 +102,30 @@ require_once 'layout/navbar.php';
     </div>
     <!-- End of Main Content -->
     <script>
-        // Thêm sự kiện để người dùng có thể thêm nhiều biến thể
         document.getElementById('addVariant').addEventListener('click', function () {
-            var variantContainer = document.querySelector('.variant');
-            var newVariant = variantContainer.cloneNode(true); // Sao chép phần tử .variant
-            var inputs = newVariant.querySelectorAll('input');
-            inputs.forEach(function (input) {
-                input.value = ''; // Đặt lại giá trị mặc định
-            });
+            var variantContainer = document.getElementById('variantContainer');
+            var newVariant = document.createElement('div');
+            newVariant.classList.add('variant-section', 'border', 'p-4', 'rounded', 'mb-4');
 
-            variantContainer.parentNode.insertBefore(newVariant, variantContainer.nextSibling);
+            newVariant.innerHTML = `
+            <h5 class="mb-3 text-primary">Biến thể sản phẩm</h5>
+            <div class="mb-3">
+                <label for="variant_color" class="form-label">Màu sắc</label>
+                <select class="form-select" name="variant_color[]">
+                    <?php
+                    foreach ($variant as $key => $value) {
+                        echo '<option value="' . $value['id_variant'] . '">' . $value['name_color'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="variant_quantity" class="form-label">Số lượng</label>
+                <input class="form-control" type="number" name="variant_quantity[]" placeholder="Số lượng" required />
+            </div>
+        `;
 
+            variantContainer.appendChild(newVariant);
         });
     </script>
     <?php
