@@ -16,4 +16,5 @@ class thongkeslController
         require_once 'view/bieudosl.php';
     }
 }
+
 ?>
