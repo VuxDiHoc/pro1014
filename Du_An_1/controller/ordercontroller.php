@@ -35,5 +35,40 @@ class orderController
         require_once "commons/function.php";
         require_once 'view/order.php';
     }
+    function orderDetail($id_bill)
+    {
+        // Lấy thông tin chi tiết đơn hàng
+        $orderDetails = $this->orderModel->getOrderDetails($id_bill);
+    
+        // Nếu không có dữ liệu, chuyển hướng hoặc hiển thị thông báo
+        if (empty($orderDetails)) {
+            echo "<script>alert('Đơn hàng không tồn tại.'); window.location.href='?act=order';</script>";
+            exit;
+        }
+    
+        // Render giao diện chi tiết đơn hàng
+        require_once 'view/orderDetail.php';
+    }
+    function cancelOrder()
+{
+    if (isset($_POST['cancel'])) {
+        $id_bill = $_POST['id_bill'];
+        $currentStatus = $this->orderModel->getOrderStatus($id_bill);
 
+        if (in_array($currentStatus, [0, 1, 2])) { // Trạng thái cho phép hủy
+            $updated = $this->orderModel->cancelOrder($id_bill);
+
+            if ($updated) {
+                $_SESSION['Message'] = 'Hủy đơn hàng thành công.';
+            } else {
+                $_SESSION['Message'] = 'Hủy đơn hàng thất bại.';
+            }
+        } else {
+            $_SESSION['Message'] = 'Không thể hủy đơn hàng vì trạng thái đã thay đổi.';
+        }
+
+        header('Location: ?act=order');
+        exit;
+    }
+}
 }
