@@ -48,6 +48,8 @@ match ($act) {
     'addToCart' => (new cartController())->addToCart(),
     'deleteToCart' => (new cartController())->deleteToCart(),
     'order' => (new orderController())->order($_SESSION['user']['customer_info']['id_customer']),
+    'orderDetail'=> (new orderController())->orderDetail($_GET['id']),
+    'cancelOrder' => (new orderController())->cancelOrder(),
     'pay' => (new payController())->pay(),
     'payment' => (new payController())->payment(),
     'profile' => (new profileController())->profile(),

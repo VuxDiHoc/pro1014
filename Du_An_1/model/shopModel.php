@@ -16,25 +16,6 @@ class shopModel{
         $sql="SELECT * FROM categories";
         return $this->conn->query($sql)->fetchAll();
     }
-    // function searchProducts($search){
-    //     $sql="SELECT * FROM products WHERE name LIKE '%".$search."%'";
-    //     return $this->conn->query($sql)->fetchAll();
-    // }
-    // function searchProducts($search, $categoryId = null) {
-    //     if ($categoryId) {
-    //         $sql = "SELECT * FROM products WHERE id_category = :categoryId AND name LIKE :search";
-    //         $stmt = $this->conn->prepare($sql);
-    //         $stmt->execute([
-    //             'categoryId' => $categoryId,
-    //             'search' => '%' . $search . '%'
-    //         ]);
-    //     } else {
-    //         $sql = "SELECT * FROM products WHERE name LIKE :search";
-    //         $stmt = $this->conn->prepare($sql);
-    //         $stmt->execute(['search' => '%' . $search . '%']);
-    //     }
-    //     return $stmt->fetchAll();
-    // }
     function searchProducts($search) {
         $sql = "SELECT * FROM products WHERE name LIKE :search";
         $stmt = $this->conn->prepare($sql);
