@@ -26,161 +26,170 @@ require_once 'layout/navbar.php';
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Danh sách người dùng</title>
                 <style>
-                    body {
-                        font-family: 'Poppins', sans-serif;
-                        background-color: #f0f4f8;
-                        margin: 0;
-                        padding: 0;
-                    }
+                
 
-                    .container {
-                        background-color: #ffffff;
-                        margin: 40px auto;
-                        padding: 40px;
-                        border-radius: 12px;
-                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                        max-width: 1200px;
-                    }
 
-                    h1 {
-                        font-size: 32px;
-                        color: #1a1a2e;
-                        margin-bottom: 30px;
-                        text-align: center;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        letter-spacing: 0.05em;
-                    }
+.container {
+    background-color: #ffffff;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    animation: fadeIn 0.5s ease-in-out;
+}
 
-                    .add-user {
-                        text-align: right;
-                        margin-bottom: 30px;
-                    }
+h1 {
+    font-size: 28px;
+    color: #1a1a2e;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+}
 
-                    .add-user a {
-                        background-color: #3f72af;
-                        color: #fff;
-                        padding: 12px 24px;
-                        text-decoration: none;
-                        border-radius: 8px;
-                        font-weight: 600;
-                        box-shadow: 0 4px 12px rgba(63, 114, 175, 0.2);
-                        transition: all 0.3s ease-in-out;
-                    }
+h1::after {
+    content: '';
+    /* display: block; */
+    width: 80px;
+    height: 4px;
+    background-color: #3f72af;
+    margin: 10px auto 0;
+    border-radius: 4px;
+}
 
-                    .add-user a:hover {
-                        background-color: #112d4e;
-                        box-shadow: 0 8px 20px rgba(17, 45, 78, 0.3);
-                        transform: translateY(-3px);
-                    }
+.add-user {
+    text-align: right;
+    margin-bottom: 30px;
+}
 
-                    table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        margin-bottom: 20px;
-                        font-size: 16px;
-                        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-                        border-radius: 8px;
-                        overflow: hidden;
-                    }
+.add-user a {
+    background-color: #3f72af;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(63, 114, 175, 0.2);
+    transition: all 0.3s ease-in-out;
+}
 
-                    th,
-                    td {
-                        padding: 16px 20px;
-                        text-align: left;
-                        border-bottom: 1px solid #dee2e6;
-                    }
+.add-user a:hover {
+    background-color: #112d4e;
+    box-shadow: 0 8px 20px rgba(17, 45, 78, 0.3);
+    transform: translateY(-3px);
+}
 
-                    th {
-                        background-color: #f8f9fa;
-                        color: #1a1a2e;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        letter-spacing: 0.04em;
-                        border-bottom: 2px solid #dee2e6;
-                    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-                    tr:nth-child(even) {
-                        background-color: #f9fbfd;
-                    }
+th, td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
 
-                    tr:hover {
-                        background-color: #dbe2ef;
-                        transition: background-color 0.3s ease;
-                    }
+th {
+    background-color: #f8f9fa;
+    color: #1a1a2e;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 2px solid #dee2e6;
+}
 
-                    td a {
-                        background-color: #3f72af;
-                        color: white;
-                        padding: 10px 16px;
-                        text-decoration: none;
-                        border-radius: 6px;
-                        font-weight: 600;
-                        transition: all 0.3s ease;
-                    }
+tr:nth-child(even) {
+    background-color: #f9fbfd;
+}
 
-                    td a:hover {
-                        background-color: #112d4e;
-                        transform: translateY(-2px);
-                    }
+tr:hover {
+    background-color: #dbe2ef;
+    transition: background-color 0.3s ease;
+}
 
-                    .form-group {
-                        margin-bottom: 20px;
-                    }
+td a {
+    background-color: #3f72af;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
 
-                    .form-group label {
-                        display: block;
-                        font-weight: 600;
-                        margin-bottom: 8px;
-                        color: #1a1a2e;
-                    }
+td a:hover {
+    background-color: #112d4e;
+    transform: translateY(-2px);
+}
 
-                    .form-group input,
-                    .form-group select,
-                    .form-group textarea {
-                        width: 100%;
-                        padding: 12px 15px;
-                        border: 1px solid #cdd4db;
-                        border-radius: 8px;
-                        font-size: 15px;
-                        box-sizing: border-box;
-                        background-color: #fff;
-                        transition: all 0.3s ease-in-out;
-                    }
+.form-group {
+    margin-bottom: 20px;
+}
 
-                    .form-group input:focus,
-                    .form-group select:focus,
-                    .form-group textarea:focus {
-                        border-color: #3f72af;
-                        box-shadow: 0 0 10px rgba(63, 114, 175, 0.4);
-                        outline: none;
-                    }
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a2e;
+}
 
-                    .form-group button {
-                        background-color: #3f72af;
-                        color: white;
-                        padding: 14px 24px;
-                        border: none;
-                        border-radius: 8px;
-                        font-size: 18px;
-                        font-weight: 700;
-                        cursor: pointer;
-                        transition: all 0.3s ease-in-out;
-                    }
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cdd4db;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
 
-                    .form-group button:hover {
-                        background-color: #112d4e;
-                        transform: translateY(-3px);
-                        box-shadow: 0 6px 12px rgba(17, 45, 78, 0.3);
-                    }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #3f72af;
+    box-shadow: 0 0 10px rgba(63, 114, 175, 0.4);
+}
 
-                    /* Phong cách cho tiêu đề nhỏ */
-                    small {
-                        font-size: 14px;
-                        color: #6c757d;
-                        display: block;
-                        margin-top: 5px;
-                    }
+.form-group button {
+    background-color: #3f72af;
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-group button:hover {
+    background-color: #112d4e;
+    box-shadow: 0 6px 12px rgba(17, 45, 78, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Hiệu ứng Fade-in
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */
+
                 </style>
 
 
