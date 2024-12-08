@@ -75,9 +75,11 @@ require_once 'layout/navbar.php';
                             <label for="status" class="form-label">Trạng thái</label>
                             <select class="form-control" id="status" name="status">
                                 <?php foreach ($statusDescriptions as $key => $value): ?>
-                                    <option value="<?= $key ?>" <?= $key == $status ? 'selected' : '' ?>>
-                                        <?= $value ?>
-                                    </option>
+                                    <?php if ($key >= $status): // Chỉ hiển thị các trạng thái >= trạng thái hiện tại ?>
+                                        <option value="<?= $key ?>" <?= $key == $status ? 'selected' : '' ?>>
+                                            <?= $value ?>
+                                        </option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>
