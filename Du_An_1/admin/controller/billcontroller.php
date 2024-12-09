@@ -8,7 +8,8 @@ class billController
     }
     function listBill()
     {
-        $bills = $this->billModel->bill();
+        $status = isset($_GET['status']) && $_GET['status'] !== '' ? $_GET['status'] : null;
+        $bills = $this->billModel->bill($status);
         require_once "../commons/function.php";
         require_once "view/listBill.php";
     }

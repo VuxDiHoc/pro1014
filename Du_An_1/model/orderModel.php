@@ -12,6 +12,7 @@ class orderModel
         if ($status !== null) {
             $sql .= " AND status = $status";
         }
+        $sql .= " ORDER BY bills.id_bill DESC";
         return $this->conn->query($sql)->fetchAll();
     }
     function getOrderDetails($id_bill)

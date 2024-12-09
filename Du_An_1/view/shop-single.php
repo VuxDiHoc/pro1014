@@ -71,7 +71,7 @@
                                 <h6>Số lượng còn lại :</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong><?= $productOne['amount'] ?></strong></p>
+                                <p class="text-muted"><strong id="remaining-quantity"><?= $product_variant[0]['quantity'] ?></strong></p>
                             </li>
                             <ul class="list-inline pb-3">
                                 <li class="list-inline-item text-right">
@@ -94,7 +94,9 @@
                                             <li class="list-inline-item">
                                                 <label class="color-label">
                                                     <input type="radio" name="color" value="<?= $value['name_color'] ?>"
-                                                        <?= $key === 0 ? 'checked' : '' ?>>
+                                                        <?= $key === 0 ? 'checked' : '' ?>
+                                                        data-quantity="<?= $value['quantity'] ?>">
+                                                    <!-- Dữ liệu số lượng cho mỗi biến thể -->
                                                     <span><?= $value['name_color'] ?></span>
                                                 </label>
                                             </li>
@@ -215,7 +217,7 @@
                                         <div class="d-flex flex-column">
                                             <div class="mb-3">
                                                 <input type="text" name="detail" class="form-control"
-                                                       placeholder="Nhập bình luận" required>
+                                                    placeholder="Nhập bình luận" required>
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-sm px-4" name="post_comment">
                                                 Gửi bình luận
@@ -262,6 +264,17 @@ require_once 'layout/footer.php'
     ?>
 <script>
     $(document).ready(function () {
+        $('input[name="color"]').on('change', function () {
+            const selectedVariant = $(this);
+            const quantity = selectedVariant.data('quantity');  // Lấy số lượng của biến thể đã chọn
+            const quantityElem = document.getElementById('var-value');
+
+            quantityElem.innerText = 1;  // Đặt lại số lượng về 1 khi thay đổi biến thể
+            document.getElementById('product-quanity').value = 1;  // Cập nhật giá trị hidden field
+
+            // Cập nhật số lượng sản phẩm còn lại cho biến thể được chọn
+            document.getElementById('remaining-quantity').innerText = quantity;  // Cập nhật số lượng còn lại
+        });
         $('#commentForm').on('submit', function (event) {
             event.preventDefault();
             $.ajax({

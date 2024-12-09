@@ -31,8 +31,33 @@ class payModel
             $id_variant = $stmt_get_variant->fetchColumn();
 
             if (!$id_variant) {
-                echo "Không tìm thấy biến thể '$variant_text' cho sản phẩm '$name_product'.";
+                $_SESSION['payment_status'] = 'error';
+                $_SESSION['payment_message'] = "Không tìm thấy biến thể '$variant_text' cho sản phẩm '$name_product'.";
                 return false;
+            }
+
+            // Kiểm tra số lượng tồn trong bảng `products`
+            $sql_check_product = "SELECT amount FROM products WHERE id_product = $id_product";
+            $stmt_check_product = $this->conn->prepare($sql_check_product);
+            $stmt_check_product->execute();
+            $available_amount = $stmt_check_product->fetchColumn();
+
+            if ($available_amount < $quantity) {
+                $_SESSION['payment_status'] = 'error';
+                $_SESSION['payment_message'] = "Sản phẩm '$name_product' không đủ số lượng trong kho.";
+                return false; // Không đủ hàng, không thể đặt hàng
+            }
+
+            // Kiểm tra số lượng tồn trong bảng `product_variant`
+            $sql_check_variant = "SELECT quantity FROM product_variant WHERE id_product = $id_product AND id_variant = $id_variant";
+            $stmt_check_variant = $this->conn->prepare($sql_check_variant);
+            $stmt_check_variant->execute();
+            $available_variant_quantity = $stmt_check_variant->fetchColumn();
+
+            if ($available_variant_quantity < $quantity) {
+                $_SESSION['payment_status'] = 'error';
+                $_SESSION['payment_message'] = "Sản phẩm '$name_product' với màu '$variant_text' không đủ số lượng.";
+                return false; // Không đủ hàng, không thể đặt hàng
             }
 
             // Thêm chi tiết vào bảng `detail_bills`

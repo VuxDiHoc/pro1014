@@ -6,10 +6,17 @@ class billModel
     {
         $this->conn = connDBAss();
     }
-    function bill()
+    function bill($status = null)
     {
-        $sql = "SELECT * FROM bills order by id_bill desc";
-        return $this->conn->query($sql)->fetchAll();
+        if ($status !== null) {
+            $sql = "SELECT * FROM bills WHERE status = $status ORDER BY id_bill DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } else {
+            $sql = "SELECT * FROM bills ORDER BY id_bill DESC";
+            return $this->conn->query($sql)->fetchAll();
+        }
     }
     function findBillById($id)
     {

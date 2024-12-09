@@ -53,7 +53,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="?act=insertProduct">Thêm mới sản phẩm</a>
                 <a class="collapse-item" href="?act=listProduct">Danh sách sản phẩm</a>
-                <a class="collapse-item" href="?act=listProduct_variant">Biến thể sản phẩm</a>
             </div>
         </div>
     </li>

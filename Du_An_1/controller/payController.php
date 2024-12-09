@@ -34,9 +34,6 @@ class payController
                     $_SESSION['payment_status'] = 'success';
                     $_SESSION['payment_message'] = 'Đặt hàng thành công!';
                     unset($_SESSION['mycart']);
-                } else {
-                    $_SESSION['payment_status'] = 'error';
-                    $_SESSION['payment_message'] = 'Có lỗi xảy ra, vui lòng thử lại!';
                 }
             } else {
                 $_SESSION['payment_status'] = 'error';
