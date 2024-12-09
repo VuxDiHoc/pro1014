@@ -39,12 +39,21 @@
                         <h1 class="h2"><?= $productOne['name'] ?></h1>
                         <p class="h3 py-2"><?= number_format($productOne['price']) ?>đ</p>
                         <p class="py-2">
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-secondary"></i>
-                            <span class="list-inline-item text-dark">Rating 4.8</span>
+                            <?php
+                            for ($i = 1; $i <= 5; $i++) {
+                                if ($i <= floor($avgRating)) {
+                                    // Hiển thị sao đầy nếu điểm rating >= i
+                                    echo '<i class="fa fa-star text-warning"></i>';
+                                } elseif ($i - $avgRating < 1) {
+                                    // Hiển thị sao rỗng nếu điểm rating còn thiếu một chút
+                                    echo '<i class="fa fa-star-half-alt text-warning"></i>';
+                                } else {
+                                    // Hiển thị sao rỗng nếu điểm rating < i
+                                    echo '<i class="fa fa-star text-secondary"></i>';
+                                }
+                            }
+                            ?>
+                            <span class="list-inline-item text-dark"><?= $avgRating ?></span>
                         </p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
@@ -126,25 +135,69 @@
 
         <!--Start Carousel Wrapper-->
         <div id="carousel-related-product">
+            <!-- Product Rating -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Đánh giá sản phẩm</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="text-warning me-2">
+                            <?php
+                            for ($i = 1; $i <= 5; $i++) {
+                                echo $i <= $avgRating ? '<i class="fa fa-star"></i>' : '<i class="fa fa-star-o"></i>';
+                            }
+                            ?>
+                        </div>
+                        <span class="text-muted">(<?= $avgRating ?> / 5 từ <?= $totalRatings ?> đánh giá)</span>
+                    </div>
+
+                    <!-- Rating Form -->
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <form id="ratingForm" class="mt-3">
+                            <input type="hidden" name="id_pro" value="<?= $productOne['id_product'] ?>">
+                            <div class="d-flex align-items-center">
+                                <div class="rating-input">
+                                    <?php for ($i = 5; $i >= 1; $i--): ?>
+                                        <label>
+                                            <input type="radio" name="rating" value="<?= $i ?>" />
+                                            <?= str_repeat('<i class="fa fa-star text-warning"></i>', $i) ?>
+                                        </label>
+                                    <?php endfor; ?>
+                                </div>
+                                <button class="btn btn-primary btn-sm ms-2" type="submit">Đánh giá</button>
+                            </div>
+                        </form>
+                    <?php else: ?>
+                        <p class="mt-3">Vui lòng <a href="index.php?act=login">đăng nhập</a> để đánh giá sản phẩm.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
             <div class="p-2 pb-3">
                 <div class="product-wap card rounded-0">
-                    <div class="card-header">Bình luận</div>
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Bình luận</h5>
+                    </div>
                     <div class="card-body">
                         <?php
                         foreach ($comments as $com) {
+                            if ($com['censorship'] == 1) {
+                                continue; // Skip comments with censorship = 1
+                            }
                             ?>
-                            <div class="card mb-3">
+                            <div class="card mb-3 shadow-sm border-0">
                                 <div class="card-body">
-                                    <div class="d-flex flex-start">
+                                    <div class="d-flex flex-start align-items-center">
                                         <div class="w-100">
-                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <div class="d-flex justify-content-between align-items-center">
                                                 <h6 class="text-primary fw-bold mb-0">
                                                     <?= $com['full_name'] ?>
                                                 </h6>
-                                                <p class="mb-0"><?= $com['day_post'] ?></p>
-
+                                                <p class="text-muted"><?= $com['day_post'] ?></p>
                                             </div>
-                                            <p> <?= $com['content'] ?></p>
+                                            <p class="text-muted mt-2"><?= $com['content'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -152,43 +205,34 @@
                             <?php
                         }
                         ?>
-                        <?php
-                        if (isset($_SESSION['user'])) {
-                            ?>
-                            <form id="commentForm">
+
+                        <!-- Comment Form -->
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <form id="commentForm" class="mt-4">
                                 <input type="hidden" name="id_pro" value="<?= $productOne['id_product'] ?>">
-                                <div class="card mb-1">
+                                <div class="card shadow-sm border-0">
                                     <div class="card-body">
-                                        <div class="d-flex flex-start">
-                                            <div class="w-100">
-                                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="detail" class="form-control"
-                                                            placeholder="Nhập bình luận" required>
-                                                    </div>
-                                                    <input class="btn btn-primary btn_product text_content"
-                                                        name="post_comment" type="submit" value="Gửi">
-                                                </div>
+                                        <div class="d-flex flex-column">
+                                            <div class="mb-3">
+                                                <input type="text" name="detail" class="form-control"
+                                                       placeholder="Nhập bình luận" required>
                                             </div>
+                                            <button type="submit" class="btn btn-primary btn-sm px-4" name="post_comment">
+                                                Gửi bình luận
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-
                             </form>
-                            <?php
-                        } ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
-
-
     </div>
 </section>
 <!-- End Article -->
+
 <section class="py-5">
     <div class="container">
         <h2 class="mb-4">Sản phẩm cùng loại</h2>
@@ -196,11 +240,13 @@
             <?php foreach ($relatedProducts as $product): ?>
                 <div class="col-md-3">
                     <div class="card">
-                        <img src="assets/img/<?= $product['img_product'] ?>" class="card-img-top" alt="<?= $product['name'] ?>">
+                        <img src="assets/img/<?= $product['img_product'] ?>" class="card-img-top"
+                            alt="<?= $product['name'] ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $product['name'] ?></h5>
                             <p class="card-text text-success"><?= number_format($product['price']) ?>đ</p>
-                            <a href="index.php?act=shop_single&id=<?= $product['id_product'] ?>" class="btn btn-primary">Xem chi tiết</a>
+                            <a href="index.php?act=shop_single&id=<?= $product['id_product'] ?>" class="btn btn-primary">Xem
+                                chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -228,6 +274,19 @@ require_once 'layout/footer.php'
                     } else {
                         location.reload();
                     }
+                }
+            });
+        });
+        $('#ratingForm').on('submit', function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: 'index.php?act=addRating',
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function (response) {
+                    console.log(response);
+                    alert('Cảm ơn bạn đã đánh giá!');
+                    location.reload();
                 }
             });
         });
