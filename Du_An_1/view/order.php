@@ -40,12 +40,6 @@
         </li>
     </ul>
 
-    <!-- Search bar -->
-    <!-- <div class="input-group mb-4">
-        <input type="text" class="form-control" placeholder="Tìm đơn hàng theo Mã đơn hàng hoặc Tên sản phẩm">
-        <button class="btn btn-primary">Tìm đơn hàng</button>
-    </div> -->
-
     <!-- Tab Content -->
     <div class="tab-content" id="orderTabsContent">
         <!-- Tất cả đơn -->

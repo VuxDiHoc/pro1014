@@ -64,7 +64,7 @@
         </a>
         <div id="collapseStatistics" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="index.php?act=liscategories">Doanh thu</a>
+                <a class="collapse-item" href="index.php?act=listthongkedt">Doanh thu</a>
                 <a class="collapse-item" href="index.php?act=listthongkesl">Số lượng sản phẩm</a>
             </div>
         </div>

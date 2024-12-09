@@ -8,7 +8,7 @@ class billModel
     }
     function bill()
     {
-        $sql = "SELECT * FROM bills";
+        $sql = "SELECT * FROM bills order by id_bill desc";
         return $this->conn->query($sql)->fetchAll();
     }
     function findBillById($id)
