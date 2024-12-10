@@ -297,9 +297,11 @@ require_once 'layout/footer.php'
                 method: 'POST',
                 data: $(this).serialize(),
                 success: function (response) {
-                    console.log(response);
-                    alert('Cảm ơn bạn đã đánh giá!');
-                    location.reload();
+                    if (response === "Bạn cần đăng nhập để có thể đánh giá") {
+                        alert(response);
+                    } else {
+                        location.reload();
+                    }
                 }
             });
         });
