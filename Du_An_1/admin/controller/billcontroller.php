@@ -8,7 +8,8 @@ class billController
     }
     function listBill()
     {
-        $bills = $this->billModel->bill();
+        $status = isset($_GET['status']) && $_GET['status'] !== '' ? $_GET['status'] : null;
+        $bills = $this->billModel->bill($status);
         require_once "../commons/function.php";
         require_once "view/listBill.php";
     }
@@ -24,28 +25,20 @@ class billController
             3 => "Đang vận chuyển",
             4 => "Đang hoàn trả hàng",
             5 => "Giao hàng thành công",
-            6 => "Đã hủy",
         ];
         require_once "../commons/function.php";
         require_once "view/updateBill.php";
         if (isset($_POST['btn_update'])) {
-            $newStatus = $_POST['status']; // Lấy trạng thái mới từ form
-            if ($newStatus < $status) {
-                echo "<script>alert('Không thể cập nhật trạng thái lùi về trước!');</script>";
-            } else {
-                if ($newStatus == 6 && $status == 5) {
-                    echo "<script>alert('Đơn hàng đã giao thành công, không thể hủy!');</script>";
-                } else {
-                    if ($newStatus == 5 && $status != 5) { // Trạng thái chuyển thành 'Giao hàng thành công'
-                        $this->billModel->reduceQuantity($id);
-                    }
-                    if ($this->billModel->updateBill($newStatus, $id)) {
-                        header("Location:?act=listBill");
-                    } else {
-                        echo "Sửa thất bại";
-                    }
-                }
+            $newStatus = $_POST['status']; // Lấy trạng thái mới từ form           
+            if ($newStatus == 5 && $status != 5) { // Trạng thái chuyển thành 'Giao hàng thành công'
+                $this->billModel->reduceQuantity($id);
             }
+            if ($this->billModel->updateBill($newStatus, $id)) {
+                header("Location:?act=listBill");
+            } else {
+                echo "Sửa thất bại";
+            }
+
         }
     }
 

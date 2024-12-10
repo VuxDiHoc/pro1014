@@ -39,6 +39,7 @@ match ($act) {
     'shop' => (new shopController())->allProduct(),
     'shop_cat' => (new shopController())->cat_pro($_GET['id']),
     'shop_single' => (new detailController())->detail($_GET['id']),
+    'addRating'=>(new detailController())->addRating(),
     'contact' => (new contactController())->contact(),
     'cart' => (new cartController())->cart(),
     'login' => (new LoginController())->login(),

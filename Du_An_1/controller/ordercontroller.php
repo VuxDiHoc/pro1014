@@ -55,7 +55,7 @@ class orderController
         $id_bill = $_POST['id_bill'];
         $currentStatus = $this->orderModel->getOrderStatus($id_bill);
 
-        if (in_array($currentStatus, [0, 1, 2])) { // Trạng thái cho phép hủy
+        if (in_array($currentStatus, [0, 1])) { // Trạng thái cho phép hủy
             $updated = $this->orderModel->cancelOrder($id_bill);
 
             if ($updated) {

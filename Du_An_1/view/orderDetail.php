@@ -14,7 +14,7 @@
             <p><strong>Ngày mua:</strong> <?= $orderDetails[0]['purchase_date'] ?></p>
             <p><strong>Trạng thái:</strong> <?= getOrderStatus($orderDetails[0]['status']) ?></p>
 
-            <?php if (in_array($orderDetails[0]['status'], [0, 1, 2])): ?>
+            <?php if (in_array($orderDetails[0]['status'], [0, 1])): ?>
                 <form method="post" action="?act=cancelOrder">
                     <input type="hidden" name="id_bill" value="<?= $orderDetails[0]['id_bill'] ?>">
                     <button type="submit" class="btn btn-danger" name="cancel" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')">Hủy đơn hàng</button>

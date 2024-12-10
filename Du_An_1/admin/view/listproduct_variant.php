@@ -9,14 +9,14 @@ require_once 'layout/navbar.php';
     <div id="content">
 
         <!-- Topbar -->
-        <?php require_once 'layout/topbar.php'?>
+        <?php require_once 'layout/topbar.php' ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Danh sách biến thể sản phẩm</h1>
+                <h1 class="h3 mb-0 text-gray-800">Danh sách biến thể của sản phẩm: <?= $product['name'] ?></h1>
             </div>
 
             <!-- Content Row -->
@@ -30,35 +30,28 @@ require_once 'layout/navbar.php';
                             <thead>
                                 <tr>
                                     <th>Ảnh</th>
-                                    <th>Tên</th>
                                     <th>Biến thể màu</th>
                                     <th>Số lượng</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($variants as $key => $value) {
-                                    ?>
+                                <?php foreach ($variants as $variant) { ?>
                                     <tr>
-                                        <td><img src="../assets/img/<?= $value['img_product'] ?>"
-                                                class="img-fluid rounded-top" alt="" width="150px" height="50px"
-                                                class="rounded" />
-                                        </td>
-                                        <td><?= $value['name'] ?></td>
-                                        <td><?= $value['name_color'] ?></td>
-                                        <td><?= $value['quantity'] ?></td>
+                                        <td><img src="../assets/img/<?= $variant['img_product'] ?>" alt="" width="150px"
+                                                height="100px"></td>
+                                        <td><?= $variant['name_color'] ?></td>
+                                        <td><?= $variant['quantity'] ?></td>
                                         <td>
                                             <a class="btn btn-primary"
-                                                href="?act=updateProduct_variant&id_pro=<?= $value['id_product'] ?>&id_var=<?= $value['id_variant'] ?>"
+                                                href="?act=updateProduct_variant&id_pro=<?= $variant['id_product'] ?>&id_var=<?= $variant['id_variant'] ?>"
                                                 role="button">Sửa</a>
-                                            <a class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa ko?')"
-                                                href="?act=deleteProduct_variant&id_pro=<?= $value['id_product'] ?>&id_var=<?= $value['id_variant'] ?>"
+                                            <a class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')"
+                                                href="?act=deleteProduct_variant&id_pro=<?= $variant['id_product'] ?>&id_var=<?= $variant['id_variant'] ?>"
                                                 role="button">Xóa</a>
                                         </td>
                                     </tr>
-                                    <?php
-                                }
-                                ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

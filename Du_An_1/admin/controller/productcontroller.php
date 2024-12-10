@@ -8,11 +8,15 @@ class productController
     }
     function listProduct()
     {
-        $products = $this->productModel->product();
+        $categoryId = isset($_GET['category']) && $_GET['category'] !== '' ? $_GET['category'] : null;
+        $products = $this->productModel->product($categoryId);
+        $category = $this->productModel->category();
         require_once "view/listProduct.php";
     }
-    function listProduct_variant() {
-        $variants = $this->productModel->product_variant();
+    function listProduct_variant($id_product) {
+        $variants = $this->productModel->product_variant($id_product);
+        $product = $this->productModel->findProductById($id_product);
+
         require_once "view/listproduct_variant.php";
     }
     function insert()
@@ -108,7 +112,7 @@ class productController
             $new_id_variant = $_POST['new_id_variant'];
             $quantity = $_POST['quantity'];
             if ($this->productModel->updateProduct_variant($id_pro,$id_var,$new_id_variant,$quantity)) {
-                header("Location:?act=listProduct_variant");
+                header("Location:?act=listProduct");
             } else {
                 echo "Sửa thất bại";
             }
@@ -116,7 +120,7 @@ class productController
     }
     function deleteProduct_variant($id_pro, $id_var){
         if ($this->productModel->deleteProduct_variant($id_pro, $id_var)) {
-            header("Location:?act=listProduct_variant");
+            header("Location:?act=listProduct");
         } else {
             echo "Xóa thất bại";
         }

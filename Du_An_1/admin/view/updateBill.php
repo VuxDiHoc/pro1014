@@ -75,10 +75,15 @@ require_once 'layout/navbar.php';
                             <label for="status" class="form-label">Trạng thái</label>
                             <select class="form-control" id="status" name="status">
                                 <?php foreach ($statusDescriptions as $key => $value): ?>
-                                    <option value="<?= $key ?>" <?= $key == $status ? 'selected' : '' ?>>
-                                        <?= $value ?>
-                                    </option>
+                                    <?php if ($key >= $status): // Chỉ hiển thị các trạng thái >= trạng thái hiện tại ?>
+                                        <option value="<?= $key ?>" <?= $key == $status ? 'selected' : '' ?>>
+                                            <?= $value ?>
+                                        </option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
+                                <?php if ($status > 5):?>
+                                    <option value="6">Đã hủy</option>
+                                <?php endif;?>
                             </select>
                         </div>
                         <button type="submit" name="btn_update" class="btn btn-primary mt-3">Cập nhật</button>
