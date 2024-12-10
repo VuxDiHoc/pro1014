@@ -45,25 +45,31 @@ require_once 'layout/navbar.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        foreach ($thongkesk as $key => $value) {
-                            ?>
-                            <tr>
-                                <td><input type="checkbox" name="select[]" value="<?= $value['id_category'] ?>"></td>
-                                <td><?= $value['name_cat'] ?></td>
-                                <td><?= number_format($value['total_revenue'], 0, ',', '.') ?> VND</td>
-                                <td><?= number_format($value['daily_revenue'], 0, ',', '.') ?> VND</td>
-                                <td><?= number_format($value['weekly_revenue'], 0, ',', '.') ?> VND</td>
-                                <td><?= number_format($value['monthly_revenue'], 0, ',', '.') ?> VND</td>
-                                <td><?= number_format($value['yearly_revenue'], 0, ',', '.') ?> VND</td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
-                    </tbody>
+    <?php
+    foreach ($thongkesk as $key => $value) {
+        // Giả sử tổng doanh thu được chia đều
+        $daily_revenue = $value['total_revenue'] / 365; // Doanh thu ngày
+        $weekly_revenue = $daily_revenue * 7; // Doanh thu tuần
+        $monthly_revenue = $daily_revenue * 30; // Doanh thu tháng
+        $yearly_revenue = $value['total_revenue']; // Doanh thu năm bằng tổng doanh thu
+
+        ?>
+        <tr>
+            <td><input type="checkbox" name="select[]" value="<?= $value['id_category'] ?>"></td>
+            <td><?= $value['name_cat'] ?></td>
+            <td><?= number_format($value['total_revenue'], 0, ',', '.') ?> VND</td>
+            <td><?= number_format($daily_revenue, 0, ',', '.') ?> VND</td>
+            <td><?= number_format($weekly_revenue, 0, ',', '.') ?> VND</td>
+            <td><?= number_format($monthly_revenue, 0, ',', '.') ?> VND</td>
+            <td><?= number_format($yearly_revenue, 0, ',', '.') ?> VND</td>
+        </tr>
+        <?php
+    }
+    ?>
+</tbody>
                 </table>
                 <div class="input_button">
-                    <a href="index.php?act=bieudosl"><input class="btn btn-success" type="button" value="Biểu đồ"></a>
+                    <a href="index.php?act=bieudodt"><input class="btn btn-success" type="button" value="Biểu đồ"></a>
                 </div>
             </div>
         </div>
