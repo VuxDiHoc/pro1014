@@ -26,44 +26,50 @@ require_once 'layout/navbar.php';
                 <!-- code ở đây -->
                  
 
-<div class="container-fluid">
+<!-- Content Row -->
+<div class="row">
+    <!-- code ở đây -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">THỐNG KÊ SỐ LƯỢNG SẢN PHẨM</h1>
 
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">THỐNG KÊ SỐ LƯỢNG SẢN PHẨM</h1>
-
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                    <th>MÃ LOẠI</th>
-                    <th>TÊN</th>
-                    <th>SỐ LƯỢNG SẢN PHẨM CÒN TRONG KHO</th>
-                    <th>SỐ LƯỢNG ĐÃ BÁN</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                foreach ($thongkesk as $key => $value) {
-                    ?>
-                    <tr>
-                        <td><?= $value['id_category'] ?></td>
-                        <td><?= $value['name_cat'] ?></td>
-                        <td><?= $value['total_quantity'] ?></td>                    
-                    </tr>
-                    <?php
-                }
-                ?>
-            </tbody>
-            </table>
-            <div class="input_button">
-            <a href="index.php?act=bieudosl"><input class="btn btn-success" type="button" value="Xem Biểu Đồ"></a>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>MÃ LOẠI</th>
+                                <th>TÊN</th>
+                                <th>SỐ LƯỢNG SẢN PHẨM CÒN TRONG KHO</th>
+                                <th>SỐ LƯỢNG ĐÃ BÁN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($thongkesk as $key => $value) {
+                            ?>
+                            <tr>
+                                <td><?= $value['id_category'] ?></td>
+                                <td><?= $value['name_cat'] ?></td>
+                                <td><?= $value['total_quantity'] ?></td>
+                                <td><?= $value['sold_quantity'] ?></td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                    <div class="input_button">
+                        <a href="index.php?act=bieudosl"><input class="btn btn-success" type="button" value="Xem Biểu Đồ"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
                  
