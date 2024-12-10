@@ -49,8 +49,8 @@ class detailController
     function addRating()
     {
         if (isset($_POST['rating']) && isset($_POST['id_pro'])) {
-            if (!isset($_SESSION['user'])) {
-                $_SESSION['Message'] = "Bạn cần đăng nhập để đánh giá.";
+            if (!$this->detailModel->hasPurchasedProduct($id_user, $id_pro)) {
+                $_SESSION['Message'] = "Bạn cần mua sản phẩm này để có thể đánh giá.";
                 exit();
             }
             $point = (int) $_POST['rating'];
