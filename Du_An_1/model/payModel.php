@@ -8,14 +8,6 @@ class payModel
     }
     function saveOrder($id_customer, $receiver_name, $receiver_phone, $receiver_address, $cartItems)
     {
-        // Thêm hóa đơn vào bảng `bills`
-        $sql_bill = "INSERT INTO bills VALUES (null,$id_customer,'$receiver_name','$receiver_phone','$receiver_address',0,CURRENT_TIMESTAMP)";
-        $stmt = $this->conn->prepare($sql_bill);
-        $stmt->execute();
-
-        // Lấy ID hóa đơn vừa thêm
-        $id_bill = $this->conn->lastInsertId();
-
         foreach ($cartItems as $item) {
             $id_product = $item['id'];
             $name_product = $item['name'];
@@ -59,6 +51,13 @@ class payModel
                 $_SESSION['payment_message'] = "Sản phẩm '$name_product' với màu '$variant_text' không đủ số lượng.";
                 return false; // Không đủ hàng, không thể đặt hàng
             }
+
+            // Thêm hóa đơn vào bảng `bills`
+            $sql_bill = "INSERT INTO bills VALUES (null,$id_customer,'$receiver_name','$receiver_phone','$receiver_address',0,CURRENT_TIMESTAMP)";
+            $stmt = $this->conn->prepare($sql_bill);
+            $stmt->execute();
+            // Lấy ID hóa đơn vừa thêm
+            $id_bill = $this->conn->lastInsertId();
 
             // Thêm chi tiết vào bảng `detail_bills`
             $sql_detail = "INSERT INTO detail_bills VALUES (null,$id_bill, $id_product,$id_variant, '$name_product', $price * $quantity, $quantity)";
