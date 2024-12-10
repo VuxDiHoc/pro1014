@@ -38,7 +38,7 @@ match ($act) {
     'insertProduct' => (new productController())->insert(),
     'updateProduct' => (new productController())->update($_GET['id']),
     'deleteProduct' => (new productController())->delete($_GET['id']),
-    'listProduct_variant' => (new productController())->listProduct_variant(),
+    'listProduct_variant' => (new productController())->listProduct_variant($_GET['id']),
     'updateProduct_variant' => (new productController())->updateProduct_variant($_GET['id_pro'], $_GET['id_var']),
     'deleteProduct_variant' => (new productController())->deleteProduct_variant($_GET['id_pro'], $_GET['id_var']),
     'listBill' => (new billController())->listBill(),

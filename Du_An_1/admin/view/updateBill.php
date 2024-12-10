@@ -81,6 +81,9 @@ require_once 'layout/navbar.php';
                                         </option>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
+                                <?php if ($status > 5):?>
+                                    <option value="6">Đã hủy</option>
+                                <?php endif;?>
                             </select>
                         </div>
                         <button type="submit" name="btn_update" class="btn btn-primary mt-3">Cập nhật</button>
