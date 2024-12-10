@@ -57,6 +57,7 @@ match ($act) {
     'deleteUser' => (new UserController())->deleteUser($id_user),
     'listthongkesl' => (new thongkeslController())->listThongkesl(),
     'bieudosl' => (new thongkeslController())->bieudosl(),
+    'bieudodt' => (new thongkedtController())->bieudodt(),
     'listthongkedt' => (new thongkedtController())->listThongkedt(),
     'listComments' => (new CommentController())->listComments(),
     'toggleCensorship' => (new CommentController())->toggleCensorship($_GET['id'], $_GET['status']),
