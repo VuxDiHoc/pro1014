@@ -9,11 +9,13 @@ require_once 'layout/header.php'
         <div class="container">
             <div class="row align-items-center py-5">
                 <div class="col-md-8 text-white">
-                    <h1>About Us</h1>
+                    <h1>Về chúng tôi - HiTech</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    HiTech là địa chỉ uy tín chuyên cung cấp các sản phẩm điện tử hiện đại như điện thoại, laptop, tai nghe và nhiều thiết bị công nghệ khác. Với phương châm "Công nghệ trong tầm tay," chúng tôi mang đến cho khách hàng những sản phẩm chất lượng cao, chính hãng với giá cả cạnh tranh.
+
+Đội ngũ HiTech luôn sẵn sàng hỗ trợ, tư vấn để bạn tìm được sản phẩm phù hợp nhất. Chúng tôi cam kết mang đến trải nghiệm mua sắm tiện lợi, nhanh chóng và dịch vụ hậu mãi tận tâm.
+
+Hãy khám phá thế giới công nghệ cùng HiTech ngay hôm nay!
                     </p>
                 </div>
                 <div class="col-md-4">
@@ -22,6 +24,9 @@ require_once 'layout/header.php'
             </div>
         </div>
     </section>
+    <!-- <div >
+                    <img src="assets/img/about-hero.svg" alt="About Hero">
+                </div> -->
     <!-- Close Banner -->
 
     <!-- Start Section -->

@@ -12,6 +12,7 @@ class detailController
         $productOne = $this->detailModel->findProductById($id);
         $comments = $this->detailModel->allComment($id);
         $product_variant = $this->detailModel->product_variant($id);
+
         $ratingData = $this->detailModel->getAverageRating($productOne['id_product']);
         $avgRating = isset($ratingData['avg_rating']) ? (float) $ratingData['avg_rating'] : 0;
         $totalRatings = isset($ratingData['total_ratings']) ? (int) $ratingData['total_ratings'] : 0;
