@@ -43,10 +43,7 @@
                                 </div>
 
                                 <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
-                                <!-- <div class="d-flex justify-content-between px-x">
-                                    <p class="fw-bold">Giảm:</p>
-                                    <p class="fw-bold">Discount VNĐ</p>
-                                </div> -->
+                                
                                 <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
                                     <h5 class="fw-bold mb-0">Tổng tiền:</h5>
                                     <h5 class="fw-bold mb-0"><?= number_format($total) ?>đ</h5>
@@ -111,12 +108,12 @@ require_once 'layout/footer.php'
 <script>
     var paymentSuccessPopup = new bootstrap.Modal(document.getElementById('paymentSuccessPopup'));
 
-    // Hiển thị modal
+    
     paymentSuccessPopup.show();
 
-    // Đóng popup tự động sau 3 giây và redirect
+    
     setTimeout(function () {
-        paymentSuccessPopup.hide(); // Đóng modal sau 3 giây
+        paymentSuccessPopup.hide(); 
         window.location.href = 'index.php?act=shop';
     }, 2000);
     <?php

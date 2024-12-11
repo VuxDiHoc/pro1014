@@ -3,11 +3,11 @@ class variantController
 {
     public $variantModel;
     function __construct() {
-        $this->variantModel = new variantModel(); // Khởi tạo model
+        $this->variantModel = new variantModel(); 
     }
     function listvariant()
     {
-    // Sửa lại thành loadall_variant
+   
     $variants = $this->variantModel->loadall_variant(); 
     require_once "view/listvariant.php";
     }
@@ -26,31 +26,31 @@ class variantController
         }
     }
     function update($id_variant) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Kiểm tra nếu form được submit
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
             $tenloai = $_POST['tenloai'];
            
             
-            // Gọi model để cập nhật
+           
             $this->variantModel->update_variant($id_variant, $tenloai,);
             
-            // Redirect sau khi cập nhật
+            
             header("Location: index.php?act=listvariant");
             exit;
         }
-        // Lấy dữ liệu biến thể hiện tại
+        
         $stmt = $this->variantModel->loadone_variant($id_variant);
-        // Hiển thị trang cập nhật
+        
         require_once "view/updatevariant.php";
     }
     function delete($id_variant) {
         if ($id_variant) {
-            // Gọi model để xóa biến thể
+            
             $this->variantModel->delete_variant($id_variant);   
-            // Chuyển hướng về danh sách biến thể sau khi xóa
+            
             header("Location: index.php?act=listvariant");
             exit();
         } else {
-            // Nếu không có id_variant, thông báo lỗi
+            
             echo "Không tìm thấy biến thể cần xóa.";
         }
     }

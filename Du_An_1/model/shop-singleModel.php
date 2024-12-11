@@ -43,7 +43,7 @@ class detailModel
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id_user, $id_pro]);
         $result = $stmt->fetchColumn();
-        return $result > 0;  // Return true if the user has purchased the product
+        return $result > 0;
     }
     function commentLimitReached($id_user, $id_pro)
     {
@@ -51,7 +51,7 @@ class detailModel
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id_user, $id_pro]);
         $commentCount = $stmt->fetchColumn();
-        return $commentCount >= 2;  // Return true if the user has already commented 2 times
+        return $commentCount >= 2;
     }
     function relatedProduct($id_category, $id_product)
     {

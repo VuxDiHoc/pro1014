@@ -4,14 +4,6 @@ require_once 'layout/banner.php'
     ?>
 
 
-
-
-<!-- Start Categories of The Month -->
-
-<!-- End Categories of The Month -->
-
-
-<!-- Start Featured Product -->
 <section class="bg-light">
     <div class="container py-5">
         <div class="row text-center py-3">
@@ -51,7 +43,7 @@ require_once 'layout/banner.php'
         </div>
     </div>
 </section>
-<!-- End Featured Product -->
+
 
 <?php
 require_once 'layout/scripts.php';

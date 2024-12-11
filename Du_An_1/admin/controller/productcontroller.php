@@ -36,15 +36,15 @@ class productController
             move_uploaded_file($img_tmp, '../assets/img/' . $img);
             $variants = [];
             if (isset($_POST['variant_color'])) {
-                $variant_colors = $_POST['variant_color'];  // Mảng chứa tên màu sắc
-                $variant_quantities = $_POST['variant_quantity'];  // Mảng chứa số lượng của mỗi màu sắc
-                // Kiểm tra trùng lặp màu sắc đầu vào
+                $variant_colors = $_POST['variant_color'];  
+                $variant_quantities = $_POST['variant_quantity'];  
+                
                 if (count($variant_colors) !== count(array_unique($variant_colors))) {
                     echo "<script>alert('Lỗi: Có màu sắc trùng lặp trong danh sách. Vui lòng kiểm tra lại!');window.history.back();</script>";
                     exit();
                 }
-                $amount = array_sum($variant_quantities);  // Tổng số lượng của tất cả biến thể
-                // Kết hợp thành mảng các biến thể
+                $amount = array_sum($variant_quantities);  
+                
                 foreach ($variant_colors as $index => $color) {
                     $variants[] = [
                         'name_color' => $color,
@@ -102,7 +102,7 @@ class productController
         $current_color_id = $oneProduct_variant['id_variant'];
         if (isset($_POST['new_id_variant'])) {
             $new_color_id = $_POST['new_id_variant'];
-            // Kiểm tra nếu màu này đã tồn tại trong sản phẩm
+            
             if ($this->productModel->checkColorExists($id_pro, $new_color_id,$current_color_id)) {
                 echo "<script>alert('Màu sắc này đã tồn tại trong sản phẩm, không thể cập nhật.')</script>";
                 return;

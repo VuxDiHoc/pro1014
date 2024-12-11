@@ -8,9 +8,9 @@ class orderController
     }
     function order($id)
     {
-        $orders = $this->orderModel->getOrdersByStatus($id); // Lấy tất cả đơn hàng
+        $orders = $this->orderModel->getOrdersByStatus($id); 
         $orderStatuses = [];
-        // Lấy danh sách đơn hàng cho từng trạng thái
+        
         for ($status = 0; $status <= 6; $status++) {
             $orderStatuses[$status] = $this->orderModel->getOrdersByStatus($id, $status);
         }
@@ -37,16 +37,16 @@ class orderController
     }
     function orderDetail($id_bill)
     {
-        // Lấy thông tin chi tiết đơn hàng
+        
         $orderDetails = $this->orderModel->getOrderDetails($id_bill);
     
-        // Nếu không có dữ liệu, chuyển hướng hoặc hiển thị thông báo
+        
         if (empty($orderDetails)) {
             echo "<script>alert('Đơn hàng không tồn tại.'); window.location.href='?act=order';</script>";
             exit;
         }
     
-        // Render giao diện chi tiết đơn hàng
+        
         require_once 'view/orderDetail.php';
     }
     function cancelOrder()
@@ -55,7 +55,7 @@ class orderController
         $id_bill = $_POST['id_bill'];
         $currentStatus = $this->orderModel->getOrderStatus($id_bill);
 
-        if (in_array($currentStatus, [0, 1])) { // Trạng thái cho phép hủy
+        if (in_array($currentStatus, [0, 1])) { 
             $updated = $this->orderModel->cancelOrder($id_bill);
 
             if ($updated) {

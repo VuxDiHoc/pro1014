@@ -4,7 +4,7 @@ class thongkeslModel
     public $conn;
     function __construct()
     {
-        $this->conn = connDBAss(); // Đảm bảo hàm connDBAss() tồn tại và kết nối thành công.
+        $this->conn = connDBAss(); 
     }
     function thongkesl()
     {
@@ -12,7 +12,7 @@ class thongkeslModel
     categories.id_category AS id_category, 
     categories.name_cat AS name_cat, 
     SUM(products.amount) AS total_quantity, 
-    IFNULL(SUM(detail_bills.quantity), 0) AS sold_quantity  -- Tổng số lượng đã bán của các sản phẩm trong danh mục
+    IFNULL(SUM(detail_bills.quantity), 0) AS sold_quantity  
 FROM 
     products
 LEFT JOIN 

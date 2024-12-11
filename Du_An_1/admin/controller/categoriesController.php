@@ -3,11 +3,11 @@ class catagoriesController
 {
     public $categoriesModel;
     function __construct() {
-        $this->categoriesModel = new categoriesModel(); // Khởi tạo model
+        $this->categoriesModel = new categoriesModel(); 
     }
     function listcategories()
     {
-    // Sửa lại thành loadall_categories
+    
     $categoriess= $this->categoriesModel->loadall_categories(); 
     require_once "view/listcategories.php";
     }
@@ -26,31 +26,31 @@ class catagoriesController
         }
     }
     function update($id_category) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Kiểm tra nếu form được submit
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
             $tenloai = $_POST['tenloai'];
            
             
-            // Gọi model để cập nhật
+            
             $this->categoriesModel->update_categories($id_category, $tenloai,);
             
-            // Redirect sau khi cập nhật
+            
             header("Location: index.php?act=listcategories");
             exit;
         }
-        // Lấy dữ liệu biến thể hiện tại
+        
         $stmt = $this->categoriesModel->loadone_categories($id_category);
-        // Hiển thị trang cập nhật
+        
         require_once "view/updatecategories.php";
     }
     function delete($id_category) {
         if ($id_category) {
-            // Gọi model để xóa biến thể
+            
             $this->categoriesModel->delete_categories($id_category);   
-            // Chuyển hướng về danh sách biến thể sau khi xóa
+            
             header("Location: index.php?act=listcategories");
             exit();
         } else {
-            // Nếu không có id_variant, thông báo lỗi
+            
             echo "Không tìm thấy biến thể cần xóa.";
         }
     }

@@ -28,7 +28,7 @@ function getOrderStatus($status)
 }
 function renderOrders($orders) {
     if (!empty($orders)) {
-        // Gom nhóm theo mã đơn hàng
+        
         $groupedOrders = [];
         foreach ($orders as $order) {
             $idBill = $order['id_bill'];

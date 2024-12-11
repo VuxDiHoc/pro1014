@@ -31,13 +31,13 @@ class detailController
             $id_user = $_SESSION['user']['id_user'];
             $id_pro = $_POST['id_pro'];
 
-            // 1. Check if the user has purchased the product
+            
             if (!$this->detailModel->hasPurchasedProduct($id_user, $id_pro)) {
                 $_SESSION['Message'] = "Bạn cần mua sản phẩm này để có thể bình luận.";
                 exit();
             }
 
-            // 2. Check if the user has already commented twice
+            
             if ($this->detailModel->commentLimitReached($id_user, $id_pro)) {
                 $_SESSION['Message'] = "Bạn chỉ có thể bình luận 2 lần cho sản phẩm này.";
                 exit();

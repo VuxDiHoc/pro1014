@@ -13,21 +13,16 @@
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- Load fonts style after rendering the layout styles -->
+    
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-    <!--
     
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
--->
 </head>
 
 <body>
 
-    <!-- Header -->
+    
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -53,10 +48,10 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?act=shop">Shop</a>
+
                         </li>                
-                        <li class="nav-item">
-                            <a class="nav-link" href="?act=contact">Contact</a>
-                        </li>
+
+
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <form action="?act=shop" method="POST" class="d-flex">
@@ -64,16 +59,7 @@ https://templatemo.com/tm-559-zay-shop
                         <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
-                    <!-- <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
-                    <form action="?act=shop" method="POST">
-                        <input type="text" name="search" placeholder="Tìm kiếm sản phẩm" class="form-control">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
-                        data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a> -->
+                    
                     
                     <a class="nav-icon position-relative text-decoration-none" href="?act=cart">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
@@ -106,8 +92,7 @@ https://templatemo.com/tm-559-zay-shop
 
         </div>
     </nav>
-    <!-- Close Header -->
-    <!-- Modal -->
+    
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

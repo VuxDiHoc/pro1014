@@ -4,7 +4,6 @@
         display: none;
     }
 
-    /* Style cho span */
     .color-label span {
         cursor: pointer;
         padding: 10px 15px;
@@ -12,17 +11,13 @@
         transition: all 0.3s ease;
     }
 
-    /* Hiệu ứng khi radio được chọn */
     .color-label input[type="radio"]:checked+span {
         border-color: #28a745;
-        /* Thêm viền để hiển thị được chọn */
         background-color: #218838;
-        /* Màu nền đậm hơn */
         color: #fff;
-        /* Đổi màu chữ */
     }
 </style>
-<!-- Open Content -->
+
 <section class="bg-light">
     <div class="container pb-5">
         <div class="row">
@@ -32,7 +27,7 @@
                         alt="Card image cap" id="product-detail">
                 </div>
             </div>
-            <!-- col end -->
+            
             <div class="col-lg-7 mt-5">
                 <div class="card">
                     <div class="card-body">
@@ -42,13 +37,10 @@
                             <?php
                             for ($i = 1; $i <= 5; $i++) {
                                 if ($i <= floor($avgRating)) {
-                                    // Hiển thị sao đầy nếu điểm rating >= i
                                     echo '<i class="fa fa-star text-warning"></i>';
                                 } elseif ($i - $avgRating < 1) {
-                                    // Hiển thị sao rỗng nếu điểm rating còn thiếu một chút
                                     echo '<i class="fa fa-star-half-alt text-warning"></i>';
                                 } else {
-                                    // Hiển thị sao rỗng nếu điểm rating < i
                                     echo '<i class="fa fa-star text-secondary"></i>';
                                 }
                             }
@@ -96,7 +88,7 @@
                                                     <input type="radio" name="color" value="<?= $value['name_color'] ?>"
                                                         <?= $key === 0 ? 'checked' : '' ?>
                                                         data-quantity="<?= $value['quantity'] ?>">
-                                                    <!-- Dữ liệu số lượng cho mỗi biến thể -->
+                                                    
                                                     <span><?= $value['name_color'] ?></span>
                                                 </label>
                                             </li>
@@ -109,7 +101,7 @@
                         <div class="col d-grid">
                             <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
                         </div>
-                        <!-- <form action="index.php?act=addToCart" method="POST"> -->
+                        
                         <input type="hidden" name="productId" value="<?= $productOne['id_product'] ?>">
                         <input type="hidden" name="name" value="<?= $productOne['name'] ?>">
                         <input type="hidden" name="price" value="<?= $productOne['price'] ?>">
@@ -130,14 +122,13 @@
     </div>
     </div>
 </section>
-<!-- Close Content -->
-<!-- Start Article -->
+
 <section class="py-5">
     <div class="container">
 
-        <!--Start Carousel Wrapper-->
+        
         <div id="carousel-related-product">
-            <!-- Product Rating -->
+            
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Đánh giá sản phẩm</h5>
@@ -154,7 +145,7 @@
                         <span class="text-muted">(<?= $avgRating ?> / 5 từ <?= $totalRatings ?> đánh giá)</span>
                     </div>
 
-                    <!-- Rating Form -->
+                    
                     <?php if (isset($_SESSION['user'])): ?>
                         <form id="ratingForm" class="mt-3">
                             <input type="hidden" name="id_pro" value="<?= $productOne['id_product'] ?>">
@@ -176,7 +167,7 @@
                 </div>
             </div>
 
-            <!-- Comments Section -->
+            
             <div class="p-2 pb-3">
                 <div class="product-wap card rounded-0">
                     <div class="card-header bg-secondary text-white">
@@ -186,7 +177,7 @@
                         <?php
                         foreach ($comments as $com) {
                             if ($com['censorship'] == 1) {
-                                continue; // Skip comments with censorship = 1
+                                continue;
                             }
                             ?>
                             <div class="card mb-3 shadow-sm border-0">
@@ -208,7 +199,7 @@
                         }
                         ?>
 
-                        <!-- Comment Form -->
+                        
                         <?php if (isset($_SESSION['user'])): ?>
                             <form id="commentForm" class="mt-4">
                                 <input type="hidden" name="id_pro" value="<?= $productOne['id_product'] ?>">
@@ -233,7 +224,7 @@
         </div>
     </div>
 </section>
-<!-- End Article -->
+
 
 <section class="py-5">
     <div class="container">
@@ -266,14 +257,14 @@ require_once 'layout/footer.php'
     $(document).ready(function () {
         $('input[name="color"]').on('change', function () {
             const selectedVariant = $(this);
-            const quantity = selectedVariant.data('quantity');  // Lấy số lượng của biến thể đã chọn
+            const quantity = selectedVariant.data('quantity');
             const quantityElem = document.getElementById('var-value');
 
-            quantityElem.innerText = 1;  // Đặt lại số lượng về 1 khi thay đổi biến thể
-            document.getElementById('product-quanity').value = 1;  // Cập nhật giá trị hidden field
+            quantityElem.innerText = 1;
+            document.getElementById('product-quanity').value = 1;
 
-            // Cập nhật số lượng sản phẩm còn lại cho biến thể được chọn
-            document.getElementById('remaining-quantity').innerText = quantity;  // Cập nhật số lượng còn lại
+            
+            document.getElementById('remaining-quantity').innerText = quantity; 
         });
         $('#commentForm').on('submit', function (event) {
             event.preventDefault();
