@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 09, 2024 at 12:06 AM
+-- Generation Time: Dec 11, 2024 at 09:59 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -50,7 +50,21 @@ INSERT INTO `bills` (`id_bill`, `id_customer`, `receiver_name`, `receiver_phone`
 (18, 2, 'hoang', '0988765678', 'ha noi', 6, '2024-12-04 17:40:42'),
 (19, 2, 'hoang', '0988765678', 'ha noi', 3, '2024-12-04 17:41:13'),
 (20, 2, 'hoang', '0988765678', 'ha noi', 0, '2024-12-04 18:29:24'),
-(21, 3, 'hoanght', '000000', 'ha noi', 5, '2024-12-09 07:00:15');
+(21, 3, 'hoanght', '000000', 'ha noi', 5, '2024-12-09 07:00:15'),
+(22, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 0, '2024-12-10 22:03:18'),
+(23, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 5, '2024-12-10 22:05:14'),
+(24, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 4, '2024-12-11 16:29:54'),
+(25, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 3, '2024-12-11 16:29:54'),
+(26, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 3, '2024-12-11 16:29:54'),
+(27, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 2, '2024-12-11 16:31:21'),
+(28, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 2, '2024-12-11 16:31:21'),
+(29, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 1, '2024-12-11 16:32:40'),
+(30, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 1, '2024-12-11 16:32:56'),
+(31, 7, 'nguyen van b', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 0, '2024-12-11 16:41:51'),
+(32, 7, 'nguyen van b', '0123456789', 'Nam dinh', 0, '2024-12-11 16:43:02'),
+(33, 8, 'nguyen van c', '0123456798', 'Hoa binh', 0, '2024-12-11 16:44:27'),
+(34, 8, 'nguyen van c', '0123456798', 'Hoa binh', 0, '2024-12-11 16:44:27'),
+(35, 6, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', 5, '2024-12-11 16:46:23');
 
 -- --------------------------------------------------------
 
@@ -105,7 +119,9 @@ INSERT INTO `comments` (`id_comment`, `id_product`, `id_user`, `content`, `censo
 (9, 48, 3, 'haha', 0, '2024-11-28 23:06:57'),
 (10, 45, 3, 'dep', 0, '2024-12-09 05:32:32'),
 (11, 46, 4, 'haha', 0, '2024-12-09 07:00:50'),
-(12, 46, 4, '2', 0, '2024-12-09 07:01:25');
+(12, 46, 4, '2', 0, '2024-12-09 07:01:25'),
+(13, 49, 7, 'xịn nha', 0, '2024-12-10 22:12:10'),
+(14, 49, 7, 'oce đấy', 0, '2024-12-10 22:12:18');
 
 -- --------------------------------------------------------
 
@@ -129,7 +145,11 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`id_customer`, `id_user`, `full_name`, `phone`, `address`, `note`) VALUES
 (2, 3, 'hoang', '0988765678', 'ha noi', NULL),
 (3, 4, 'hoanght', '', '', NULL),
-(4, 5, 'hello', '', '', NULL);
+(4, 5, 'hello', '', '', NULL),
+(5, 6, 'admin', '', '', NULL),
+(6, 7, 'nguyen van a', '0326291026', 'Khu Phố Yên Hòa Thi Trấn Hàng Tram Yên Thủy Hòa Bình', NULL),
+(7, 8, 'nguyen van b', '0123456789', 'Nam dinh', NULL),
+(8, 9, 'nguyen van c', '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -161,7 +181,21 @@ INSERT INTO `detail_bills` (`id_detailbill`, `id_bill`, `id_product`, `id_varian
 (15, 18, 46, 24, 'Tai nghe Bluetooth chụp tai Sony WH-1000XM5', 6490000, 1),
 (16, 19, 40, 24, 'iPhone 13 128GB', 13390000, 1),
 (17, 20, 42, 23, 'Laptop ASUS Vivobook 15 X1504ZA-NJ517W', 13990000, 1),
-(18, 21, 46, 24, 'Tai nghe Bluetooth chụp tai Sony WH-1000XM5', 6490000, 1);
+(18, 21, 46, 24, 'Tai nghe Bluetooth chụp tai Sony WH-1000XM5', 6490000, 1),
+(19, 22, 49, 21, 'Loa tháp Samsung MX-T70', 4490000, 1),
+(20, 23, 49, 23, 'Loa tháp Samsung MX-T70', 4490000, 1),
+(21, 24, 39, 19, 'iPhone 16 Pro Max 256GB', 34090000, 1),
+(22, 25, 43, 23, 'Laptop Acer Gaming Aspire ', 13990000, 1),
+(23, 26, 44, 24, 'Tai nghe Bluetooth Apple AirPods 4', 10350000, 3),
+(24, 27, 41, 21, 'Laptop Lenovo IdeaPad Slim 5 14Q8X9 83HL000KVN', 45980000, 2),
+(25, 28, 40, 23, 'iPhone 13 128GB', 26780000, 2),
+(26, 29, 47, 23, 'Loa Bluetooth Edifier Hecate G200', 390000, 1),
+(27, 30, 38, 21, 'Samsung Galaxy S23', 27380000, 2),
+(28, 31, 41, 23, 'Laptop Lenovo IdeaPad Slim 5 14Q8X9 83HL000KVN', 45980000, 2),
+(29, 32, 40, 23, 'iPhone 13 128GB', 13390000, 1),
+(30, 33, 45, 23, 'Tai nghe Bluetooth True Wireless Anker Soundcore R50i A3949', 360000, 1),
+(31, 34, 44, 23, 'Tai nghe Bluetooth Apple AirPods 4', 6900000, 2),
+(32, 35, 46, 24, 'Tai nghe Bluetooth chụp tai Sony WH-1000XM5', 12980000, 2);
 
 -- --------------------------------------------------------
 
@@ -190,18 +224,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id_product`, `id_category`, `firms`, `name`, `price`, `amount`, `discount`, `description`, `img_product`, `censorship`, `view`, `created_at`, `updated_at`) VALUES
-(38, 3, 'Samsung', 'Samsung Galaxy S23', 13690000, 21, 0, 'Galaxy AI tiện ích - Khoanh vùng search đa năng, là trợ lý chỉnh ảnh, chat thông minh, phiên dịch trực tiếp', 'samsung-s23_1.webp', 0, 21, '2024-11-22 20:06:28', '2024-11-22 20:06:28'),
-(39, 3, 'Apple', 'iPhone 16 Pro Max 256GB', 34090000, 26, 0, 'Màn hình Super Retina XDR 6,9 inch lớn hơn có viền mỏng hơn, đem đến cảm giác tuyệt vời khi cầm trên tay.', 'iphone-16-pro-max.webp', 0, 5, '2024-11-22 21:12:54', '2024-11-22 21:12:54'),
-(40, 3, 'Apple', 'iPhone 13 128GB', 13390000, 43, 0, 'Hiệu năng vượt trội - Chip Apple A15 Bionic mạnh mẽ, hỗ trợ mạng 5G tốc độ cao', 'iphone-13_2_.webp', 0, 41, '2024-11-22 21:16:49', '2024-11-22 21:16:49'),
-(41, 5, 'Laptop Lenovo', 'Laptop Lenovo IdeaPad Slim 5 14Q8X9 83HL000KVN', 22990000, 36, 0, 'Laptop có màu xám thanh lịch, kiểu dáng mỏng nhẹ, dễ dàng mang theo khi di chuyển.', 'group_633_1_.webp', 0, 7, '2024-11-22 21:21:24', '2024-11-22 21:21:24'),
-(42, 5, 'ASUS', 'Laptop ASUS Vivobook 15 X1504ZA-NJ517W', 13990000, 30, 0, 'Màn hình FHD 15.6 inch với độ sáng 250 nits và độ phủ màu 45% NTSC, mang lại hình ảnh sắc nét và sống động', 'laptop-asus-vivobook-15x-oled-m3504ya-l1268w-thumbnails.webp', 0, 8, '2024-11-22 21:23:05', '2024-11-22 21:23:05'),
-(43, 5, 'Acer', 'Laptop Acer Gaming Aspire ', 13990000, 38, 0, 'CPU Intel Core i5-12450H dễ dàng xử lý mọi tác vụ làm việc học tập, làm việc thường ngày.', 'group_509_11__1.webp', 0, 2, '2024-11-22 21:27:10', '2024-11-22 21:27:10'),
-(44, 4, 'Apple', 'Tai nghe Bluetooth Apple AirPods 4', 3450000, 25, 0, 'Chip H2 nổi bật, mạnh mẽ được tích hợp trong Airpod 4 giúp trải nghiệm âm thanh của bạn mượt mà hơn.', 'apple-airpods-4-thumb.webp', 0, 10, '2024-11-22 21:29:27', '2024-11-22 21:29:27'),
-(45, 4, 'Soundcore ', 'Tai nghe Bluetooth True Wireless Anker Soundcore R50i A3949', 360000, 39, 0, 'Tai nghe không dây Anker Soundcore R50I-A3949 - Chất âm tốt, thiết kế sang trọng', 'tai-nghe-khong-day-anker-soundcore-r50i-a3949_2_.webp', 0, 7, '2024-11-22 21:31:40', '2024-11-22 21:31:40'),
-(46, 4, 'Sony', 'Tai nghe Bluetooth chụp tai Sony WH-1000XM5', 6490000, 45, 0, 'Công nghệ Auto NC Optimizer tự động khử tiếng ồn dựa theo môi trường', 'group_172_2.webp', 0, 13, '2024-11-22 21:34:32', '2024-11-22 21:34:32'),
-(47, 6, 'Edifier ', 'Loa Bluetooth Edifier Hecate G200', 390000, 30, 0, 'Màng loa kích thước lớn 40mm, giúp tái tạo âm thanh chất lượng cao, mạnh mẽ và sống động', 'loa-bluetooth-edifier-hecate-g200_2_.webp', 0, 18, '2024-11-22 21:36:44', '2024-11-22 21:36:44'),
+(38, 3, 'Samsung', 'Samsung Galaxy S23', 13690000, 21, 0, 'Galaxy AI tiện ích - Khoanh vùng search đa năng, là trợ lý chỉnh ảnh, chat thông minh, phiên dịch trực tiếp', 'samsung-s23_1.webp', 0, 22, '2024-11-22 20:06:28', '2024-11-22 20:06:28'),
+(39, 3, 'Apple', 'iPhone 16 Pro Max 256GB', 34090000, 26, 0, 'Màn hình Super Retina XDR 6,9 inch lớn hơn có viền mỏng hơn, đem đến cảm giác tuyệt vời khi cầm trên tay.', 'iphone-16-pro-max.webp', 0, 6, '2024-11-22 21:12:54', '2024-11-22 21:12:54'),
+(40, 3, 'Apple', 'iPhone 13 128GB', 13390000, 43, 0, 'Hiệu năng vượt trội - Chip Apple A15 Bionic mạnh mẽ, hỗ trợ mạng 5G tốc độ cao', 'iphone-13_2_.webp', 0, 43, '2024-11-22 21:16:49', '2024-11-22 21:16:49'),
+(41, 5, 'Laptop Lenovo', 'Laptop Lenovo IdeaPad Slim 5 14Q8X9 83HL000KVN', 22990000, 36, 0, 'Laptop có màu xám thanh lịch, kiểu dáng mỏng nhẹ, dễ dàng mang theo khi di chuyển.', 'group_633_1_.webp', 0, 12, '2024-11-22 21:21:24', '2024-11-22 21:21:24'),
+(42, 5, 'ASUS', 'Laptop ASUS Vivobook 15 X1504ZA-NJ517W', 13990000, 30, 0, 'Màn hình FHD 15.6 inch với độ sáng 250 nits và độ phủ màu 45% NTSC, mang lại hình ảnh sắc nét và sống động', 'laptop-asus-vivobook-15x-oled-m3504ya-l1268w-thumbnails.webp', 0, 13, '2024-11-22 21:23:05', '2024-11-22 21:23:05'),
+(43, 5, 'Acer', 'Laptop Acer Gaming Aspire ', 13990000, 38, 0, 'CPU Intel Core i5-12450H dễ dàng xử lý mọi tác vụ làm việc học tập, làm việc thường ngày.', 'group_509_11__1.webp', 0, 5, '2024-11-22 21:27:10', '2024-11-22 21:27:10'),
+(44, 4, 'Apple', 'Tai nghe Bluetooth Apple AirPods 4', 3450000, 25, 0, 'Chip H2 nổi bật, mạnh mẽ được tích hợp trong Airpod 4 giúp trải nghiệm âm thanh của bạn mượt mà hơn.', 'apple-airpods-4-thumb.webp', 0, 12, '2024-11-22 21:29:27', '2024-11-22 21:29:27'),
+(45, 4, 'Soundcore ', 'Tai nghe Bluetooth True Wireless Anker Soundcore R50i A3949', 360000, 39, 0, 'Tai nghe không dây Anker Soundcore R50I-A3949 - Chất âm tốt, thiết kế sang trọng', 'tai-nghe-khong-day-anker-soundcore-r50i-a3949_2_.webp', 0, 8, '2024-11-22 21:31:40', '2024-11-22 21:31:40'),
+(46, 4, 'Sony', 'Tai nghe Bluetooth chụp tai Sony WH-1000XM5', 6490000, 43, 0, 'Công nghệ Auto NC Optimizer tự động khử tiếng ồn dựa theo môi trường', 'group_172_2.webp', 0, 18, '2024-11-22 21:34:32', '2024-11-22 21:34:32'),
+(47, 6, 'Edifier ', 'Loa Bluetooth Edifier Hecate G200', 390000, 30, 0, 'Màng loa kích thước lớn 40mm, giúp tái tạo âm thanh chất lượng cao, mạnh mẽ và sống động', 'loa-bluetooth-edifier-hecate-g200_2_.webp', 0, 21, '2024-11-22 21:36:44', '2024-11-22 21:36:44'),
 (48, 6, 'Tronsmart ', 'Loa Bluetooth Tronsmart Groove 2', 630000, 33, 0, 'Thiết kế nhỏ gọn, tích hợp đèn LED cho trải nghiệm thêm sống động', 'group_218_3.webp', 0, 31, '2024-11-22 21:37:48', '2024-11-22 21:37:48'),
-(49, 6, 'Samsung', 'Loa tháp Samsung MX-T70', 4490000, 48, 0, 'Thưởng thức dải âm trầm mạnh mẽ, chất âm sống động với công suất lên đến 1500W', 'loa-thap-samsung-mx-t70-thumb.webp', 0, 262, '2024-11-22 21:39:38', '2024-11-22 21:39:38');
+(49, 6, 'Samsung', 'Loa tháp Samsung MX-T70', 4490000, 47, 0, 'Thưởng thức dải âm trầm mạnh mẽ, chất âm sống động với công suất lên đến 1500W', 'loa-thap-samsung-mx-t70-thumb.webp', 0, 278, '2024-11-22 21:39:38', '2024-11-22 21:39:38');
 
 -- --------------------------------------------------------
 
@@ -241,14 +275,14 @@ INSERT INTO `product_variant` (`id_product`, `id_variant`, `quantity`) VALUES
 (44, 23, 10),
 (45, 23, 18),
 (45, 24, 21),
-(46, 24, 30),
+(46, 24, 28),
 (46, 23, 15),
 (47, 23, 19),
 (47, 19, 11),
 (48, 23, 14),
 (48, 21, 9),
 (48, 24, 10),
-(49, 23, 35),
+(49, 23, 34),
 (49, 21, 13);
 
 -- --------------------------------------------------------
@@ -273,7 +307,10 @@ INSERT INTO `rates` (`id_rate`, `id_product`, `id_user`, `point`, `updated_at`) 
 (1, 49, 3, 4, '2024-12-09 06:16:27'),
 (7, 49, 4, 3, '2024-12-09 06:28:05'),
 (13, 42, 4, 1, '2024-12-09 06:37:50'),
-(17, 40, 4, 3, '2024-12-09 06:43:25');
+(17, 40, 4, 3, '2024-12-09 06:43:25'),
+(18, 49, 7, 5, '2024-12-10 22:03:30'),
+(19, 46, 7, 5, '2024-12-10 22:06:14'),
+(20, 42, 7, 5, '2024-12-10 22:10:16');
 
 -- --------------------------------------------------------
 
@@ -296,7 +333,11 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `email`, `password`, `role`, `day_registered`) VALUES
 (3, 'hoangnvph49147@fpt.edu.vn', 'ddb97b2aa7373d256bd254683c7c0e7a', 2, '2024-11-25 10:35:51'),
 (4, 'hoangnvph49147@gmail.com', 'f82e62d7c3ea69cc12b5cdb8d621dab6', 0, '2024-11-27 22:05:02'),
-(5, 'hoang@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 0, '2024-11-29 11:51:40');
+(5, 'hoang@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 0, '2024-11-29 11:51:40'),
+(6, 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', 2, '2024-12-10 15:01:47'),
+(7, 'a@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '2024-12-10 15:01:58'),
+(8, 'b@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '2024-12-11 09:41:01'),
+(9, 'c@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '2024-12-11 09:43:45');
 
 -- --------------------------------------------------------
 
@@ -407,7 +448,7 @@ ALTER TABLE `variant`
 -- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
-  MODIFY `id_bill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã đơn hàng', AUTO_INCREMENT=22;
+  MODIFY `id_bill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã đơn hàng', AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -419,19 +460,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int NOT NULL AUTO_INCREMENT COMMENT 'Mã bình luận', AUTO_INCREMENT=13;
+  MODIFY `id_comment` int NOT NULL AUTO_INCREMENT COMMENT 'Mã bình luận', AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id_customer` int NOT NULL AUTO_INCREMENT COMMENT 'Mã customer', AUTO_INCREMENT=5;
+  MODIFY `id_customer` int NOT NULL AUTO_INCREMENT COMMENT 'Mã customer', AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `detail_bills`
 --
 ALTER TABLE `detail_bills`
-  MODIFY `id_detailbill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết đơn hàng', AUTO_INCREMENT=19;
+  MODIFY `id_detailbill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết đơn hàng', AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -443,13 +484,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `rates`
 --
 ALTER TABLE `rates`
-  MODIFY `id_rate` int NOT NULL AUTO_INCREMENT COMMENT 'Mã đánh giá', AUTO_INCREMENT=18;
+  MODIFY `id_rate` int NOT NULL AUTO_INCREMENT COMMENT 'Mã đánh giá', AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT COMMENT 'Mã user', AUTO_INCREMENT=6;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT COMMENT 'Mã user', AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `variant`
