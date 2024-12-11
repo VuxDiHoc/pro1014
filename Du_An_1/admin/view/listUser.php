@@ -3,19 +3,19 @@ require_once 'layout/header.php';
 require_once 'layout/navbar.php';
 ?>
 
-<!-- Content Wrapper -->
+
 <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- Main Content -->
+ 
     <div id="content">
 
-        <!-- Topbar -->
+        
         <?php require_once 'layout/topbar.php' ?>
 
-        <!-- Begin Page Content -->
+        
         <div class="container-fluid">
 
-            <!-- Page Heading -->
+            
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
             </div>
             <!DOCTYPE html>
@@ -51,7 +51,7 @@ h1 {
 
 h1::after {
     content: '';
-    /* display: block; */
+    
     width: 80px;
     height: 4px;
     background-color: #3f72af;
@@ -178,17 +178,7 @@ td a:hover {
     transform: translateY(-3px);
 }
 
-/* Hiệu ứng Fade-in
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-} */
+
 
                 </style>
 

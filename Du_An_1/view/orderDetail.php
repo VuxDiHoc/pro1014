@@ -2,7 +2,6 @@
 <div class="container my-5">
     <h2 class="mb-4">Chi tiết đơn hàng</h2>
 
-    <!-- Thông tin cơ bản -->
     <div class="card">
         <div class="card-header">
             <strong>Mã đơn hàng:</strong> <?= $orderDetails[0]['id_bill'] ?>
@@ -14,7 +13,7 @@
             <p><strong>Ngày mua:</strong> <?= $orderDetails[0]['purchase_date'] ?></p>
             <p><strong>Trạng thái:</strong> <?= getOrderStatus($orderDetails[0]['status']) ?></p>
 
-            <?php if (in_array($orderDetails[0]['status'], [0, 1, 2])): ?>
+            <?php if (in_array($orderDetails[0]['status'], [0, 1])): ?>
                 <form method="post" action="?act=cancelOrder">
                     <input type="hidden" name="id_bill" value="<?= $orderDetails[0]['id_bill'] ?>">
                     <button type="submit" class="btn btn-danger" name="cancel" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')">Hủy đơn hàng</button>
@@ -23,7 +22,7 @@
         </div>
     </div>
 
-    <!-- Chi tiết sản phẩm -->
+    
     <h3 class="mt-4">Danh sách sản phẩm</h3>
     <table class="table">
         <thead>

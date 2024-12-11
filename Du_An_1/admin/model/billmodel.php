@@ -6,10 +6,17 @@ class billModel
     {
         $this->conn = connDBAss();
     }
-    function bill()
+    function bill($status = null)
     {
-        $sql = "SELECT * FROM bills order by id_bill desc";
-        return $this->conn->query($sql)->fetchAll();
+        if ($status !== null) {
+            $sql = "SELECT * FROM bills WHERE status = $status ORDER BY id_bill DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } else {
+            $sql = "SELECT * FROM bills ORDER BY id_bill DESC";
+            return $this->conn->query($sql)->fetchAll();
+        }
     }
     function findBillById($id)
     {
@@ -29,7 +36,7 @@ class billModel
     }
     function reduceQuantity($id)
     {
-        // Lấy chi tiết đơn hàng
+        
         $sql = "SELECT id_product, id_variant, quantity FROM detail_bills WHERE id_bill = $id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -40,12 +47,12 @@ class billModel
             $id_variant = $item['id_variant'];
             $quantity = $item['quantity'];
 
-            // Trừ số lượng trong bảng products
+            
             $sqlProduct = "UPDATE products SET amount = amount - $quantity WHERE id_product = $id_product";
             $stmtProduct = $this->conn->prepare($sqlProduct);
             $stmtProduct->execute();
 
-            // Trừ số lượng trong bảng product_variant
+            
             $sqlVariant = "UPDATE product_variant SET quantity = quantity - $quantity WHERE id_product = $id_product AND id_variant = $id_variant";
             $stmtVariant = $this->conn->prepare($sqlVariant);
             $stmtVariant->execute();

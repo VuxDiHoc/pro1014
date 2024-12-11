@@ -19,14 +19,6 @@ require_once __DIR__ . '/model/billmodel.php';
 require_once __DIR__ . '/controller/commentcontroller.php';
 require_once __DIR__ . '/model/commentmodel.php';
 
-// index.php
-
-// Bao gồm tệp chứa lớp CommentController
-
-
-// Tạo đối tượng CommentController
-
-// Các hành động tiếp theo...
 
 $act = $_GET['act'] ?? '/';
 $id_category = $_GET['id_category'] ?? null;
@@ -38,7 +30,7 @@ match ($act) {
     'insertProduct' => (new productController())->insert(),
     'updateProduct' => (new productController())->update($_GET['id']),
     'deleteProduct' => (new productController())->delete($_GET['id']),
-    'listProduct_variant' => (new productController())->listProduct_variant(),
+    'listProduct_variant' => (new productController())->listProduct_variant($_GET['id']),
     'updateProduct_variant' => (new productController())->updateProduct_variant($_GET['id_pro'], $_GET['id_var']),
     'deleteProduct_variant' => (new productController())->deleteProduct_variant($_GET['id_pro'], $_GET['id_var']),
     'listBill' => (new billController())->listBill(),
@@ -57,6 +49,7 @@ match ($act) {
     'deleteUser' => (new UserController())->deleteUser($id_user),
     'listthongkesl' => (new thongkeslController())->listThongkesl(),
     'bieudosl' => (new thongkeslController())->bieudosl(),
+    'bieudodt' => (new thongkedtController())->bieudodt(),
     'listthongkedt' => (new thongkedtController())->listThongkedt(),
     'listComments' => (new CommentController())->listComments(),
     'toggleCensorship' => (new CommentController())->toggleCensorship($_GET['id'], $_GET['status']),

@@ -2,23 +2,19 @@
 require_once 'layout/header.php';
 require_once 'layout/navbar.php';
 ?>
-<!-- Content Wrapper -->
+
 <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- Main Content -->
     <div id="content">
 
-        <!-- Topbar -->
         <?php require_once 'layout/topbar.php' ?>
 
-        <!-- Begin Page Content -->
         <div class="container-fluid">
-            <!-- Page Heading -->
+
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Chi tiết đơn hàng</h1>
             </div>
 
-            <!-- Content Row -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Thông tin sản phẩm trong đơn hàng</h6>
@@ -64,7 +60,6 @@ require_once 'layout/navbar.php';
                 </div>
             </div>
 
-            <!-- Status Update -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Cập nhật trạng thái đơn hàng</h6>
@@ -75,10 +70,15 @@ require_once 'layout/navbar.php';
                             <label for="status" class="form-label">Trạng thái</label>
                             <select class="form-control" id="status" name="status">
                                 <?php foreach ($statusDescriptions as $key => $value): ?>
-                                    <option value="<?= $key ?>" <?= $key == $status ? 'selected' : '' ?>>
-                                        <?= $value ?>
-                                    </option>
+                                    <?php if ($key >= $status):?>
+                                        <option value="<?= $key ?>" <?= $key == $status ? 'selected' : '' ?>>
+                                            <?= $value ?>
+                                        </option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
+                                <?php if ($status > 5):?>
+                                    <option value="6">Đã hủy</option>
+                                <?php endif;?>
                             </select>
                         </div>
                         <button type="submit" name="btn_update" class="btn btn-primary mt-3">Cập nhật</button>
@@ -86,10 +86,10 @@ require_once 'layout/navbar.php';
                 </div>
             </div>
         </div>
-        <!-- /.container-fluid -->
+
 
     </div>
-    <!-- End of Main Content -->
+
     <?php
     require_once 'layout/scripts.php';
     require_once 'layout/footer.php';

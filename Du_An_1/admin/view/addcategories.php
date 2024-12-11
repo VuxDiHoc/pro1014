@@ -4,12 +4,12 @@ require_once 'view/layout/navbar.php';
 ?>
 
 <div class="container-fluid">
-<!-- Topbar -->
+
 <?php require_once 'layout/topbar.php'?>
-    <!-- Page Heading -->
+    
     <h1 class="h3 mb-2 text-gray-800">THÊM DANH MỤC</h1>
     
-    <!-- DataTales Example -->
+    
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">

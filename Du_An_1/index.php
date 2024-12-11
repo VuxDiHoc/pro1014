@@ -5,15 +5,12 @@ if (isset($_SESSION['Message'])) {
     unset($_SESSION['Message']);
     echo "<script>alert('$successMessage');</script>";
 }
-// Include các tệp cần thiết
-// require_once 'commons/helpers.php';
-// require_once 'controller/admincontroller.php';
+
 require_once 'controller/cartcontroller.php';
 require_once 'controller/profilecontroller.php';
 require_once 'controller/maincontroller.php';
 require_once 'controller/aboutcontroller.php';
 require_once 'controller/shopcontroller.php';
-require_once 'controller/contactcontroller.php';
 require_once 'controller/shop-singleController.php';
 require_once 'controller/orderController.php';
 require_once 'controller/payController.php';
@@ -32,14 +29,14 @@ if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
 $act = $_GET['act'] ?? '/';
 $action = $_GET['action'] ?? '';
 
-// Xử lý các route chính của ứng dụng
+
 match ($act) {
     '/' => (new trang_chu())->trang_chu(),
     'about' => (new aboutController())->about(),
     'shop' => (new shopController())->allProduct(),
     'shop_cat' => (new shopController())->cat_pro($_GET['id']),
     'shop_single' => (new detailController())->detail($_GET['id']),
-    'contact' => (new contactController())->contact(),
+    'addRating'=>(new detailController())->addRating(),
     'cart' => (new cartController())->cart(),
     'login' => (new LoginController())->login(),
     'logout' => (new LogoutController())->logout(),

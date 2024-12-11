@@ -4,7 +4,7 @@ class thongkedtModel
     public $conn;
     function __construct()
     {
-        $this->conn = connDBAss(); // Đảm bảo hàm connDBAss() tồn tại và kết nối thành công.
+        $this->conn = connDBAss(); 
     }
     function thongkedt()
 {
@@ -12,8 +12,8 @@ class thongkedtModel
         SELECT 
             categories.id_category AS id_category, 
             categories.name_cat AS name_cat, 
-            SUM(products.amount) AS total_quantity, -- Tổng số lượng sản phẩm còn trong kho
-            SUM(detail_bills.price) AS total_revenue -- Tổng doanh thu
+            SUM(products.amount) AS total_quantity, 
+            SUM(detail_bills.price) AS total_revenue 
         FROM 
             products
         LEFT JOIN 
@@ -23,7 +23,7 @@ class thongkedtModel
         LEFT JOIN 
             detail_bills
         ON 
-            products.id_product = detail_bills.id_product -- Giả sử hai bảng liên kết qua id_product
+            products.id_product = detail_bills.id_product 
         GROUP BY 
             categories.id_category, 
             categories.name_cat
