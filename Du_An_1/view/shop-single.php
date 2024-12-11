@@ -45,7 +45,7 @@
                                 }
                             }
                             ?>
-                            <span class="list-inline-item text-dark"><?= $avgRating ?></span>
+                            <span class="list-inline-item text-dark"><?= round($avgRating,1) ?></span>
                         </p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
@@ -142,7 +142,7 @@
                             }
                             ?>
                         </div>
-                        <span class="text-muted">(<?= $avgRating ?> / 5 từ <?= $totalRatings ?> đánh giá)</span>
+                        <span class="text-muted">(<?= round($avgRating, 1) ?> / 5 từ <?= $totalRatings ?> đánh giá)</span>
                     </div>
 
                     

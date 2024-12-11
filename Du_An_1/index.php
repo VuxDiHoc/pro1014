@@ -11,7 +11,6 @@ require_once 'controller/profilecontroller.php';
 require_once 'controller/maincontroller.php';
 require_once 'controller/aboutcontroller.php';
 require_once 'controller/shopcontroller.php';
-require_once 'controller/contactcontroller.php';
 require_once 'controller/shop-singleController.php';
 require_once 'controller/orderController.php';
 require_once 'controller/payController.php';
@@ -38,7 +37,6 @@ match ($act) {
     'shop_cat' => (new shopController())->cat_pro($_GET['id']),
     'shop_single' => (new detailController())->detail($_GET['id']),
     'addRating'=>(new detailController())->addRating(),
-    'contact' => (new contactController())->contact(),
     'cart' => (new cartController())->cart(),
     'login' => (new LoginController())->login(),
     'logout' => (new LogoutController())->logout(),
