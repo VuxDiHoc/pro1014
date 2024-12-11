@@ -17,7 +17,6 @@ require_once 'controller/registercontroller.php';
 
 $act = $_GET['act'] ?? '/';
 $action = $_GET['action'] ?? '';
-
 // Xử lý các action của comment riêng biệt
 if (!empty($action)) {
     $commentController = new CommentController();
@@ -32,7 +31,6 @@ if (!empty($action)) {
         default => null,
     };
 }
-
 // Xử lý các route chính của ứng dụng
 match ($act) {
     '/' => (new trang_chu())->trang_chu(),

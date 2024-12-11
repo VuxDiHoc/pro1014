@@ -42,6 +42,5 @@ class billController
                 echo "Sửa thất bại";
             }
         }
-    }
-    
+    }   
 }

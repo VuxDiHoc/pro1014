@@ -1,4 +1,4 @@
-// CommentModel.php
+
 <?php
 class CommentModel {
     public function getAllComments($productId) {

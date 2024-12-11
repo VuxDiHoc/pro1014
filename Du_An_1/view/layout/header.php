@@ -81,10 +81,9 @@ https://templatemo.com/tm-559-zay-shop
                             <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                     <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                    <?php echo $_SESSION['user']['fullname']; ?>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
+                                    <li><a class="dropdown-item" href="?act=listcustomers">Hồ sơ</a></li>
                                     <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
                                 </ul>
                             </div>
