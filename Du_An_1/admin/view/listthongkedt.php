@@ -47,11 +47,11 @@ require_once 'layout/navbar.php';
                     <tbody>
     <?php
     foreach ($thongkesk as $key => $value) {
-        // Giả sử tổng doanh thu được chia đều
-        $daily_revenue = $value['total_revenue'] / 365; // Doanh thu ngày
-        $weekly_revenue = $daily_revenue * 7; // Doanh thu tuần
-        $monthly_revenue = $daily_revenue * 30; // Doanh thu tháng
-        $yearly_revenue = $value['total_revenue']; // Doanh thu năm bằng tổng doanh thu
+       
+        $daily_revenue = $value['total_revenue'] / 365; 
+        $weekly_revenue = $daily_revenue * 7; 
+        $monthly_revenue = $daily_revenue * 30; 
+        $yearly_revenue = $value['total_revenue']; 
 
         ?>
         <tr>
