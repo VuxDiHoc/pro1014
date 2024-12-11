@@ -8,39 +8,37 @@ class billController
     }
     function listBill()
     {
-        $bills = $this->billModel->bill();
-        $statusDescriptions = [
-            0 => 'Đang xử lý',
-            1 => 'Đã xử lý',
-            2 => 'Đang đóng gói và vận chuyển',
-            3 => 'Đang vận chuyển đến người nhận',
-            4 => 'Nhận hàng thành công',
-            5 => 'User từ chối nhận hàng',
-            6 => 'User hủy đơn'
-        ];
+        $status = isset($_GET['status']) && $_GET['status'] !== '' ? $_GET['status'] : null;
+        $bills = $this->billModel->bill($status);
+        require_once "../commons/function.php";
         require_once "view/listBill.php";
     }
-    function updateBill($id){
+    function updateBill($id)
+    {
         $bills = $this->billModel->bill();
         $oneBill = $this->billModel->findBillById($id);
-        $status = $this->billModel->billStatus($id);
+        $status = $this->billModel->billStatus($id)['status'];
         $statusDescriptions = [
-            0 => 'Đang xử lý',
-            1 => 'Đã xử lý',
-            2 => 'Đang đóng gói và vận chuyển',
-            3 => 'Đang vận chuyển đến người nhận',
-            4 => 'Nhận hàng thành công',
-            5 => 'User từ chối nhận hàng',
-            6 => 'User hủy đơn'
+            0 => "Chờ xác nhận",
+            1 => "Đã xác nhận",
+            2 => "Chờ lấy hàng",
+            3 => "Đang vận chuyển",
+            4 => "Đang hoàn trả hàng",
+            5 => "Giao hàng thành công",
         ];
+        require_once "../commons/function.php";
         require_once "view/updateBill.php";
         if (isset($_POST['btn_update'])) {
-            $status = $_POST['status'];
-            if ($this->billModel->updateBill($status,$id)) {
+            $newStatus = $_POST['status']; // Lấy trạng thái mới từ form           
+            if ($newStatus == 5 && $status != 5) { // Trạng thái chuyển thành 'Giao hàng thành công'
+                $this->billModel->reduceQuantity($id);
+            }
+            if ($this->billModel->updateBill($newStatus, $id)) {
                 header("Location:?act=listBill");
             } else {
                 echo "Sửa thất bại";
             }
+
         }
     }   
 }
