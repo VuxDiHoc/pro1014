@@ -42,6 +42,7 @@ class detailController
                 $_SESSION['Message'] = "Bạn chỉ có thể bình luận 2 lần cho sản phẩm này.";
                 exit();
             }
+            $_SESSION['Message'] = "Cảm ơn bạn đã bình luận!";
             $this->detailModel->addComment($id_pro, $id_user, $content);
             exit();
         }
@@ -49,13 +50,18 @@ class detailController
     function addRating()
     {
         if (isset($_POST['rating']) && isset($_POST['id_pro'])) {
-            if (!$this->detailModel->hasPurchasedProduct($id_user, $id_pro)) {
-                $_SESSION['Message'] = "Bạn cần mua sản phẩm này để có thể đánh giá.";
+            if (!isset($_SESSION['user'])) {
+                $_SESSION['Message'] = "Bạn cần đăng nhập để đánh giá";
                 exit();
             }
             $point = (int) $_POST['rating'];
             $id_user = $_SESSION['user']['id_user'];
             $id_pro = $_POST['id_pro'];
+            if (!$this->detailModel->hasPurchasedProduct($id_user, $id_pro)) {
+                $_SESSION['Message'] = "Bạn cần mua sản phẩm này để có thể đánh giá.";
+                exit();
+            }
+            $_SESSION['Message'] = "Cảm ơn bạn đã đánh giá!";
             $this->detailModel->addRating($id_pro, $id_user, $point);
             exit();
         }
