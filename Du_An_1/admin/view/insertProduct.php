@@ -2,24 +2,24 @@
 require_once 'layout/header.php';
 require_once 'layout/navbar.php';
 ?>
-<!-- Content Wrapper -->
+
 <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- Main Content -->
+    
     <div id="content">
 
-        <!-- Topbar -->
+        
         <?php require_once 'layout/topbar.php' ?>
 
-        <!-- Begin Page Content -->
+       
         <div class="container-fluid">
 
-            <!-- Page Heading -->
+            
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Thêm sản phẩm</h1>
             </div>
 
-            <!-- Content Row -->
+            
             <div class="row-cols-auto">
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
@@ -62,7 +62,7 @@ require_once 'layout/navbar.php';
                     <div class="variant-section mb-4 p-4 border rounded">
                         <h5 class="mb-3 text-primary">Biến thể sản phẩm</h5>
 
-                        <!-- Màu sắc -->
+                        
                         <div class="mb-3">
                             <label for="variant_color" class="form-label">Màu sắc</label>
                             <select class="form-select" id="variant_color" name="variant_color[]">
@@ -76,7 +76,7 @@ require_once 'layout/navbar.php';
                             </select>
                         </div>
 
-                        <!-- Số lượng -->
+                        
                         <div class="mb-3">
                             <label for="variant_quantity" class="form-label">Số lượng</label>
                             <input class="form-control" type="number" id="variant_quantity" name="variant_quantity[]"
@@ -84,9 +84,9 @@ require_once 'layout/navbar.php';
                         </div>
                         
                     </div>
-                    <!-- Khu vực chứa các biến thể -->
+                    
                     <div id="variantContainer"></div>
-                    <!-- Nút Thêm biến thể -->
+                    
                     <div class="mb-3">
                             <button class="btn btn-info" type="button" id="addVariant">Thêm biến thể</button>
                         </div>
@@ -97,10 +97,10 @@ require_once 'layout/navbar.php';
 
 
         </div>
-        <!-- /.container-fluid -->
+        
 
     </div>
-    <!-- End of Main Content -->
+    
     <script>
         document.getElementById('addVariant').addEventListener('click', function () {
             var variantContainer = document.getElementById('variantContainer');

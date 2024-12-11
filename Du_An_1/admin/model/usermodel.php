@@ -1,7 +1,7 @@
 <?php
-// usermodel.php
 
-require_once __DIR__ . '/../../commons/function.php'; // Include your database connection file
+
+require_once __DIR__ . '/../../commons/function.php'; 
 
 class UserModel
 {
@@ -32,5 +32,5 @@ class UserModel
         $stmt->execute();
     }
 
-    // Add more methods for updateUser as needed
+   
 }

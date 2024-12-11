@@ -29,8 +29,8 @@ class billController
         require_once "../commons/function.php";
         require_once "view/updateBill.php";
         if (isset($_POST['btn_update'])) {
-            $newStatus = $_POST['status']; // Lấy trạng thái mới từ form           
-            if ($newStatus == 5 && $status != 5) { // Trạng thái chuyển thành 'Giao hàng thành công'
+            $newStatus = $_POST['status'];           
+            if ($newStatus == 5 && $status != 5) { 
                 $this->billModel->reduceQuantity($id);
             }
             if ($this->billModel->updateBill($newStatus, $id)) {

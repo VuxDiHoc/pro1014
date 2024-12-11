@@ -82,10 +82,10 @@ require_once 'layout/navbar.php';
                  
             </div>
              
-        <!-- /.container-fluid -->
+        
 
     </div>
-    <!-- End of Main Content -->
+    
 
     <?php
     require_once 'layout/scripts.php';

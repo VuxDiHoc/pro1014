@@ -24,10 +24,7 @@ Hãy khám phá thế giới công nghệ cùng HiTech ngay hôm nay!
             </div>
         </div>
     </section>
-    <!-- <div >
-                    <img src="assets/img/about-hero.svg" alt="About Hero">
-                </div> -->
-    <!-- Close Banner -->
+    
 
     
 

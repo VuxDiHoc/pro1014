@@ -5,23 +5,13 @@ class shopController{
     {
         $this->shopModel = new shopModel();
     }
-    // function allProduct()
-    // {
-    //     if (isset($_POST['search'])) {
-    //         $product = $this->shopModel->searchProducts($_POST['search']);
-    //     } else {
-    //         $product = $this->shopModel->allProduct();
-    //     }
-    //     $category = $this->shopModel->allCategory();
-    //     require_once 'view/shop.php';
-    // }
+    
     function allProduct() {
         if (isset($_POST['search']) && !empty($_POST['search'])) {
-            $search = $_POST['search']; // Lấy dữ liệu tìm kiếm từ form
-            // Gọi phương thức tìm kiếm sản phẩm trong model
+            $search = $_POST['search'];
             $product = $this->shopModel->searchProducts($search); 
         } else {
-            $product = $this->shopModel->allProduct(); // Lấy tất cả sản phẩm nếu không tìm kiếm
+            $product = $this->shopModel->allProduct();
         }
         $category = $this->shopModel->allCategory();
         require_once 'view/shop.php';

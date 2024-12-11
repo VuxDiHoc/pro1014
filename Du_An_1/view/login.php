@@ -73,7 +73,7 @@
             const emailError = document.getElementById('emailError');
             const passwordError = document.getElementById('passwordError');
 
-            // Xóa thông báo lỗi cũ
+
             emailError.textContent = '';
             passwordError.textContent = '';
 
