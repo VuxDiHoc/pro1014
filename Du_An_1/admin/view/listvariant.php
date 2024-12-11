@@ -3,35 +3,23 @@ require_once 'layout/header.php';
 require_once 'layout/navbar.php';
 ?>
 
-
-
-<!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- Main Content -->
     <div id="content">
 
-        <!-- Topbar -->
         <?php require_once 'layout/topbar.php'?>
 
-        <!-- Begin Page Content -->
         <div class="container-fluid">
 
-            <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
             </div>
 
-            <!-- Content Row -->
             <div class="row">
-                <!-- code ở đây -->
-                 
-
+             
 <div class="container-fluid">
 
-<!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">DANH SÁCH BIẾN THỂ</h1>
 
-<!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
@@ -48,8 +36,8 @@ require_once 'layout/navbar.php';
                     <tr>
                     <?php
                         foreach ($variants as $variant) {
-                            extract($variant); // Lấy các biến từ mảng như id, name
-                            $suabt = "index.php?act=updatevariant&id_variant=".$id_variant; // Sử dụng biến $id từ $variant
+                            extract($variant); 
+                            $suabt = "index.php?act=updatevariant&id_variant=".$id_variant; 
                             $xoabt = "index.php?act=deletevariant&id_variant=".$id_variant;
 
                             echo '

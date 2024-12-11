@@ -19,14 +19,6 @@ require_once __DIR__ . '/model/billmodel.php';
 require_once __DIR__ . '/controller/commentcontroller.php';
 require_once __DIR__ . '/model/commentmodel.php';
 
-// index.php
-
-// Bao gồm tệp chứa lớp CommentController
-
-
-// Tạo đối tượng CommentController
-
-// Các hành động tiếp theo...
 
 $act = $_GET['act'] ?? '/';
 $id_category = $_GET['id_category'] ?? null;

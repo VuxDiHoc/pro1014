@@ -2,27 +2,15 @@
 require_once 'layout/header.php';
 require_once 'layout/navbar.php';
 ?>
-
-<!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
-
-    <!-- Main Content -->
     <div id="content">
-
-        <!-- Topbar -->
         <?php require_once 'layout/topbar.php'?>
-
-        <!-- Begin Page Content -->
         <div class="container-fluid">
-
-            <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-2 text-gray-800">THỐNG KÊ SỐ LƯỢNG SẢN PHẨM</h1>
             </div>
 
-            <!-- Content Row -->
             <div class="row">
-                <!-- Product Statistics Table -->
                 <div class="container-fluid">
                     <h1 class="h3 mb-2 text-gray-800">BIỂU ĐỒ</h1>
                     <div id="piechart"></div>
@@ -31,11 +19,11 @@ require_once 'layout/navbar.php';
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
                 <script type="text/javascript">
-                    // Load google charts
+                   
                     google.charts.load('current', {'packages':['corechart', 'bar']});
                     google.charts.setOnLoadCallback(drawChart);
 
-                    // Draw the chart and set the chart values
+                    
                     function drawChart() {
                         var data = google.visualization.arrayToDataTable([
                             ['Danh mục', 'Số lượng sản phẩm', 'Số lượng đã bán'],
@@ -47,7 +35,7 @@ require_once 'layout/navbar.php';
                             ?>
                         ]);
 
-                        // Set chart options
+                       
                         var options = {
                             title: 'Số lượng sản phẩm theo danh mục',
                             chartArea: {width: '40%'},
@@ -63,7 +51,7 @@ require_once 'layout/navbar.php';
                                 slantedText: true,
                                 slantedTextAngle: 0
                             },
-                            colors: ['#4CAF50', '#FF9800'], // Change color for in-stock and sold quantities
+                            colors: ['#4CAF50', '#FF9800'], 
                             backgroundColor: '#f4f4f4',
                             is3D: true,
                             animation: {
@@ -75,7 +63,7 @@ require_once 'layout/navbar.php';
                             legend: {position: 'top', alignment: 'end'}
                         };
 
-                        // Draw the chart
+                        
                         var chart = new google.visualization.ColumnChart(document.getElementById('piechart'));
                         chart.draw(data, options);
                     }
@@ -83,10 +71,10 @@ require_once 'layout/navbar.php';
 
             </div>
              
-        <!-- /.container-fluid -->
+       
 
     </div>
-    <!-- End of Main Content -->
+   
 
     <?php
     require_once 'layout/scripts.php';

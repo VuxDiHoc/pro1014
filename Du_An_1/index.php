@@ -5,9 +5,7 @@ if (isset($_SESSION['Message'])) {
     unset($_SESSION['Message']);
     echo "<script>alert('$successMessage');</script>";
 }
-// Include các tệp cần thiết
-// require_once 'commons/helpers.php';
-// require_once 'controller/admincontroller.php';
+
 require_once 'controller/cartcontroller.php';
 require_once 'controller/profilecontroller.php';
 require_once 'controller/maincontroller.php';
@@ -32,7 +30,7 @@ if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
 $act = $_GET['act'] ?? '/';
 $action = $_GET['action'] ?? '';
 
-// Xử lý các route chính của ứng dụng
+
 match ($act) {
     '/' => (new trang_chu())->trang_chu(),
     'about' => (new aboutController())->about(),
