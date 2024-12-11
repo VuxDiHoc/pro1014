@@ -11,7 +11,6 @@ require_once 'controller/profilecontroller.php';
 require_once 'controller/maincontroller.php';
 require_once 'controller/aboutcontroller.php';
 require_once 'controller/shopcontroller.php';
-require_once 'controller/contactcontroller.php';
 require_once 'controller/shop-singleController.php';
 require_once 'controller/orderController.php';
 require_once 'controller/payController.php';
