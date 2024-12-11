@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 23, 2024 at 09:17 AM
+-- Generation Time: Dec 02, 2024 at 11:43 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -33,9 +33,18 @@ CREATE TABLE `bills` (
   `receiver_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên người nhận',
   `receiver_phone` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Số điện thoại người nhận',
   `receiver_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Địa chỉ người nhận',
-  `status` tinyint NOT NULL DEFAULT '0' COMMENT 'Trạng thái của đơn hàng. \r\n- 0 là đang xử lý, \r\n-1 là đã xử lý, \r\n- 2 là đang đóng gói và vận chuyển, \r\n- 3 là đang vận chuyển đến người nhận,\r\n- 4 là nhận hàng thành công, \r\n- 5 là user từ chối nhận hàng\r\n- 6 là user hủy đơn',
+  `status` tinyint NOT NULL DEFAULT '0' COMMENT '0 => "Chờ xác nhận",\r\n        1 => "Đã xác nhận",\r\n        2 => "Chờ lấy hàng",\r\n        3 => "Đang vận chuyển",\r\n        4 => "Đang hoàn trả hàng",\r\n        5 => "Giao hàng thành công",\r\n        6 => "Đã hủy",',
   `purchase_date` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày mua '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bills`
+--
+
+INSERT INTO `bills` (`id_bill`, `id_customer`, `receiver_name`, `receiver_phone`, `receiver_address`, `status`, `purchase_date`) VALUES
+(12, 2, 'hoang', '0988765678', 'ha noi', 5, '2024-11-29 15:58:07'),
+(14, 2, 'hoang', '0988765678', 'ha noi', 5, '2024-12-02 17:47:01'),
+(15, 2, 'hoang', '0988765678', 'ha noi', 0, '2024-12-02 18:39:54');
 
 -- --------------------------------------------------------
 
@@ -75,6 +84,20 @@ CREATE TABLE `comments` (
   `day_post` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày tạo '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id_comment`, `id_product`, `id_user`, `content`, `censorship`, `day_post`) VALUES
+(1, 49, 3, 'hay', 0, '2024-11-25 17:44:39'),
+(3, 49, 3, 'Máy tính mans', 0, '2024-11-25 20:49:48'),
+(4, 49, 3, 'Máy tính mans', 0, '2024-11-25 20:49:52'),
+(5, 49, 3, 'anh', 0, '2024-11-25 20:53:21'),
+(6, 49, 3, '1', 0, '2024-11-25 20:54:50'),
+(7, 49, 3, 'Máy tính 51', 0, '2024-11-26 16:58:04'),
+(8, 49, 3, 'g', 0, '2024-11-26 17:33:25'),
+(9, 48, 3, 'haha', 0, '2024-11-28 23:06:57');
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +113,15 @@ CREATE TABLE `customers` (
   `note` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ghi chú(nếu có)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id_customer`, `id_user`, `full_name`, `phone`, `address`, `note`) VALUES
+(2, 3, 'hoang', '0988765678', 'ha noi', NULL),
+(3, 4, 'hoanght', '', '', NULL),
+(4, 5, 'hello', '', '', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -100,10 +132,21 @@ CREATE TABLE `detail_bills` (
   `id_detailbill` int NOT NULL COMMENT 'Mã chi tiết đơn hàng',
   `id_bill` int NOT NULL COMMENT 'Mã đơn hàng',
   `id_product` int NOT NULL COMMENT 'Mã sản phẩm',
+  `id_variant` int NOT NULL COMMENT 'Mã biến thể',
   `name_product` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tên của sản phẩm',
   `price` int UNSIGNED NOT NULL COMMENT 'Giá của sản phẩm ',
   `quantity` int UNSIGNED NOT NULL COMMENT 'Số lượng sản phẩm'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `detail_bills`
+--
+
+INSERT INTO `detail_bills` (`id_detailbill`, `id_bill`, `id_product`, `id_variant`, `name_product`, `price`, `quantity`) VALUES
+(9, 12, 38, 24, 'Sam sung', 20000, 3),
+(10, 14, 49, 23, 'Loa tháp Samsung MX-T70', 4490000, 1),
+(11, 14, 49, 21, 'Loa tháp Samsung MX-T70', 4490000, 1),
+(12, 15, 42, 24, 'Laptop ASUS Vivobook 15 X1504ZA-NJ517W', 27980000, 2);
 
 -- --------------------------------------------------------
 
@@ -132,18 +175,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id_product`, `id_category`, `firms`, `name`, `price`, `amount`, `discount`, `description`, `img_product`, `censorship`, `view`, `created_at`, `updated_at`) VALUES
-(38, 3, 'Samsung', 'Samsung Galaxy S23', 13690000, 26, 0, 'Galaxy AI tiện ích - Khoanh vùng search đa năng, là trợ lý chỉnh ảnh, chat thông minh, phiên dịch trực tiếp', 'samsung-s23_1.webp', 0, 0, '2024-11-22 20:06:28', '2024-11-22 20:06:28'),
-(39, 3, 'Apple', 'iPhone 16 Pro Max 256GB', 34090000, 27, 0, 'Màn hình Super Retina XDR 6,9 inch lớn hơn có viền mỏng hơn, đem đến cảm giác tuyệt vời khi cầm trên tay.', 'iphone-16-pro-max.webp', 0, 0, '2024-11-22 21:12:54', '2024-11-22 21:12:54'),
-(40, 3, 'Apple', 'iPhone 13 128GB', 13390000, 43, 0, 'Hiệu năng vượt trội - Chip Apple A15 Bionic mạnh mẽ, hỗ trợ mạng 5G tốc độ cao', 'iphone-13_2_.webp', 0, 0, '2024-11-22 21:16:49', '2024-11-22 21:16:49'),
-(41, 5, 'Laptop Lenovo', 'Laptop Lenovo IdeaPad Slim 5 14Q8X9 83HL000KVN', 22990000, 36, 0, 'Laptop có màu xám thanh lịch, kiểu dáng mỏng nhẹ, dễ dàng mang theo khi di chuyển.', 'group_633_1_.webp', 0, 0, '2024-11-22 21:21:24', '2024-11-22 21:21:24'),
-(42, 5, 'ASUS', 'Laptop ASUS Vivobook 15 X1504ZA-NJ517W', 13990000, 30, 0, 'Màn hình FHD 15.6 inch với độ sáng 250 nits và độ phủ màu 45% NTSC, mang lại hình ảnh sắc nét và sống động', 'laptop-asus-vivobook-15x-oled-m3504ya-l1268w-thumbnails.webp', 0, 0, '2024-11-22 21:23:05', '2024-11-22 21:23:05'),
-(43, 5, 'Acer', 'Laptop Acer Gaming Aspire ', 13990000, 39, 0, 'CPU Intel Core i5-12450H dễ dàng xử lý mọi tác vụ làm việc học tập, làm việc thường ngày.', 'group_509_11__1.webp', 0, 0, '2024-11-22 21:27:10', '2024-11-22 21:27:10'),
-(44, 4, 'Apple', 'Tai nghe Bluetooth Apple AirPods 4', 3450000, 25, 0, 'Chip H2 nổi bật, mạnh mẽ được tích hợp trong Airpod 4 giúp trải nghiệm âm thanh của bạn mượt mà hơn.', 'apple-airpods-4-thumb.webp', 0, 0, '2024-11-22 21:29:27', '2024-11-22 21:29:27'),
-(45, 4, 'Soundcore ', 'Tai nghe Bluetooth True Wireless Anker Soundcore R50i A3949', 360000, 39, 0, 'Tai nghe không dây Anker Soundcore R50I-A3949 - Chất âm tốt, thiết kế sang trọng', 'tai-nghe-khong-day-anker-soundcore-r50i-a3949_2_.webp', 0, 0, '2024-11-22 21:31:40', '2024-11-22 21:31:40'),
-(46, 4, 'Sony', 'Tai nghe Bluetooth chụp tai Sony WH-1000XM5', 6490000, 46, 0, 'Công nghệ Auto NC Optimizer tự động khử tiếng ồn dựa theo môi trường', 'group_172_2.webp', 0, 0, '2024-11-22 21:34:32', '2024-11-22 21:34:32'),
-(47, 6, 'Edifier ', 'Loa Bluetooth Edifier Hecate G200', 390000, 30, 0, 'Màng loa kích thước lớn 40mm, giúp tái tạo âm thanh chất lượng cao, mạnh mẽ và sống động', 'loa-bluetooth-edifier-hecate-g200_2_.webp', 0, 0, '2024-11-22 21:36:44', '2024-11-22 21:36:44'),
-(48, 6, 'Tronsmart ', 'Loa Bluetooth Tronsmart Groove 2', 630000, 33, 0, 'Thiết kế nhỏ gọn, tích hợp đèn LED cho trải nghiệm thêm sống động', 'group_218_3.webp', 0, 0, '2024-11-22 21:37:48', '2024-11-22 21:37:48'),
-(49, 6, 'Samsung', 'Loa tháp Samsung MX-T70', 4490000, 52, 0, 'Thưởng thức dải âm trầm mạnh mẽ, chất âm sống động với công suất lên đến 1500W', 'loa-thap-samsung-mx-t70-thumb.webp', 0, 0, '2024-11-22 21:39:38', '2024-11-22 21:39:38');
+(38, 3, 'Samsung', 'Samsung Galaxy S23', 13690000, 21, 0, 'Galaxy AI tiện ích - Khoanh vùng search đa năng, là trợ lý chỉnh ảnh, chat thông minh, phiên dịch trực tiếp', 'samsung-s23_1.webp', 0, 11, '2024-11-22 20:06:28', '2024-11-22 20:06:28'),
+(39, 3, 'Apple', 'iPhone 16 Pro Max 256GB', 34090000, 26, 0, 'Màn hình Super Retina XDR 6,9 inch lớn hơn có viền mỏng hơn, đem đến cảm giác tuyệt vời khi cầm trên tay.', 'iphone-16-pro-max.webp', 0, 3, '2024-11-22 21:12:54', '2024-11-22 21:12:54'),
+(40, 3, 'Apple', 'iPhone 13 128GB', 13390000, 43, 0, 'Hiệu năng vượt trội - Chip Apple A15 Bionic mạnh mẽ, hỗ trợ mạng 5G tốc độ cao', 'iphone-13_2_.webp', 0, 33, '2024-11-22 21:16:49', '2024-11-22 21:16:49'),
+(41, 5, 'Laptop Lenovo', 'Laptop Lenovo IdeaPad Slim 5 14Q8X9 83HL000KVN', 22990000, 36, 0, 'Laptop có màu xám thanh lịch, kiểu dáng mỏng nhẹ, dễ dàng mang theo khi di chuyển.', 'group_633_1_.webp', 0, 5, '2024-11-22 21:21:24', '2024-11-22 21:21:24'),
+(42, 5, 'ASUS', 'Laptop ASUS Vivobook 15 X1504ZA-NJ517W', 13990000, 30, 0, 'Màn hình FHD 15.6 inch với độ sáng 250 nits và độ phủ màu 45% NTSC, mang lại hình ảnh sắc nét và sống động', 'laptop-asus-vivobook-15x-oled-m3504ya-l1268w-thumbnails.webp', 0, 4, '2024-11-22 21:23:05', '2024-11-22 21:23:05'),
+(43, 5, 'Acer', 'Laptop Acer Gaming Aspire ', 13990000, 38, 0, 'CPU Intel Core i5-12450H dễ dàng xử lý mọi tác vụ làm việc học tập, làm việc thường ngày.', 'group_509_11__1.webp', 0, 2, '2024-11-22 21:27:10', '2024-11-22 21:27:10'),
+(44, 4, 'Apple', 'Tai nghe Bluetooth Apple AirPods 4', 3450000, 25, 0, 'Chip H2 nổi bật, mạnh mẽ được tích hợp trong Airpod 4 giúp trải nghiệm âm thanh của bạn mượt mà hơn.', 'apple-airpods-4-thumb.webp', 0, 9, '2024-11-22 21:29:27', '2024-11-22 21:29:27'),
+(45, 4, 'Soundcore ', 'Tai nghe Bluetooth True Wireless Anker Soundcore R50i A3949', 360000, 39, 0, 'Tai nghe không dây Anker Soundcore R50I-A3949 - Chất âm tốt, thiết kế sang trọng', 'tai-nghe-khong-day-anker-soundcore-r50i-a3949_2_.webp', 0, 3, '2024-11-22 21:31:40', '2024-11-22 21:31:40'),
+(46, 4, 'Sony', 'Tai nghe Bluetooth chụp tai Sony WH-1000XM5', 6490000, 46, 0, 'Công nghệ Auto NC Optimizer tự động khử tiếng ồn dựa theo môi trường', 'group_172_2.webp', 0, 6, '2024-11-22 21:34:32', '2024-11-22 21:34:32'),
+(47, 6, 'Edifier ', 'Loa Bluetooth Edifier Hecate G200', 390000, 30, 0, 'Màng loa kích thước lớn 40mm, giúp tái tạo âm thanh chất lượng cao, mạnh mẽ và sống động', 'loa-bluetooth-edifier-hecate-g200_2_.webp', 0, 17, '2024-11-22 21:36:44', '2024-11-22 21:36:44'),
+(48, 6, 'Tronsmart ', 'Loa Bluetooth Tronsmart Groove 2', 630000, 33, 0, 'Thiết kế nhỏ gọn, tích hợp đèn LED cho trải nghiệm thêm sống động', 'group_218_3.webp', 0, 29, '2024-11-22 21:37:48', '2024-11-22 21:37:48'),
+(49, 6, 'Samsung', 'Loa tháp Samsung MX-T70', 4490000, 48, 0, 'Thưởng thức dải âm trầm mạnh mẽ, chất âm sống động với công suất lên đến 1500W', 'loa-thap-samsung-mx-t70-thumb.webp', 0, 177, '2024-11-22 21:39:38', '2024-11-22 21:39:38');
 
 -- --------------------------------------------------------
 
@@ -162,11 +205,11 @@ CREATE TABLE `product_variant` (
 --
 
 INSERT INTO `product_variant` (`id_product`, `id_variant`, `quantity`) VALUES
-(38, 24, 12),
+(38, 24, 9),
 (38, 21, 9),
-(38, 23, 5),
+(38, 23, 3),
 (39, 23, 7),
-(39, 21, 9),
+(39, 21, 8),
 (39, 19, 11),
 (40, 25, 13),
 (40, 23, 14),
@@ -177,7 +220,7 @@ INSERT INTO `product_variant` (`id_product`, `id_variant`, `quantity`) VALUES
 (42, 24, 13),
 (42, 23, 7),
 (42, 21, 10),
-(43, 21, 16),
+(43, 21, 15),
 (43, 23, 23),
 (44, 24, 15),
 (44, 23, 10),
@@ -190,8 +233,8 @@ INSERT INTO `product_variant` (`id_product`, `id_variant`, `quantity`) VALUES
 (48, 23, 14),
 (48, 21, 9),
 (48, 24, 10),
-(49, 23, 36),
-(49, 21, 16);
+(49, 23, 35),
+(49, 21, 13);
 
 -- --------------------------------------------------------
 
@@ -220,6 +263,15 @@ CREATE TABLE `users` (
   `role` tinyint NOT NULL DEFAULT '0' COMMENT '0 là khách hàng, 1 là nhân viên, 2 là quản trị',
   `day_registered` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Ngày đăng kí tài khoản của user '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `email`, `password`, `role`, `day_registered`) VALUES
+(3, 'hoangnvph49147@fpt.edu.vn', 'ddb97b2aa7373d256bd254683c7c0e7a', 2, '2024-11-25 10:35:51'),
+(4, 'hoangnvph49147@gmail.com', 'f82e62d7c3ea69cc12b5cdb8d621dab6', 0, '2024-11-27 22:05:02'),
+(5, 'hoang@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 0, '2024-11-29 11:51:40');
 
 -- --------------------------------------------------------
 
@@ -284,7 +336,8 @@ ALTER TABLE `customers`
 ALTER TABLE `detail_bills`
   ADD PRIMARY KEY (`id_detailbill`),
   ADD KEY `id_bill` (`id_bill`),
-  ADD KEY `detail_bills_ibfk_1` (`id_product`);
+  ADD KEY `detail_bills_ibfk_1` (`id_product`),
+  ADD KEY `id_variant` (`id_variant`);
 
 --
 -- Indexes for table `products`
@@ -328,7 +381,7 @@ ALTER TABLE `variant`
 -- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
-  MODIFY `id_bill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã đơn hàng', AUTO_INCREMENT=3;
+  MODIFY `id_bill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã đơn hàng', AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -340,19 +393,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int NOT NULL AUTO_INCREMENT COMMENT 'Mã bình luận';
+  MODIFY `id_comment` int NOT NULL AUTO_INCREMENT COMMENT 'Mã bình luận', AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id_customer` int NOT NULL AUTO_INCREMENT COMMENT 'Mã customer', AUTO_INCREMENT=2;
+  MODIFY `id_customer` int NOT NULL AUTO_INCREMENT COMMENT 'Mã customer', AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `detail_bills`
 --
 ALTER TABLE `detail_bills`
-  MODIFY `id_detailbill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết đơn hàng', AUTO_INCREMENT=2;
+  MODIFY `id_detailbill` int NOT NULL AUTO_INCREMENT COMMENT 'Mã chi tiết đơn hàng', AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -364,7 +417,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT COMMENT 'Mã user', AUTO_INCREMENT=2;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT COMMENT 'Mã user', AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `variant`
@@ -400,7 +453,8 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `detail_bills`
   ADD CONSTRAINT `detail_bills_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `detail_bills_ibfk_2` FOREIGN KEY (`id_bill`) REFERENCES `bills` (`id_bill`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `detail_bills_ibfk_2` FOREIGN KEY (`id_bill`) REFERENCES `bills` (`id_bill`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detail_bills_ibfk_3` FOREIGN KEY (`id_variant`) REFERENCES `variant` (`id_variant`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`

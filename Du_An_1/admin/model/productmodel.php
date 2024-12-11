@@ -6,10 +6,18 @@ class productModel
     {
         $this->conn = connDBAss();
     }
-    function product()
+    function product($categoryId = null)
     {
-        $sql = "SELECT * FROM products JOIN categories ON categories.id_category=products.id_category order by id_product desc";
-        return $this->conn->query($sql)->fetchAll();
+        if ($categoryId !== null) {
+            $sql = "SELECT * FROM products JOIN categories ON categories.id_category = products.id_category 
+                    WHERE products.id_category = $categoryId ORDER BY id_product DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } else {
+            $sql = "SELECT * FROM products JOIN categories ON categories.id_category = products.id_category ORDER BY id_product DESC";
+            return $this->conn->query($sql)->fetchAll();
+        }
     }
     function category()
     {
@@ -21,10 +29,12 @@ class productModel
         $sql = "SELECT * FROM variant";
         return $this->conn->query($sql)->fetchAll();
     }
-    function product_variant()
+    function product_variant($id_product)
     {
-        $sql = "SELECT * FROM product_variant JOIN variant ON product_variant.id_variant=variant.id_variant JOIN products ON product_variant.id_product=products.id_product order by products.id_product desc";
-        return $this->conn->query($sql)->fetchAll();
+        $sql = "SELECT * FROM product_variant JOIN variant ON product_variant.id_variant=variant.id_variant JOIN products ON product_variant.id_product=products.id_product WHERE product_variant.id_product = $id_product";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
     function findProductById($id)
     {
@@ -57,7 +67,6 @@ class productModel
         if ($stmt->execute()) {
             // Lấy ID sản phẩm vừa thêm
             $id_product = $this->conn->lastInsertId();
-
             foreach ($variants as $variant) {
                 $id_variant = $variant['name_color'];
                 $quantity = $variant['quantity'];
@@ -66,7 +75,6 @@ class productModel
                 $sql_product_variant = "INSERT INTO product_variant VALUES ($id_product, $id_variant, $quantity)";
                 $stmt_product_variant = $this->conn->prepare($sql_product_variant);
                 $stmt_product_variant->execute();
-
             }
             return true;
         }

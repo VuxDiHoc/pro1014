@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -23,7 +23,6 @@ TemplateMo 559 Zay Shop
 
 https://templatemo.com/tm-559-zay-shop
 -->
-
 </head>
 
 <body>
@@ -54,37 +53,46 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?act=shop">Shop</a>
-                        </li>
-                     
+
+                        </li>                
+
                         <li class="nav-item">
                             <a class="nav-link" href="?act=contact">Contact</a>
                         </li>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <form action="?act=shop" method="POST" class="d-flex">
+                        <input type="text" name="search" placeholder="Tìm kiếm sản phẩm" class="form-control">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                    <!-- <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
+                    <form action="?act=shop" method="POST">
+                        <input type="text" name="search" placeholder="Tìm kiếm sản phẩm" class="form-control">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
                         data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="?act=giohang">
+                    </a> -->
+                    
+                    <a class="nav-icon position-relative text-decoration-none" href="?act=cart">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    
                         <?php if (isset($_SESSION['user'])): ?>
                             <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                    <?php echo $_SESSION['user']['fullname']; ?>
+                                <a class="dropdown-toggle text-decoration-none" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fa fa-fw fa-user text-dark mr-3"></i>                           
+                                    <?php echo $_SESSION['user']['customer_info']['full_name'];?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="?act=profile">Hồ sơ</a></li>
+                                    <li><a class="dropdown-item" href="?act=order">Đơn hàng</a></li>
+                                    <?php if ($_SESSION['user']['role'] == 2): ?>
+                                        <li><a class="dropdown-item" href="admin">Quản trị</a></li>
+                                    <?php endif; ?>
                                     <li><a class="dropdown-item" href="?act=logout">Đăng xuất</a></li>
                                 </ul>
                             </div>
@@ -94,7 +102,7 @@ https://templatemo.com/tm-559-zay-shop
                                 Đăng nhập
                             </a>
                         <?php endif; ?>
-                    </a>
+                   
                 </div>
             </div>
 

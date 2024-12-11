@@ -9,38 +9,7 @@ require_once 'layout/navbar.php';
     <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-            <!-- Sidebar Toggle (Topbar) -->
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                <i class="fa fa-bars"></i>
-            </button>
-
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
-
-                <!-- Nav Item - User Information -->
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                    </a>
-                    <!-- Dropdown - User Information -->
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="userDropdown">
-
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
-                        </a>
-                    </div>
-                </li>
-
-            </ul>
-
-        </nav>
-        <!-- End of Topbar -->
+        <?php require_once 'layout/topbar.php' ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -57,9 +26,33 @@ require_once 'layout/navbar.php';
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <form method="GET" class="mb-4">
+                                    <input type="hidden" name="act" value="listProduct">
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="category" class="me-2">Lọc theo danh mục:</label>
+                                        <select id="category" name="category" class="form-select w-auto me-3">
+                                            <option value="">Tất cả</option>
+                                            <?php
+                                            foreach ($category as $cat) {
+                                                ?>
+                                                <option value="<?= $cat['id_category'] ?>" <?= isset($_GET['category']) && $_GET['category'] == $cat['id_category'] ? 'selected' : '' ?>>
+                                                    <?= $cat['name_cat'] ?>
+                                                </option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Lọc</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <table class="table table-bordered" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>Mã SP</th>
                                     <th>Ảnh</th>
                                     <th>Tên</th>
                                     <th>Hãng</th>
@@ -77,20 +70,24 @@ require_once 'layout/navbar.php';
                                 <?php foreach ($products as $key => $value) {
                                     ?>
                                     <tr>
+                                        <td><?= $value['id_product'] ?></td>
                                         <td><img src="../assets/img/<?= $value['img_product'] ?>"
                                                 class="img-fluid rounded-top" alt="" width="180px" height="80px"
                                                 class="rounded" />
                                         </td>
                                         <td><?= $value['name'] ?></td>
                                         <td><?= $value['firms'] ?></td>
-                                        <td><?= $value['price'] ?></td>
-                                        <td><?= $value['discount'] ?></td>
+                                        <td><?= number_format($value['price']) ?>đ</td>
+                                        <td><?= $value['discount'] ?>%</td>
                                         <td><?= $value['amount'] ?></td>
                                         <td style="max-width: 220px"><?= $value['description'] ?></td>
                                         <td><?= $value['name_cat'] ?></td>
                                         <td><?= $value['view'] ?></td>
                                         <td><?= ($value['censorship'] == 0) ? 'Đang hiện' : 'Đã ẩn' ?></td>
                                         <td>
+                                            <a class="btn btn-info"
+                                                href="?act=listProduct_variant&id=<?= $value['id_product'] ?>"
+                                                role="button">Biến thể</a>
                                             <a class="btn btn-primary"
                                                 href="?act=updateProduct&id=<?= $value['id_product'] ?>"
                                                 role="button">Sửa</a>
