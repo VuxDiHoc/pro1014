@@ -1,4 +1,4 @@
-<!-- listUser.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,13 +9,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff; /* Nền xanh nhạt */
+            background-color: #f0f8ff; 
             margin: 0;
             padding: 20px;
         }
 
         h1 {
-            color: #003366; /* Màu xanh đậm */
+            color: #003366; 
             text-align: center;
         }
 
@@ -23,7 +23,7 @@
             width: 60%;
             margin: 20px auto;
             border-collapse: collapse;
-            background-color: #ffffff; /* Nền trắng */
+            background-color: #ffffff; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             overflow: hidden;
@@ -36,16 +36,16 @@
         }
 
         th {
-            background-color: #007acc; /* Xanh đậm */
+            background-color: #007acc; 
             color: white;
         }
 
         tr:nth-child(even) {
-            background-color: #f9f9f9; /* Màu hàng chẵn */
+            background-color: #f9f9f9; 
         }
 
         tr:hover {
-            background-color: #e0f7ff; /* Khi hover */
+            background-color: #e0f7ff;
         }
 
         a {

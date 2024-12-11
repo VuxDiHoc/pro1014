@@ -9,7 +9,7 @@ require_once 'layout/navbar.php';
 
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-    <!-- Topbar -->
+
     <?php require_once 'layout/topbar.php'?>
 
         <div class="container-fluid">
