@@ -56,9 +56,7 @@ https://templatemo.com/tm-559-zay-shop
 
                         </li>                
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="?act=contact">Contact</a>
-                        </li>
+
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <form action="?act=shop" method="POST" class="d-flex">
