@@ -5,25 +5,25 @@ require_once 'layout/navbar.php';
 
 
 
-<!-- Content Wrapper -->
+
 <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- Main Content -->
+    
     <div id="content">
 
-        <!-- Topbar -->
+        
         <?php require_once 'layout/topbar.php'?>
 
-        <!-- Begin Page Content -->
+        
         <div class="container-fluid">
 
-            <!-- Page Heading -->
+            
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
             </div>
 
-            <!-- Content Row -->
+            
             <div class="row">
-                <!-- code ở đây -->
+                
                  
 
                 <div class="container-fluid">
@@ -47,7 +47,7 @@ require_once 'layout/navbar.php';
                     <tbody>
     <?php
     foreach ($thongkesk as $key => $value) {
-       
+        
         $daily_revenue = $value['total_revenue'] / 365; 
         $weekly_revenue = $daily_revenue * 7; 
         $monthly_revenue = $daily_revenue * 30; 
@@ -77,10 +77,10 @@ require_once 'layout/navbar.php';
 </div>
 
              
-        <!-- /.container-fluid -->
+        
 
     </div>
-    <!-- End of Main Content -->
+    
 
     <?php
     require_once 'layout/scripts.php';

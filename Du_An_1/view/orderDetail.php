@@ -2,7 +2,6 @@
 <div class="container my-5">
     <h2 class="mb-4">Chi tiết đơn hàng</h2>
 
-    <!-- Thông tin cơ bản -->
     <div class="card">
         <div class="card-header">
             <strong>Mã đơn hàng:</strong> <?= $orderDetails[0]['id_bill'] ?>
@@ -23,7 +22,7 @@
         </div>
     </div>
 
-    <!-- Chi tiết sản phẩm -->
+    
     <h3 class="mt-4">Danh sách sản phẩm</h3>
     <table class="table">
         <thead>

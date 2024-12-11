@@ -36,7 +36,7 @@ class billModel
     }
     function reduceQuantity($id)
     {
-        // Lấy chi tiết đơn hàng
+        
         $sql = "SELECT id_product, id_variant, quantity FROM detail_bills WHERE id_bill = $id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -47,12 +47,12 @@ class billModel
             $id_variant = $item['id_variant'];
             $quantity = $item['quantity'];
 
-            // Trừ số lượng trong bảng products
+            
             $sqlProduct = "UPDATE products SET amount = amount - $quantity WHERE id_product = $id_product";
             $stmtProduct = $this->conn->prepare($sqlProduct);
             $stmtProduct->execute();
 
-            // Trừ số lượng trong bảng product_variant
+            
             $sqlVariant = "UPDATE product_variant SET quantity = quantity - $quantity WHERE id_product = $id_product AND id_variant = $id_variant";
             $stmtVariant = $this->conn->prepare($sqlVariant);
             $stmtVariant->execute();

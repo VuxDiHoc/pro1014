@@ -4,23 +4,14 @@ require_once 'layout/header.php'
 
 
 
-<!-- Start Content -->
+
 <div class="container py-5">
     <div class="row">
 
         <div class="col-lg-3">
             <h1 class="h2 pb-4">Danh mục</h1>
             <ul class="list-unstyled templatemo-accordion">
-                <!-- <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Sale
-                        <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                    </a>
-                    <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="#">Sport</a></li>
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                    </ul>
-                </li> -->
+
                 <li class="pb-3">
                     <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
                         Sản phẩm
@@ -94,24 +85,12 @@ require_once 'layout/header.php'
                     <p class="text-center">Không tìm thấy sản phẩm nào.</p>
                 <?php } ?>
             </div>
-            <!-- <div div="row">
-                    <ul class="pagination pagination-lg justify-content-end">
-                        <li class="page-item disabled">
-                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
-                        </li>
-                    </ul>
-                </div> -->
+
         </div>
 
     </div>
 </div>
-<!-- End Content -->
+
 
 <?php
 require_once 'layout/scripts.php';

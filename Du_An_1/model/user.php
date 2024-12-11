@@ -11,7 +11,7 @@ function checkLogin($email, $password)
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            // Lấy thêm thông tin customer nếu có
+            
             $stmt = $conn->prepare("SELECT * FROM customers WHERE id_user = ?");
             $stmt->execute([$user['id_user']]);
             $customer = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -44,14 +44,14 @@ function registerUser($fullname, $email, $password)
         $conn = connDBAss();
         $conn->beginTransaction();
 
-        // Thêm user mới
+        
         $stmt = $conn->prepare("INSERT INTO users (email, password, role) VALUES (?, ?, 0)");
         $hashedPassword = md5($password);
         $stmt->execute([$email, $hashedPassword]);
 
         $userId = $conn->lastInsertId();
 
-        // Thêm thông tin customer
+        
         $stmt = $conn->prepare("INSERT INTO customers (id_user, full_name, phone, address) VALUES (?, ?, '', '')");
         $stmt->execute([$userId, $fullname]);
 
@@ -70,13 +70,13 @@ function updateUserProfile($userId, $fullname, $phone, $address, $password = nul
     try {
         $conn = connDBAss();
 
-        // Start the update query for user details
+        
         $stmt = $conn->prepare("UPDATE customers SET full_name = ?, phone = ?, address = ? WHERE id_user = ?");
         $stmt->execute([$fullname, $phone, $address, $userId]);
 
-        // If a new password is provided, update the password in the users table
+        
         if (!empty($password)) {
-            $hashedPassword = md5($password); // Hash the password before updating
+            $hashedPassword = md5($password);
             $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id_user = ?");
             $stmt->execute([$hashedPassword, $userId]);
         }
@@ -90,7 +90,7 @@ function updateUserProfile($userId, $fullname, $phone, $address, $password = nul
 
 function getUserProfile($email) {
     try {
-        $conn = connDBAss(); // Lấy kết nối từ hàm connDBAss
+        $conn = connDBAss();
         $sql = "SELECT u.email, u.password, c.full_name, c.phone, c.address 
                 FROM users u 
                 JOIN customers c ON u.id_user = c.id_user 
@@ -100,9 +100,9 @@ function getUserProfile($email) {
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         
-        return $stmt->fetch(PDO::FETCH_ASSOC);  // Trả về mảng thông tin người dùng
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        return false; // Nếu có lỗi trong quá trình truy vấn
+        return false;
     }
 }
 

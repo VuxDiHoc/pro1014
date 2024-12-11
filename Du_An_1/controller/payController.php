@@ -22,12 +22,12 @@ class payController
                 $receiver_name = $_POST['receiver_name'];
                 $receiver_phone = $_POST['receiver_phone'];
                 $receiver_address = $_POST['receiver_address'];
-                $id_customer = $_SESSION['user']['customer_info']['id_customer']; // Giả sử user đã đăng nhập
+                $id_customer = $_SESSION['user']['customer_info']['id_customer'];
 
-                // Lấy danh sách sản phẩm trong giỏ hàng
+                
                 $cartItems = $_SESSION['mycart'];
 
-                // Gọi hàm lưu đơn hàng
+                
                 $result = $this->payModel->saveOrder($id_customer, $receiver_name, $receiver_phone, $receiver_address, $cartItems);
 
                 if ($result) {

@@ -2,24 +2,24 @@
 require_once 'layout/header.php';
 require_once 'layout/navbar.php';
 ?>
-<!-- Content Wrapper -->
+
 <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- Main Content -->
+    
     <div id="content">
 
-        <!-- Topbar -->
+        
         <?php require_once 'layout/topbar.php' ?>
 
-        <!-- Begin Page Content -->
+        
         <div class="container-fluid">
 
-            <!-- Page Heading -->
+            
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Danh sách đơn hàng</h1>
             </div>
 
-            <!-- Content Row -->
+            
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Bảng đơn hàng</h6>
@@ -86,10 +86,10 @@ require_once 'layout/navbar.php';
 
 
         </div>
-        <!-- /.container-fluid -->
+        
 
     </div>
-    <!-- End of Main Content -->
+    
     <?php
     require_once 'layout/scripts.php';
     require_once 'layout/footer.php';

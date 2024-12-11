@@ -51,9 +51,9 @@ class productModel
         $sql = "SELECT * FROM product_variant WHERE id_product = $id_product";
         $stmt = $this->conn->query($sql);
         $existingVariants = $stmt->fetchAll();
-        // Duyệt qua tất cả các màu sắc đã tồn tại của sản phẩm
+        
         foreach ($existingVariants as $variant) {
-            // Nếu màu mới trùng với màu hiện có, trả về true
+            
             if ($variant['id_variant'] == $new_color_id && $variant['id_variant'] != $current_color_id) {
                 return true;
             }
@@ -65,13 +65,13 @@ class productModel
         $sql = "INSERT INTO products values (null,$id_category,'$firms','$name',$price,$amount,$discount,'$description','$img_product',0,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
         $stmt = $this->conn->prepare($sql);
         if ($stmt->execute()) {
-            // Lấy ID sản phẩm vừa thêm
+            
             $id_product = $this->conn->lastInsertId();
             foreach ($variants as $variant) {
                 $id_variant = $variant['name_color'];
                 $quantity = $variant['quantity'];
 
-                // Thêm vào bảng product_variant
+                
                 $sql_product_variant = "INSERT INTO product_variant VALUES ($id_product, $id_variant, $quantity)";
                 $stmt_product_variant = $this->conn->prepare($sql_product_variant);
                 $stmt_product_variant->execute();
@@ -105,7 +105,7 @@ class productModel
     }
     function updateProduct_variant($id_pro, $id_var, $new_id_variant, $quantity)
     {
-        // Lấy số lượng cũ từ bảng product_variant
+       
         $sql_quantity = "SELECT quantity FROM product_variant WHERE id_product = $id_pro AND id_variant = $id_var";
         $stmt_quantity = $this->conn->query($sql_quantity)->fetchColumn();
 
@@ -122,7 +122,7 @@ class productModel
     }
     function deleteProduct_variant($id_pro, $id_var)
     {
-        // Lấy số lượng của product_variant trước khi xóa
+        
         $sql_quantity = "SELECT quantity FROM product_variant WHERE id_product = $id_pro AND id_variant = $id_var";
         $stmt_quantity = $this->conn->query($sql_quantity)->fetchColumn();
 

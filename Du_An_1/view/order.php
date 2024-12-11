@@ -1,9 +1,9 @@
 <?php require_once 'layout/header.php' ?>
 <div class="container my-5">
-    <!-- Tiêu đề -->
+   
     <h2 class="mb-4">Đơn hàng của tôi</h2>
 
-    <!-- Tabs -->
+    
     <ul class="nav nav-tabs mb-4" id="orderTabs" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="all-orders-tab" data-bs-toggle="tab" data-bs-target="#all-orders"
@@ -40,9 +40,9 @@
         </li>
     </ul>
 
-    <!-- Tab Content -->
+    
     <div class="tab-content" id="orderTabsContent">
-        <!-- Tất cả đơn -->
+       
         <div class="tab-pane fade show active" id="all-orders" role="tabpanel" aria-labelledby="all-orders-tab">
             <?php renderOrders($orders); ?>
         </div>

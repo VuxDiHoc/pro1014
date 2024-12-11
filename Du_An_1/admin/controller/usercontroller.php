@@ -1,5 +1,5 @@
 <?php
-// usercontroller.php
+
 
 require_once __DIR__ . '/../model/usermodel.php';
 
@@ -37,5 +37,5 @@ class UserController
         exit();
     }
 
-    // Add more methods for editUser and updateUser as needed
+    
 }
